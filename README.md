@@ -30,7 +30,7 @@ The applications main features include:
 * Each flashcard will have 2 states:
   1. For the prompt
   2. For the answer/description
-* Users can cycle through a predetermined about of cards for the specific tag (e.g. 10,20,30, etc)
+* Users can cycle through a predetermined amount of cards for the specific tag (e.g. 10,20,30, etc)
 
 Extension features may include:
 * Allowing quizzes
