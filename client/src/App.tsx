@@ -1,34 +1,13 @@
-import React, { useEffect, useState } from "react";
-import logo from "./logo.svg";
-import "./App.css";
-import axios from "axios";
+import React, { useEffect, useState } from 'react';
+// import './App.css';
+import axios from 'axios';
 
 function App() {
-    const [serverDate, setServerDate] = useState("");
-    useEffect(() => {
-        axios
-            .get("/api/test")
-            .then((response) => response.data)
-            .then((data: any) => {
-                setServerDate(data.date);
-            });
-    }, []);
-    return (
-        <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>Server Date: {serverDate}</p>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Learn React
-                </a>
-            </header>
-        </div>
-    );
+  return (
+    <div className='App'>
+        Learn React
+    </div>
+  );
 }
 
 export default App;
