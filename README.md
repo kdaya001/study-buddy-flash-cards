@@ -14,6 +14,7 @@ TBC Summary of features implemented
   * TBC: Material UI or AntDesign
   * Express
   * TBC: Postgres or MongoDB
+  * Material UI
 
 ---
 
