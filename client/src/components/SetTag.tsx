@@ -1,8 +1,8 @@
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 
-export const SetCardView = ({setViewCardAmount, viewCardAmount}:any) => {
+export const SetTag = ({tag, setTag}:any) => {
   const handleChange = (event: any) => {
-    setViewCardAmount(event.target.value);
+    setTag(event.target.value);
   };
 
   return (
@@ -12,10 +12,10 @@ export const SetCardView = ({setViewCardAmount, viewCardAmount}:any) => {
         <Select
           labelId='view-card-simple-select-label'
           id='view-card-simple-select'
-          value={viewCardAmount}
+          value={tag}
           label='cardAmount'
           onChange={handleChange}>
-          <MenuItem value={10}>Ten</MenuItem>
+          <MenuItem value={'Algorithms'}>Algorithms</MenuItem>
           <MenuItem value={20}>Twenty</MenuItem>
           <MenuItem value={30}>Thirty</MenuItem>
         </Select>

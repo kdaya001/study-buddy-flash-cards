@@ -1,0 +1,7 @@
+.card_card {
+  max-width: 500px;
+  min-height: 300px;
+  border: 1px solid black;
+  margin: 0 auto;
+  text-align: center;
+}
