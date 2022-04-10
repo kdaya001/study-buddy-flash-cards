@@ -72,6 +72,7 @@ export const Card = ({ viewCardAmount, tag }: any) => {
         onClick={() => {
           if (currentCard < viewCardAmount - 1) {
             setCurrentCard(currentCard + 1);
+            setCurrentView(true);
           }
         }}>
         Next
@@ -81,6 +82,7 @@ export const Card = ({ viewCardAmount, tag }: any) => {
         onClick={() => {
           if (currentCard > 0) {
             setCurrentCard(currentCard - 1);
+            setCurrentView(true);
           }
         }}>
         Back
