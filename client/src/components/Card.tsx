@@ -56,13 +56,15 @@ export const Card = ({ viewCardAmount, tag }: any) => {
   return (
     <div>
       <div
-        className='card_card'
+        className='card_card-container'
         onClick={() => {
           setCurrentView(!currentView);
         }}>
+          <div className="card_card-content">
         {currentView
           ? data[tag][currentCard].prompt
           : data[tag][currentCard].response}
+          </div>
       </div>
 
       <Button

@@ -1,7 +1,12 @@
-.card_card {
-  max-width: 500px;
-  min-height: 300px;
+.card_card-container {
+  max-width: 520px;
+  min-height: 350px;
   border: 1px solid black;
   margin: 0 auto;
   text-align: center;
+  position: relative;
+  margin: auto;
+  overflow: hidden;
+  box-shadow: 5px 10px pink;
+  border-radius: 10px;
 }
