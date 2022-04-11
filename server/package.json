@@ -6,6 +6,7 @@
         "test": "jest"
     },
     "dependencies": {
+        "cors": "^2.8.5",
         "express": "^4.17.3",
         "pg": "^8.7.3",
         "ts-node": "^10.7.0",
