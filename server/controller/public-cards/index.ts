@@ -2,8 +2,8 @@ const express = require('express');
 const Cards = require('../../model/cards');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  Cards.getPublicCards().then((response) => {
+router.get('/public/:tag', (req, res) => {
+  Cards.getPublicCard(req.params.tag).then((response) => {
     res.json(response);
   });
 });
