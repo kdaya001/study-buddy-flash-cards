@@ -3,13 +3,13 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import './card.css';
 
-export const Card = ({ viewCardAmount, tag }: any) => {
+export const Card = ({ viewCardAmount }: any) => {
   const [currentCard, setCurrentCard] = useState<number>(0);
   const [currentView, setCurrentView] = useState<boolean>(true);
   const [data, setData] = useState([{prompt: 'loading', response: 'loading'}]);
 
   useEffect((): any => {
-    axios.get('http://localhost:3001/api/cards').then((res) => {
+    axios.get('/api/cards').then((res) => {
       if (res.data.length > 0) {
         setData(res.data[0].cards);
       }

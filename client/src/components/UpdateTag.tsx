@@ -1,9 +1,21 @@
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
-export const SetTag = ({tag, setTag}:any) => {
+export const UpdateTag = ({tag, setTag}:any) => {
+  const [allTags, setAllTags] = useState<any>([]);
+
   const handleChange = (event: any) => {
     setTag(event.target.value);
   };
+
+  useEffect((): any => {
+    axios.get(`/api/cards/tags`).then((res) => {
+      if (res.data.length > 0) {
+        setAllTags(res.data);
+      }
+    })
+  }, []);
 
   return (
     <div>
@@ -15,9 +27,11 @@ export const SetTag = ({tag, setTag}:any) => {
           value={tag}
           label='cardAmount'
           onChange={handleChange}>
-          <MenuItem value={'Algorithms'}>Algorithms</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+            {allTags.map((tag: any) => {
+              return (
+                <MenuItem key={tag._id} value={tag.tag}>{tag.tag}</MenuItem>
+              )
+            })}
         </Select>
       </FormControl>
     </div>
