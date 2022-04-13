@@ -10,7 +10,7 @@ const Cards = {
     const dbConnect = db.getDb();
     return await dbConnect
       .collection('global_cards')
-      .find({}, {projection: {tag: 1, _id: 0}})
+      .find({}, {projection: {tag: 1}})
       .toArray();
   },
 };
