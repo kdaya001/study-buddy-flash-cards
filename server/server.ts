@@ -14,16 +14,7 @@ const app = express();
 app.set('trust proxy', 1);
 app.use(express.json()); // support json encoded bodies
 app.use(cors());
-
-// const uri = 'mongodb://127.0.0.1:27017';
-// const client = new MongoClient(uri);
-// let db = null;
-// async function run() {
-//   await client.connect();
-//   db = client.db('study-buddy');
-//   console.log('Connected successfully to server');
-// }
-// run().catch(console.log);
+const db = require('./database/db')
 
 app.use('/api/cards', testController);
 
@@ -35,6 +26,14 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-app.listen(+PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
+//perform the DB connection when the server starts
+db.connectToServer(function (err) {
+  if (err) {
+    console.error(err);
+    process.exit();
+  }
+
+  app.listen(+PORT, () => {
+    console.log(`Server listening on port ${PORT}`);
+  });
 });
