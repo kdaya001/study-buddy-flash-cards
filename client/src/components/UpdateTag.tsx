@@ -2,7 +2,7 @@ import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-export const SetTag = ({tag, setTag}:any) => {
+export const UpdateTag = ({tag, setTag}:any) => {
   const [allTags, setAllTags] = useState<any>([]);
 
   const handleChange = (event: any) => {
@@ -10,7 +10,7 @@ export const SetTag = ({tag, setTag}:any) => {
   };
 
   useEffect((): any => {
-    axios.get('http://localhost:3001/api/cards/tags').then((res) => {
+    axios.get(`/api/cards/tags`).then((res) => {
       if (res.data.length > 0) {
         setAllTags(res.data);
       }

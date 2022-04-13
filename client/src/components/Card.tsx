@@ -9,7 +9,7 @@ export const Card = ({ viewCardAmount }: any) => {
   const [data, setData] = useState([{prompt: 'loading', response: 'loading'}]);
 
   useEffect((): any => {
-    axios.get('http://localhost:3001/api/cards').then((res) => {
+    axios.get('/api/cards').then((res) => {
       if (res.data.length > 0) {
         setData(res.data[0].cards);
       }

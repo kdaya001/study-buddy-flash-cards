@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Card } from "./Card";
 import { SetCardView } from './SetCardView';
-import { SetTag } from "./SetTag";
+import { UpdateTag } from "./UpdateTag";
 
 export const View = () => {
   const [viewCardAmount, setViewCardAmount] = useState<Number>(10);
@@ -10,7 +10,7 @@ export const View = () => {
   return (
     <div>
       <SetCardView viewCardAmount={viewCardAmount} setViewCardAmount={setViewCardAmount}/>
-      <SetTag tag={tag} setTag={setTag}/>
+      <UpdateTag tag={tag} setTag={setTag}/>
       <Card viewCardAmount={viewCardAmount} tag={tag} />
     </div>
   )
