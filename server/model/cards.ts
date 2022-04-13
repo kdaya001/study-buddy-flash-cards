@@ -2,9 +2,9 @@ import express from 'express';
 const db = require('../database/db');
 
 const Cards = {
-  getPublicCards: async () => {
+  getPublicCard: async (tag) => {
     const dbConnect = db.getDb();
-    return await dbConnect.collection('global_cards').find({}).toArray();
+    return await dbConnect.collection('global_cards').find({tag: tag}).toArray();
   },
   getPublicTags: async () => {
     const dbConnect = db.getDb();
@@ -12,7 +12,7 @@ const Cards = {
       .collection('global_cards')
       .find({}, {projection: {tag: 1}})
       .toArray();
-  },
+  }
 };
 
 module.exports = Cards;
