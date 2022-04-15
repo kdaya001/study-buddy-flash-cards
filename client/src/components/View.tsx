@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Card } from "./Card";
-import { NavBar } from "./NavBar";
 import { SetCardView } from './SetCardView';
 import { UpdateTag } from "./UpdateTag";
 

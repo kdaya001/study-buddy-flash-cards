@@ -6,6 +6,7 @@ import express, { Request, Response } from 'express';
 import path from 'path';
 import cors from 'cors';
 const publicCards = require('./controller/public-cards/index');
+const users = require('./controller/users/index')
 
 const PORT =
   process.env.PORT || (process.env.NODE_ENV === 'production' && 3000) || 3001;
@@ -17,6 +18,7 @@ app.use(cors());
 const db = require('./database/db')
 
 app.use('/api/cards', publicCards);
+app.use('/api/users', users)
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
