@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -21,7 +21,6 @@ export default function SignUp() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setValidPassword(password === confirmPassword);
 
     if(validPassword) {
       const body = {
@@ -31,11 +30,18 @@ export default function SignUp() {
       
       axios.post(`/api/users`, body).then((res) => {
         console.log(res);
+
+        
       });
     } else {
       console.log('invalid');
     }
   };
+
+
+  useEffect(() => {
+    setValidPassword(password === confirmPassword);
+  }, [password, confirmPassword]);
 
   return (
     <ThemeProvider theme={theme}>
