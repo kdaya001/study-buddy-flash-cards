@@ -1,26 +1,40 @@
-import * as React from 'react';
+import {useState} from 'react';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import axios from 'axios';
 
 const theme = createTheme();
 
 export default function SignUp() {
+  const [email, setEmail] = useState<null | string>(null);
+  const [password, setPassword] = useState<null | string>(null);
+  const [confirmPassword, setConfirmPassword] = useState<null | string>(null);
+  const [validPassword, setValidPassword] = useState<null | boolean>(null);
+
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    setValidPassword(password === confirmPassword);
+
+    if(validPassword) {
+      const body = {
+        email: email,
+        password: password,
+      }
+      
+      axios.post(`/api/users`, body).then((res) => {
+        console.log(res);
+      });
+    } else {
+      console.log('invalid');
+    }
   };
 
   return (
@@ -40,27 +54,6 @@ export default function SignUp() {
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  autoComplete="given-name"
-                  name="firstName"
-                  required
-                  fullWidth
-                  id="firstName"
-                  label="First Name"
-                  autoFocus
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
-                />
-              </Grid>
               <Grid item xs={12}>
                 <TextField
                   required
@@ -69,6 +62,9 @@ export default function SignUp() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  onChange={(event) => {
+                    setEmail(event.target.value);
+                  }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -80,6 +76,23 @@ export default function SignUp() {
                   type="password"
                   id="password"
                   autoComplete="new-password"
+                  onChange={(event) => {
+                    setPassword(event.target.value);
+                  }}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password-confirmation"
+                  autoComplete="new-password"
+                  onChange={(event) => {
+                    setConfirmPassword(event.target.value);
+                  }}
                 />
               </Grid>
             </Grid>
