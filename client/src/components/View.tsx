@@ -9,7 +9,7 @@ export const View = () => {
   const [data, setData] = useState([{prompt: 'loading', response: 'loading'}]);
   
   return (
-    <div>
+    <div> 
       <SetCardView viewCardAmount={viewCardAmount} setViewCardAmount={setViewCardAmount} data={data}/>
       <UpdateTag tag={tag} setTag={setTag}/>
       <Card viewCardAmount={viewCardAmount} tag={tag} setData={setData} data={data} />
