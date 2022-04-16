@@ -11,8 +11,8 @@ import {
   ApplicationContextReducer,
   DefaultApplicationState,
 } from './app-context';
-import axios from 'axios';
 import { getSession } from './helper/getSession';
+import { NotFound } from './components/NotFound';
 
 // async function getSession() {
 //   await axios.get("/api/session").then((res) => {
@@ -52,7 +52,8 @@ function App() {
           <Route path='/login' element={<Signin />} />
           <Route path='/signup' element={<SignUp />} />
           <Route path='/' element={<View />} />
-          <Route path='/create' element={<Create />} />
+          {appState.currentUser && <Route path='/create' element={<Create />} />}
+          <Route path='*' element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </ApplicationContext.Provider>

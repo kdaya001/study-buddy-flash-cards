@@ -1,13 +1,15 @@
 import { Box, Button, Container, MenuItem, Select, TextField, Typography } from '@mui/material';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { ApplicationContext } from '../app-context';
 
 export const Create = () => {
   const [tag, setTag] = useState<any>([]);
   const [allTags, setAllTags] = useState<any>(null);
 
   const [submitStatus, setSubmitStatus] = useState<boolean>(false);
-
+  const [appState, appAction] = useContext(ApplicationContext);
+  
   useEffect(() => {
     axios.get(`/api/cards/private/get/tags`).then((res) => {
       console.log(res.data);
