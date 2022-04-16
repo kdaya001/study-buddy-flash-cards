@@ -12,8 +12,8 @@ const Users = {
     const dbConnect = db.getDb();
     return await dbConnect
       .collection('users')
-      .find({email: email})
-      .toArray()
+      .findOne({email: email})
+      // .toArray()
   }
 };
 module.exports = Users;

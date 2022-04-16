@@ -17,6 +17,13 @@ const PORT =
 const expressSession = require('express-session');
 const app = express();
 
+declare module "express-session" {
+  interface SessionData {
+    email: string,
+    user_id: string,
+  }
+}
+
 app.set('trust proxy', 1);
 app.use(logger);
 app.use(express.json()); // support json encoded bodies

@@ -14,7 +14,7 @@ import axios from 'axios';
 
 const theme = createTheme();
 
-export default function Signn() {
+export default function Signin() {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -24,6 +24,7 @@ export default function Signn() {
       password: data.get('password'),
     }
     
+    //TODO look at logic
     const userExists = await axios.get(`/api/users/getByEmail/${data.get(('email'))}`);
     if(userExists?.data) {
       axios.post(`/api/sessions/`, body).then((res) => {

@@ -15,17 +15,28 @@ CardController.get('/public/get/tags', (req, res) => {
   })
 });
 
-
-CardController.post('/private/create', (req, res) => {
-  console.log(req.body.tag)
+//TODO post the acutal cards
+CardController.post('/private/create/tag', (req, res) => {
   //todo get session
   const body = {
     tag: req.body.tag,
-    owner: 'public',
+    owner: req.session.user_id,
     cards: [],
   }
   Cards.postPrivateTag(body).then(response => {
     res.json({status: 'success'});
+  })
+});
+
+CardController.post('/private/update/cards', (req, res) => {
+  Cards.updatePrivateCard(req.body).then(response => {
+    res.json({status: 'success'});
+  })
+})
+
+CardController.get('/private/get/tags', (req, res) => {
+  Cards.getPrivateTags(req.session.user_id).then((response) => {
+    res.json(response);
   })
 });
 
