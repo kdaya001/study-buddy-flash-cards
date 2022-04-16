@@ -45,11 +45,6 @@ router.get('/', (req, res) => {
             email: req.session.email,
         });
     }
-    // } else {
-    //     res.status(401).json({
-    //         message: 'Not logged in',
-    //     });
-    // }
 });
 
 //Delete Session (Logout)

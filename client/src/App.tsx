@@ -14,15 +14,6 @@ import {
 import { getSession } from './helper/getSession';
 import { NotFound } from './components/NotFound';
 
-// async function getSession() {
-//   await axios.get("/api/session").then((res) => {
-
-//   }
-//   // return {
-//   //     name: "",
-//   // };
-// }
-
 function App() {
   const [appState, appAction] = useReducer(
     ApplicationContextReducer,
