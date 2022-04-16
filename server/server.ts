@@ -6,7 +6,7 @@ import express, { Request, Response } from 'express';
 import path from 'path';
 import cors from 'cors';
 import MongoStore from 'connect-mongo';
-const publicCardsController = require('./controller/public-cards/index');
+const publicCardsController = require('./controller/cards/index');
 const usersController = require('./controller/users/index');
 const sessionsController = require('./controller/sessions/index');
 
@@ -16,6 +16,13 @@ const PORT =
   process.env.PORT || (process.env.NODE_ENV === 'production' && 3000) || 3001;
 const expressSession = require('express-session');
 const app = express();
+
+declare module "express-session" {
+  interface SessionData {
+    email: string,
+    user_id: string,
+  }
+}
 
 app.set('trust proxy', 1);
 app.use(logger);

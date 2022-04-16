@@ -1,7 +1,7 @@
 {
     "engines": {
         "node": "16.x"
-      },
+    },
     "scripts": {
         "postinstall": "(npm install --prefix server); (npm install --prefix client);",
         "build": "npm run build --prefix client",
@@ -12,5 +12,8 @@
     },
     "devDependencies": {
         "concurrently": "^6.2.1"
-    } 
+    },
+    "dependencies": {
+        "@types/express-session": "^1.17.4"
+    }
 }
