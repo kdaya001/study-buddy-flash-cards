@@ -1,12 +1,15 @@
 import { Button } from '@mui/material';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { ApplicationContext } from '../app-context';
+import { getSession } from '../helper/getSession';
 import './card.css';
 
 export const Card = ({ viewCardAmount, tag, data, setData }: any) => {
   const [currentCard, setCurrentCard] = useState<number>(0);
   const [currentView, setCurrentView] = useState<boolean>(true);
 
+getSession();
   useEffect((): any => {
     axios.get(`/api/cards/public/${tag}`).then((res) => {
       if (res.data.length > 0) {

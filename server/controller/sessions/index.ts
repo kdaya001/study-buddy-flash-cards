@@ -44,11 +44,12 @@ router.get('/', (req, res) => {
             user_id: req.session._id,
             email: req.session.email,
         });
-    } else {
-        res.status(401).json({
-            message: 'Not logged in',
-        });
     }
+    // } else {
+    //     res.status(401).json({
+    //         message: 'Not logged in',
+    //     });
+    // }
 });
 
 //Delete Session (Logout)
