@@ -10,12 +10,15 @@ const publicCardsController = require('./controller/public-cards/index');
 const usersController = require('./controller/users/index');
 const sessionsController = require('./controller/sessions/index');
 
+const logger = require("./middleware/logger");
+
 const PORT =
   process.env.PORT || (process.env.NODE_ENV === 'production' && 3000) || 3001;
 const expressSession = require('express-session');
 const app = express();
 
 app.set('trust proxy', 1);
+app.use(logger);
 app.use(express.json()); // support json encoded bodies
 app.use(cors());
 const db = require('./database/db');
