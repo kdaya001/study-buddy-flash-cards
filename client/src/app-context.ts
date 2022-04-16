@@ -1,7 +1,7 @@
 import React, { Reducer } from "react";
 
 export interface User {
-    name: string;
+    email: string;
 }
 
 export enum ActionType {

@@ -11,7 +11,6 @@ export const UpdateTag = ({tag, setTag}:any) => {
 
   useEffect((): any => {
     axios.get(`/api/cards/public/get/tags`).then((res) => {
-      console.log(res);
       if (res.data.length > 0) {
         setAllTags(res.data);
       }
@@ -27,6 +26,7 @@ export const UpdateTag = ({tag, setTag}:any) => {
           id='view-card-simple-select'
           value={tag}
           label='cardAmount'
+          defaultValue = ""
           onChange={handleChange}>
             {allTags.map((tag: any) => {
               return (

@@ -1,20 +1,13 @@
-import * as React from 'react';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
+import { Box, Button, Container, CssBaseline, Grid, Link, TextField, Typography } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
+import { useContext, useReducer } from 'react';
+import { ActionType, ApplicationContext, ApplicationContextReducer, DefaultApplicationState } from '../app-context';
 
 const theme = createTheme();
 
 export default function Signin() {
+  const [appState, appAction] = useContext(ApplicationContext);
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -28,6 +21,14 @@ export default function Signin() {
     const userExists = await axios.get(`/api/users/getByEmail/${data.get(('email'))}`);
     if(userExists?.data) {
       axios.post(`/api/sessions/`, body).then((res) => {
+        appAction({
+          type: ActionType.LOGIN,
+          payload: {
+            user: {
+              email: res.data?.email,
+            }
+          }
+        })
         console.log(res);
       });
     }
@@ -94,4 +95,8 @@ export default function Signin() {
       </Container>
     </ThemeProvider>
   );
+}
+
+function appAction(arg0: { type: ActionType; payload: { user: { email: any; }; }; }) {
+  throw new Error('Function not implemented.');
 }
