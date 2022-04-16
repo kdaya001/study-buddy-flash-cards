@@ -10,17 +10,26 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import axios from 'axios';
 
 const theme = createTheme();
 
 export default function Signn() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
+    
+    const body = {
       email: data.get('email'),
       password: data.get('password'),
-    });
+    }
+    
+    const userExists = await axios.get(`/api/users/getByEmail/${data.get(('email'))}`);
+    if(userExists?.data) {
+      axios.post(`/api/sessions/`, body).then((res) => {
+        console.log(res);
+      });
+    }
   };
 
   return (
