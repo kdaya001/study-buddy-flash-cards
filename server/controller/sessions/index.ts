@@ -52,9 +52,9 @@ router.get('/', (req, res) => {
 });
 
 //Delete Session (Logout)
-// router.delete('/', (req, res) => {
-//     req.session.destroy();
-//     res.json({ message: 'Logged out' });
-// });
+router.delete('/', (req, res) => {
+    req.session.destroy();
+    res.json({ message: 'Logged out' });
+});
 
 module.exports = router;
