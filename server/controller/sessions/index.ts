@@ -39,19 +39,18 @@ router.post('/', (req, res) => {
 });
 
 // Get Session (Login)
-// router.get('/', (req, res) => {
-//     if (req.session.email) {
-//         res.json({
-//             user_id: req.session.user_id,
-//             email: req.session.email,
-//             username: req.session.username,
-//         });
-//     } else {
-//         res.status(401).json({
-//             message: 'Not logged in',
-//         });
-//     }
-// });
+router.get('/', (req, res) => {
+    if (req.session.email) {
+        res.json({
+            user_id: req.session._id,
+            email: req.session.email,
+        });
+    } else {
+        res.status(401).json({
+            message: 'Not logged in',
+        });
+    }
+});
 
 //Delete Session (Logout)
 // router.delete('/', (req, res) => {

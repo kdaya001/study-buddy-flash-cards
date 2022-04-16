@@ -25,7 +25,7 @@ app.use(
     secret: process.env.SESSION_SECRET,
     store: MongoStore.create({
       mongoUrl: process.env.DATABASE_URL,
-      ttl: 14 * 24 * 60 * 60, // = 14 days. Default
+      ttl: 1 * 24 * 60 * 60,
     }),
   })
 );

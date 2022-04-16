@@ -13,4 +13,11 @@ UsersController.post('/', (req, res) => {
   });
 });
 
+UsersController.get(`/getByEmail/:email`, (req,res) => {
+  Users.getByEmail(req.params.email).then((response) => {
+    const status = response.length > 0;
+    res.json(status)
+  })
+})
+
 module.exports = UsersController;

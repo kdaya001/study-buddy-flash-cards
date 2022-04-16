@@ -6,14 +6,18 @@ import { NavBar } from './components/NavBar';
 import SignUp from "./components/SignUp";
 import { useEffect, useReducer } from "react";
 import { ActionType, ApplicationContextReducer, DefaultApplicationState } from "./app-context";
+import axios from "axios";
 
 
 
-async function getSession() {
-  return {
-      name: "",
-  };
-}
+// async function getSession() {
+//   await axios.get("/api/session").then((res) => {
+
+//   }
+//   // return {
+//   //     name: "",
+//   // };
+// }
 
 function App() {
   const [appState, appAction] = useReducer(
@@ -21,18 +25,18 @@ function App() {
     DefaultApplicationState
 );
 
-useEffect(() => {
-  getSession().then((user) => {
-      if (user) {
-          appAction({
-              type: ActionType.LOGIN,
-              payload: {
-                  user: user,
-              },
-          });
-      }
-  });
-}, []);
+// useEffect(() => {
+//   getSession().then((user) => {
+//       if (user) {
+//           appAction({
+//               type: ActionType.LOGIN,
+//               payload: {
+//                   user: user,
+//               },
+//           });
+//       }
+//   });
+// }, []);
 
   return (
     <BrowserRouter>
