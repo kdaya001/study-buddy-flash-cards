@@ -15,9 +15,7 @@ CardController.get('/public/get/tags', (req, res) => {
   })
 });
 
-//TODO post the acutal cards
 CardController.post('/private/create/tag', (req, res) => {
-  //todo get session
   const body = {
     tag: req.body.tag,
     owner: req.session.user_id,
@@ -38,6 +36,16 @@ CardController.get('/private/get/tags', (req, res) => {
   Cards.getPrivateTags(req.session.user_id).then((response) => {
     res.json(response);
   })
+});
+
+CardController.get('/private/:tag', (req, res) => {
+  const body = {
+    tag: req.params.tag,
+    user_id: req.session.user_id
+  }
+  Cards.getPrivateCard(body).then((response) => {
+    res.json(response);
+  });
 });
 
 module.exports = CardController;
