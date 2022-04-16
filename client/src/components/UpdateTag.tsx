@@ -10,7 +10,8 @@ export const UpdateTag = ({tag, setTag}:any) => {
   };
 
   useEffect((): any => {
-    axios.get(`/api/cards/tags`).then((res) => {
+    axios.get(`/api/cards/public/get/tags`).then((res) => {
+      console.log(res);
       if (res.data.length > 0) {
         setAllTags(res.data);
       }

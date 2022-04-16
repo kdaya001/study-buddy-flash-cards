@@ -6,7 +6,7 @@ import express, { Request, Response } from 'express';
 import path from 'path';
 import cors from 'cors';
 import MongoStore from 'connect-mongo';
-const publicCardsController = require('./controller/public-cards/index');
+const publicCardsController = require('./controller/cards/index');
 const usersController = require('./controller/users/index');
 const sessionsController = require('./controller/sessions/index');
 
