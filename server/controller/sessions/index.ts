@@ -16,13 +16,12 @@ router.post('/', (req, res) => {
     // }
     UsersModel.getByEmail(email)
         .then((user) => {
-            // const valid = user && bcrypt.compareSync(password, user[0]?.password);
-            const valid = true;
+            const valid = user && bcrypt.compareSync(password, user[0]?.password);
 
             if (valid) {
                 req.session.user_id = user._id;
                 req.session.email = user.email;
-
+                console.log('successful login')
                 res.json({
                     user_id: user._id,
                     email: email,

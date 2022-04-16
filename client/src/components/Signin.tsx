@@ -18,16 +18,18 @@ export default function Signn() {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    // console.log({
-    //   email: data.get('email'),
-    //   password: data.get('password'),
-    // });
     
-    await axios.get(`/api/users/getByEmail/${data.get(('email'))}`).then((res) => {
-      if(res.data) {
-        console.log('user exists');
-      }
-    })
+    const body = {
+      email: data.get('email'),
+      password: data.get('password'),
+    }
+    
+    const userExists = await axios.get(`/api/users/getByEmail/${data.get(('email'))}`);
+    if(userExists?.data) {
+      axios.post(`/api/sessions/`, body).then((res) => {
+        console.log(res);
+      });
+    }
   };
 
   return (
