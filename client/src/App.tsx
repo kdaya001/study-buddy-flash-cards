@@ -1,7 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Create } from './components/Create';
 import Signin from './components/Signin';
-import { NavBar } from './components/NavBar';
 import SignUp from './components/SignUp';
 import { useEffect, useReducer, useState } from 'react';
 import {

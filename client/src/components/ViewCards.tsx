@@ -81,6 +81,7 @@ export const ViewCards = ({ start, setStart }: any) => {
     <div>
       {!start && (
         <>
+          <h1>Choose your poison</h1>
           <SelectDropDown options={allTags} tracker={setTag} label='Topic' />
           {cardData.length > 0 && (
             <SelectDropDown
