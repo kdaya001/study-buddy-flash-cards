@@ -14,17 +14,26 @@ export const ViewCards = () => {
   const [allTags, setAllTags] = useState<any>([]);
 
   const [tag, setTag] = useState<any>(null);
-  // const [cardData, setCardData] = useState<any>([]);
+  const [cardData, setCardData] = useState<any>([]);
 
-  // const [viewCardAmount, setViewCardAmount] = useState<Number>(0);
+  const [viewCardAmount, setViewCardAmount] = useState<Number>(0);
 
-  // Get total cards
+
+  //Get data when tags change
+  useEffect((): any => {
+    if (tag) {
+      axios.get(`/api/cards/get/${tag.id}`).then((res) => {
+        if (res.data.length > 0) {
+          setCardData(res.data[0].cards);
+        }})
+        console.log(cardData);
+      }
+  }, [tag])
 
 
   // Get public tags
   useEffect((): any => {
     axios.get(`/api/cards/public/get/tags`).then((res) => {
-      console.log('public', res.data);
       if (res.data.length > 0) {
         setPublicTags(res.data);
       }
@@ -35,7 +44,6 @@ export const ViewCards = () => {
   useEffect(() => {
     if (appState.currentUser) {
       axios.get(`/api/cards/private/get/tags`).then((res) => {
-        console.log('private', res.data);
         if (res.data.length > 0) {
           setPrivateTags(res.data);
         } else {
@@ -48,30 +56,20 @@ export const ViewCards = () => {
   // Merge tags together
   useEffect(() => {
     setAllTags([...publicTags, ...privateTags]);
-    console.log('all tags', allTags);
   }, [publicTags, privateTags]);
 
-  /**
-   * Axios => Get public tags
-   * Axios => Get private cards
-   *
-   * Combine both, if logged out, private tags need to be removed
-   *
-   * Dropdown component
-   *  --> Send state for tag and amount
-   *
-   * Card component
-   *  * pass the data?
-   */
+  const handleStart = () => {
+    if(cardData.length > 0) {
+      setStart(!start);
+    }
+  }
 
   return (
     <div>
       {!start && (
         <>
           <Button
-            onClick={() => {
-              setStart(!start);
-            }}
+            onClick={handleStart}
             type='submit'
             fullWidth
             variant='contained'
@@ -79,7 +77,7 @@ export const ViewCards = () => {
             Start
           </Button>
 
-          <SelectDropDown options={allTags} />
+          <SelectDropDown options={allTags} tracker={setTag}/>
           <SelectDropDown
             options={[
               { id: '123', option: 'option1' },
@@ -92,13 +90,11 @@ export const ViewCards = () => {
       {start && (
         <>
           <Cards
-            data={[{ prompt: 'testprompt', response: 'test' }]}
-            tag='test'
+            data={cardData}
+            tag={tag.tag}
           />
           <Button
-            onClick={() => {
-              setStart(!start);
-            }}
+            onClick={handleStart}
             type='submit'
             fullWidth
             variant='contained'

@@ -1,23 +1,9 @@
+import { Button } from '@mui/material';
 import { useState } from 'react';
-
 
 export const Cards = (props: any) => {
   const [currentCard, setCurrentCard] = useState<number>(0);
   const [currentView, setCurrentView] = useState<boolean>(true);
-
-  /**
-   * passed in cards array
-   * card renders each card and allows going forward or backward
-   *
-   * props:
-   *  * data
-   *
-   * data format:
-   * {
-   *  prompt: "",
-   *  response: "",
-   * }
-   */
 
   return (
     <div>
@@ -33,8 +19,28 @@ export const Cards = (props: any) => {
           ? props.data[currentCard].prompt
           : props.data[currentCard].response}
       </div>
-      {/* next button */}
       {/* back button */}
+      <Button
+        variant='contained'
+        onClick={() => {
+          if (currentCard > 0) {
+            setCurrentCard(currentCard - 1);
+            setCurrentView(true);
+          }
+        }}>
+        Back
+      </Button>
+      {/* back button */}
+      <Button
+        variant='contained'
+        onClick={() => {
+          if (currentCard < props.data.length - 1) {
+            setCurrentCard(currentCard + 1);
+            setCurrentView(true);
+          }
+        }}>
+        Next
+      </Button>
     </div>
   );
 };
