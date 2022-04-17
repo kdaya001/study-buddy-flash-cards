@@ -38,6 +38,7 @@ export const Card = ({ viewCardAmount, tag, data, setData }: any) => {
         variant='contained'
         onClick={() => {
           if (currentCard > 0) {
+            console.log(currentCard)
             setCurrentCard(currentCard - 1);
             setCurrentView(true);
           }
@@ -47,6 +48,7 @@ export const Card = ({ viewCardAmount, tag, data, setData }: any) => {
       <Button
         variant='contained'
         onClick={() => {
+          console.log(currentCard, viewCardAmount)
           if (currentCard < viewCardAmount - 1) {
             setCurrentCard(currentCard + 1);
             setCurrentView(true);

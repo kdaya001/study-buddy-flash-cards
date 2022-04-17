@@ -12,10 +12,10 @@ export const SetCardView = ({setViewCardAmount, viewCardAmount, data}:any) => {
         <Select
           labelId='view-card-simple-select-label'
           id='view-card-simple-select'
-          value={data.length}
+          value={viewCardAmount}
           label='cardAmount'
           onChange={handleChange}>
-          <MenuItem value={data.length}>All</MenuItem>
+          {data.length > 0 && data.length <= 10 && < MenuItem value={data.length}>All</MenuItem> && setViewCardAmount(data.length)}
           {data.length >= 10 && <MenuItem value={10}>Ten</MenuItem>}
           {data.length >= 20 && <MenuItem value={20}>Twenty</MenuItem>}
           {data.length >= 30 && <MenuItem value={30}>Thirty</MenuItem>}
