@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom"
 import { ActionType, ApplicationContext } from "../app-context";
 
-export const NavBar = () => {
+export const NavBar = ({setStart}:any) => {
   const [appState, appAction] = useContext(ApplicationContext);
 
   const handleLogout = () => {
@@ -16,7 +16,9 @@ export const NavBar = () => {
   
   return (
     <div>
-      <Link to="/">Home</Link>
+      <Link to="/" onClick={() => {
+        setStart(false);
+      }}>Home</Link>
       {!appState.currentUser && <Link to="/login">Login</Link>}
       {!appState.currentUser && <Link to="/signup">Sign Up</Link>}
       {appState.currentUser && <Link to="/create">Create</Link>}

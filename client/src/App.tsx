@@ -1,10 +1,9 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { View } from './components/backup/View';
 import { Create } from './components/Create';
 import Signin from './components/Signin';
 import { NavBar } from './components/NavBar';
 import SignUp from './components/SignUp';
-import { useEffect, useReducer } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 import {
   ActionType,
   ApplicationContext,
@@ -20,6 +19,7 @@ function App() {
     ApplicationContextReducer,
     DefaultApplicationState
   );
+  const [start, setStart] = useState<boolean>(false);
 
   useEffect(() => {
     getSession().then((user: any) => {
@@ -38,11 +38,11 @@ function App() {
     <ApplicationContext.Provider value={[appState, appAction]}>
       <BrowserRouter>
         <h1>Study Buddy</h1>
-        <NavBar />
+        <NavBar setStart={setStart} />
         <Routes>
           <Route path='/login' element={<Signin />} />
           <Route path='/signup' element={<SignUp />} />
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<Home start={start} setStart={setStart} />} />
           {appState.currentUser && <Route path='/create' element={<Create />} />}
           <Route path='*' element={<NotFound />} />
         </Routes>

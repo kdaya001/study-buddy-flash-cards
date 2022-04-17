@@ -5,8 +5,7 @@ import { ApplicationContext } from '../app-context';
 import { Cards } from './Cards';
 import { SelectDropDown } from './SelectDropDown';
 
-export const ViewCards = () => {
-  const [start, setStart] = useState<boolean>(false);
+export const ViewCards = ({ start, setStart }: any) => {
   const [appState, appAction] = useContext(ApplicationContext);
 
   const [publicTags, setPublicTags] = useState<any>([]);
@@ -17,7 +16,7 @@ export const ViewCards = () => {
   const [cardData, setCardData] = useState<any>([]);
 
   const [viewCardAmount, setViewCardAmount] = useState<Number>(0);
-
+  const [viewCardOptions, setViewCardOptions] = useState<any>([]);
 
   //Get data when tags change
   useEffect((): any => {
@@ -25,11 +24,11 @@ export const ViewCards = () => {
       axios.get(`/api/cards/get/${tag.id}`).then((res) => {
         if (res.data.length > 0) {
           setCardData(res.data[0].cards);
-        }})
-        console.log(cardData);
-      }
-  }, [tag])
-
+          setViewCardAmount(cardData.length);
+        }
+      });
+    }
+  }, [tag]);
 
   // Get public tags
   useEffect((): any => {
@@ -59,15 +58,37 @@ export const ViewCards = () => {
   }, [publicTags, privateTags]);
 
   const handleStart = () => {
-    if(cardData.length > 0) {
+    if (cardData.length > 0) {
       setStart(!start);
     }
-  }
+  };
+
+  useEffect(() => {
+    const options = [];
+    if (cardData.length > 0 && cardData.length < 10) {
+      options.push({ _id: 1, option: cardData.length });
+    } else if (cardData.length >=10) {
+      let count = 0;
+      for(let i = 10; i <= cardData.length; i+= 10) {
+        options.push({ _id: count, option: i });
+        count++;
+      }
+    }
+    setViewCardOptions(options);
+  }, [cardData]);
 
   return (
     <div>
       {!start && (
         <>
+          <SelectDropDown options={allTags} tracker={setTag} label='Topic' />
+          {cardData.length > 0 && (
+            <SelectDropDown
+              tracker={setViewCardAmount}
+              options={viewCardOptions}
+              label='Amount'
+            />
+          )}
           <Button
             onClick={handleStart}
             type='submit'
@@ -76,23 +97,12 @@ export const ViewCards = () => {
             sx={{ mt: 3, mb: 2 }}>
             Start
           </Button>
-
-          <SelectDropDown options={allTags} tracker={setTag}/>
-          <SelectDropDown
-            options={[
-              { id: '123', option: 'option1' },
-              { id: '345', option: 'option2' },
-            ]}
-          />
         </>
       )}
 
       {start && (
         <>
-          <Cards
-            data={cardData}
-            tag={tag.tag}
-          />
+          <Cards data={cardData} tag={tag.tag} amount={viewCardAmount}/>
           <Button
             onClick={handleStart}
             type='submit'
