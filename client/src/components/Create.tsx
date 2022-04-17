@@ -63,7 +63,7 @@ export const Create = () => {
       <Select
         labelId='view-card-simple-select-label'
         id='view-card-simple-select'
-        value=''
+        value={tag}
         label='Tag'
         onChange={handleChange}>
         {allTags && allTags.map((tag: any) => {

@@ -1,8 +1,8 @@
 import { Button } from '@mui/material';
 import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
-import { ApplicationContext } from '../app-context';
-import { getSession } from '../helper/getSession';
+import { ApplicationContext } from '../../app-context';
+import { getSession } from '../../helper/getSession';
 import './card.css';
 
 export const Card = ({ viewCardAmount, tag, data, setData }: any) => {
@@ -38,7 +38,6 @@ export const Card = ({ viewCardAmount, tag, data, setData }: any) => {
         variant='contained'
         onClick={() => {
           if (currentCard > 0) {
-            console.log(currentCard)
             setCurrentCard(currentCard - 1);
             setCurrentView(true);
           }
@@ -48,7 +47,6 @@ export const Card = ({ viewCardAmount, tag, data, setData }: any) => {
       <Button
         variant='contained'
         onClick={() => {
-          console.log(currentCard, viewCardAmount)
           if (currentCard < viewCardAmount - 1) {
             setCurrentCard(currentCard + 1);
             setCurrentView(true);

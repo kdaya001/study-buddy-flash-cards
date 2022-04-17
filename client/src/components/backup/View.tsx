@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Card } from "./Card";
+// import { Card } from "./Card";
 import { SetCardView } from './SetCardView';
 import { UpdateTag } from "./UpdateTag";
 
@@ -12,7 +12,7 @@ export const View = () => {
     <div> 
       <SetCardView viewCardAmount={viewCardAmount} setViewCardAmount={setViewCardAmount} data={data}/>
       <UpdateTag tag={tag} setTag={setTag}/>
-      <Card viewCardAmount={viewCardAmount} tag={tag} setData={setData} data={data} />
+      {/* <Card viewCardAmount={viewCardAmount} tag={tag} setData={setData} data={data} /> */}
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { View } from './components/View';
+import { View } from './components/backup/View';
 import { Create } from './components/Create';
 import Signin from './components/Signin';
 import { NavBar } from './components/NavBar';
@@ -13,6 +13,7 @@ import {
 } from './app-context';
 import { getSession } from './helper/getSession';
 import { NotFound } from './components/NotFound';
+import { Home } from './components/Home';
 
 function App() {
   const [appState, appAction] = useReducer(
@@ -41,7 +42,7 @@ function App() {
         <Routes>
           <Route path='/login' element={<Signin />} />
           <Route path='/signup' element={<SignUp />} />
-          <Route path='/' element={<View />} />
+          <Route path='/' element={<Home />} />
           {appState.currentUser && <Route path='/create' element={<Create />} />}
           <Route path='*' element={<NotFound />} />
         </Routes>
