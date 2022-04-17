@@ -1,5 +1,6 @@
 import { Button } from '@mui/material';
 import { useState } from 'react';
+import './cards.css'
 
 export const Cards = (props: any) => {
   const [currentCard, setCurrentCard] = useState<number>(0);

@@ -16,10 +16,8 @@ export const SelectDropDown = (props: any) => {
 
   return (
     <FormControl sx={{ m: 1, minWidth: 120 }}>
-      <InputLabel id='demo-simple-select-label'>Flash Card Amount</InputLabel>
+      <InputLabel>{props.label}</InputLabel>
       <Select
-        labelId='view-card-simple-select-label'
-        id='view-card-simple-select'
         label='selection'
         defaultValue=''>
         {props.options.map((item: any) => {
