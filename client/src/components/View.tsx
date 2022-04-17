@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import { Card } from "./Card";
 import { SetCardView } from './SetCardView';
@@ -5,7 +6,7 @@ import { UpdateTag } from "./UpdateTag";
 
 export const View = () => {
   const [viewCardAmount, setViewCardAmount] = useState<Number>(10);
-  const [tag, setTag] = useState<String>("Algorithms");
+  const [tag, setTag] = useState<any>(null);
   const [data, setData] = useState([{prompt: 'loading', response: 'loading'}]);
   
   return (

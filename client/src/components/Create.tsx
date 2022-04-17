@@ -12,7 +12,6 @@ export const Create = () => {
   
   useEffect(() => {
     axios.get(`/api/cards/private/get/tags`).then((res) => {
-      console.log(res.data);
       if (res.data.length > 0) {
         setAllTags(res.data); 
       }

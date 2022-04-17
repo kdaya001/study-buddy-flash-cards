@@ -6,16 +6,20 @@ import { getSession } from '../helper/getSession';
 import './card.css';
 
 export const Card = ({ viewCardAmount, tag, data, setData }: any) => {
+  const [appState, appAction] = useContext(ApplicationContext);
   const [currentCard, setCurrentCard] = useState<number>(0);
   const [currentView, setCurrentView] = useState<boolean>(true);
 
-getSession();
+  getSession();
+
   useEffect((): any => {
-    axios.get(`/api/cards/public/${tag}`).then((res) => {
-      if (res.data.length > 0) {
-        setData(res.data[0].cards);
-      }
-    });
+    if (tag) {
+      axios.get(`/api/cards/get/${tag.id}`).then((res) => {
+        if (res.data.length > 0) {
+          setData(res.data[0].cards);
+        }
+      });
+    }
   }, [tag]);
 
   return (
@@ -25,11 +29,9 @@ getSession();
         onClick={() => {
           setCurrentView(!currentView);
         }}>
-          <div className="card_card-content">
-        {currentView
-          ? data[currentCard].prompt
-          : data[currentCard].response}
-          </div>
+        <div className='card_card-content'>
+          {currentView ? data[currentCard].prompt : data[currentCard].response}
+        </div>
       </div>
 
       <Button

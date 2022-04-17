@@ -22,7 +22,6 @@ function App() {
 
   useEffect(() => {
     getSession().then((user: any) => {
-      console.log(user);
         if (user) {
             appAction({
                 type: ActionType.LOGIN,
