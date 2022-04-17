@@ -3,11 +3,14 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
 import { useContext } from 'react';
 import { ActionType, ApplicationContext } from '../app-context';
+import { useNavigate } from 'react-router-dom';
 
 const theme = createTheme();
 
 export default function Signin() {
   const [appState, appAction] = useContext(ApplicationContext);
+  let navigate = useNavigate();
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -29,8 +32,12 @@ export default function Signin() {
             }
           }
         })
-      });
+      })
     }
+  
+    setTimeout(() => {
+      navigate(`/`);
+    }, 1000);
   };
 
   return (
