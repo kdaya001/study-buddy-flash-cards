@@ -9,33 +9,62 @@ import {
   Typography,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { useContext } from 'react';
+import { ActionType, ApplicationContext } from '../app-context';
 
 export function Nav({ setStart }: any) {
+  const [appState, appAction] = useContext(ApplicationContext);
   let navigate = useNavigate();
 
-  const handleLoginClick = () => {
-    let path = `login`;
-    navigate(path);
+  const handleLogout = () => {
+    axios.delete('/api/sessions/').then(() => {
+      appAction({
+        type: ActionType.LOGOUT,
+      });
+    });
   };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position='static'>
         <Toolbar>
-          <IconButton
-            size='large'
-            edge='start'
-            color='inherit'
-            aria-label='menu'
-            sx={{ mr: 2 }}>
-            <MenuIcon />
-          </IconButton>
           <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
             Study Buddy
           </Typography>
-          <Button color='inherit' onClick={handleLoginClick}>
-            Login
+          <Button
+            color='inherit'
+            onClick={() => {
+              navigate(`/`);
+            }}>
+            Home
           </Button>
+          {!appState.currentUser && (
+            <Button
+              color='inherit'
+              onClick={() => {
+                navigate(`/signup`);
+              }}>
+              SignUp
+            </Button>
+          )}
+          {!appState.currentUser && (
+            <Button color='inherit' onClick={() => {
+              navigate(`/login`);
+            }}>
+              Login
+            </Button>
+          )}
+          {appState.currentUser && (
+            <Button
+              color='inherit'
+              onClick={() => {
+                handleLogout();
+                navigate(`/`);
+              }}>
+              Logout
+            </Button>
+          )}
         </Toolbar>
       </AppBar>
     </Box>

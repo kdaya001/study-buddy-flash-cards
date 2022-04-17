@@ -9,6 +9,8 @@ const theme = createTheme();
 
 export default function Signin() {
   const [appState, appAction] = useContext(ApplicationContext);
+  let navigate = useNavigate();
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -32,6 +34,10 @@ export default function Signin() {
         })
       })
     }
+  
+    setTimeout(() => {
+      navigate(`/`);
+    }, 1000);
   };
 
   return (
