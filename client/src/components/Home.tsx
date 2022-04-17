@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { ApplicationContext } from "../app-context";
 import Signin from "./Signin";
 import { ViewCards } from "./ViewCards";

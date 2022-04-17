@@ -37,7 +37,7 @@ export default function Signin() {
   
     setTimeout(() => {
       navigate(`/`);
-    }, 1000);
+    }, 5000);
   };
 
   return (
@@ -55,6 +55,9 @@ export default function Signin() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
+          {appState.currentUser && (
+            <p className="signin_logged-in">Successfully logged in</p>
+          )}
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"

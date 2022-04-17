@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from 'react';
 import { ApplicationContext } from '../app-context';
 import { Cards } from './Cards';
 import { SelectDropDown } from './SelectDropDown';
+import './signin.css'
 
 export const ViewCards = ({ start, setStart }: any) => {
   const [appState, appAction] = useContext(ApplicationContext);

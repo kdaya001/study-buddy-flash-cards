@@ -2,14 +2,14 @@ import { Button } from '@mui/material';
 import { useState } from 'react';
 import './cards.css'
 
-export const Cards = (props: any) => {
+export const Cards = ({tag, data}: any) => {
   const [currentCard, setCurrentCard] = useState<number>(0);
   const [currentView, setCurrentView] = useState<boolean>(true);
 
   return (
     <div>
       {/* Heading for topic */}
-      <h1>{props.tag}</h1>
+      <h1>{tag}</h1>
       {/* card itself allows front and back*/}
       <div
         className='card_card-container'
@@ -17,8 +17,8 @@ export const Cards = (props: any) => {
           setCurrentView(!currentView);
         }}>
         {currentView
-          ? props.data[currentCard].prompt
-          : props.data[currentCard].response}
+          ? data[currentCard].prompt
+          : data[currentCard].response}
       </div>
       {/* back button */}
       <Button
@@ -35,7 +35,7 @@ export const Cards = (props: any) => {
       <Button
         variant='contained'
         onClick={() => {
-          if (currentCard < props.data.length - 1) {
+          if (currentCard < data.length - 1) {
             setCurrentCard(currentCard + 1);
             setCurrentView(true);
           }

@@ -1,5 +1,3 @@
-import * as React from 'react';
-import MenuIcon from '@mui/icons-material/Menu';
 import {
   AppBar,
   Box,
@@ -35,6 +33,7 @@ export function Nav({ setStart }: any) {
           <Button
             color='inherit'
             onClick={() => {
+              setStart(false);
               navigate(`/`);
             }}>
             Home
@@ -49,10 +48,21 @@ export function Nav({ setStart }: any) {
             </Button>
           )}
           {!appState.currentUser && (
-            <Button color='inherit' onClick={() => {
-              navigate(`/login`);
-            }}>
+            <Button
+              color='inherit'
+              onClick={() => {
+                navigate(`/login`);
+              }}>
               Login
+            </Button>
+          )}
+          {appState.currentUser && (
+            <Button
+              color='inherit'
+              onClick={() => {
+                navigate(`/create`);
+              }}>
+              Create
             </Button>
           )}
           {appState.currentUser && (
