@@ -1,37 +1,25 @@
 import { Button } from '@mui/material';
-import axios from 'axios';
-import { useContext, useEffect, useState } from 'react';
-import { ApplicationContext } from '../app-context';
-import { getSession } from '../helper/getSession';
-import './card.css';
+import { useState } from 'react';
 
-export const Card = ({ viewCardAmount, tag, data, setData }: any) => {
+export const Cards = (props: any) => {
   const [currentCard, setCurrentCard] = useState<number>(0);
   const [currentView, setCurrentView] = useState<boolean>(true);
 
-getSession();
-  useEffect((): any => {
-    axios.get(`/api/cards/public/${tag}`).then((res) => {
-      if (res.data.length > 0) {
-        setData(res.data[0].cards);
-      }
-    });
-  }, [tag]);
-
   return (
     <div>
+      {/* Heading for topic */}
+      <h1>{props.tag}</h1>
+      {/* card itself allows front and back*/}
       <div
         className='card_card-container'
         onClick={() => {
           setCurrentView(!currentView);
         }}>
-          <div className="card_card-content">
         {currentView
-          ? data[currentCard].prompt
-          : data[currentCard].response}
-          </div>
+          ? props.data[currentCard].prompt
+          : props.data[currentCard].response}
       </div>
-
+      {/* back button */}
       <Button
         variant='contained'
         onClick={() => {
@@ -42,10 +30,11 @@ getSession();
         }}>
         Back
       </Button>
+      {/* back button */}
       <Button
         variant='contained'
         onClick={() => {
-          if (currentCard < viewCardAmount - 1) {
+          if (currentCard < props.data.length - 1) {
             setCurrentCard(currentCard + 1);
             setCurrentView(true);
           }

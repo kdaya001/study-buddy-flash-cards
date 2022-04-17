@@ -53,4 +53,11 @@ CardController.get('/private/:tag', isLoggedIn, (req, res) => {
   });
 });
 
+CardController.get('/get/:id',(req, res) => {
+  Cards.getCard(req.params.id).then((response) => {
+    // console.log(response);
+    res.json(response);
+  })
+});
+
 module.exports = CardController;

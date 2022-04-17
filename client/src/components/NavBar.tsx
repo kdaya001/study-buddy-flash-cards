@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useContext, useReducer } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom"
 import { ActionType, ApplicationContext } from "../app-context";
 
@@ -17,9 +17,8 @@ export const NavBar = () => {
   return (
     <div>
       <Link to="/">Home</Link>
-      <Link to="/my-cards">My Cards</Link>
-      <Link to="/login">Login</Link>
-      <Link to="/signup">Sign Up</Link>
+      {!appState.currentUser && <Link to="/login">Login</Link>}
+      {!appState.currentUser && <Link to="/signup">Sign Up</Link>}
       {appState.currentUser && <Link to="/create">Create</Link>}
       {appState.currentUser && <Link to="/" onClick={handleLogout}>Logout</Link>}
     </div>

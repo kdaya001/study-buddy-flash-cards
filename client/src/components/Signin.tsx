@@ -1,8 +1,8 @@
 import { Box, Button, Container, CssBaseline, Grid, Link, TextField, Typography } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
-import { useContext, useReducer } from 'react';
-import { ActionType, ApplicationContext, ApplicationContextReducer, DefaultApplicationState } from '../app-context';
+import { useContext } from 'react';
+import { ActionType, ApplicationContext } from '../app-context';
 
 const theme = createTheme();
 
@@ -29,7 +29,6 @@ export default function Signin() {
             }
           }
         })
-        console.log(res);
       });
     }
   };

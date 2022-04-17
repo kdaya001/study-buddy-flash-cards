@@ -1,5 +1,5 @@
 import express from 'express';
-import { resolve } from 'path';
+import { ObjectId } from 'mongodb';
 const db = require('../database/db');
 
 const Cards = {
@@ -14,7 +14,7 @@ const Cards = {
     const dbConnect = db.getDb();
     return await dbConnect
       .collection('global_cards')
-      .find({ owner: 'public' }, { projection: { tag: 1 } })
+      .find({ owner: 'public' }, { projection: { tag: 1, owner: 1 } })
       .toArray();
   },
   postPrivateTag: async (body) => {
@@ -52,7 +52,14 @@ const Cards = {
     const dbConnect = db.getDb();
     return await dbConnect
       .collection('global_cards')
-      .findOne({ tag: tag, owner: user_id })
+      .findOne({ tag: tag, owner: user_id });
+  },
+  getCard: async (id) => {
+    const dbConnect = db.getDb();
+    return await dbConnect
+      .collection('global_cards')
+      .find({ _id: new ObjectId(String(id).trim()) })
+      .toArray();
   },
 };
 

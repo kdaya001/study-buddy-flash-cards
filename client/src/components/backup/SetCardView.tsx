@@ -14,9 +14,8 @@ export const SetCardView = ({setViewCardAmount, viewCardAmount, data}:any) => {
           id='view-card-simple-select'
           value={viewCardAmount}
           label='cardAmount'
-          defaultValue = ""
           onChange={handleChange}>
-          {data.length > 0 && data.length < 10 && <MenuItem value={data.length}>All</MenuItem>}
+          {data.length > 0 && data.length <= 10 && < MenuItem value={data.length}>All</MenuItem> && setViewCardAmount(data.length)}
           {data.length >= 10 && <MenuItem value={10}>Ten</MenuItem>}
           {data.length >= 20 && <MenuItem value={20}>Twenty</MenuItem>}
           {data.length >= 30 && <MenuItem value={30}>Thirty</MenuItem>}
