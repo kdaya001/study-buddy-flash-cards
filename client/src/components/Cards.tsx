@@ -59,7 +59,7 @@ export const Cards = ({ tag, data, rnd }: any) => {
               setCurrentView(true);
             }
           }}>
-          {`>`}
+          {`<`}
         </Button>
       </Stack>
       <Stack

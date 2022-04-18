@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useContext } from 'react';
 import { ActionType, ApplicationContext } from '../app-context';
-import './nav.css';
 
 export function Nav({ setStart }: any) {
   const [appState, appAction] = useContext(ApplicationContext);
