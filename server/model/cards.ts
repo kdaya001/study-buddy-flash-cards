@@ -28,7 +28,7 @@ const Cards = {
       .find({ owner: user_id }, { projection: { tag: 1 } })
       .toArray();
   },
-  updatePrivateCard: async ({ owner, tag, cards }) => {
+  addPrivateCard: async ({ owner, tag, cards }) => {
     //expect body to be in the following format:
     /**
      * {owner:xyz
@@ -61,6 +61,15 @@ const Cards = {
       .find({ _id: new ObjectId(String(id).trim()) })
       .toArray();
   },
+  updatePrivateCards: async ({owner, tag, cards}) => {
+    const dbConnect = db.getDb();
+    return await dbConnect
+      .collection('global_cards')
+      .updateOne(
+        { owner: owner, tag: tag },
+        { $set: { cards: [...cards] } }
+      );
+  }
 };
 
 module.exports = Cards;

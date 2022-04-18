@@ -1,0 +1,77 @@
+import { Box, Button, FormControl, TextField } from '@mui/material';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+
+export const Update = () => {
+  const [data, setData] = useState<any>([]);
+
+  useEffect(() => {
+    axios.get('/api/cards/get/625a96973608178686f0cf02').then((res) => {
+      setData(res.data[0]);
+    });
+  }, []);
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+
+    // const body = [];
+    const body:any = {
+      tag: data?.tag, 
+      cards: [],
+    }
+
+    for (let i = 0; i < data?.cards.length; i++) {
+      const tempData:any = {
+        front: formData.get(`${i}-prompt`),
+        back: formData.get(`${i}-response`),
+      }
+      body.cards.push(tempData)
+    }
+
+
+    if (body?.cards.length > 0) {
+      axios.post('/api/cards/update/cards', body).then((response) => {
+        console.log('successfully updated');
+      })
+    }
+  };
+
+  return (
+    <div>
+      <FormControl className='selection' sx={{ m: 1, minWidth: 600 }}>
+        <Box component='form' onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          {data?.cards &&
+            data?.cards.map((item: any, idx: number) => {
+              return (
+                <div key={idx}>
+                  {idx + 1}
+                  <TextField
+                    label='prompt'
+                    id={`${idx}-prompt`}
+                    name={`${idx}-prompt`}
+                    fullWidth
+                    defaultValue={item.prompt}
+                  />
+                  <TextField
+                    label='response'
+                    id={`${idx}-response`}
+                    name={`${idx}-response`}
+                    fullWidth
+                    defaultValue={item.response}
+                  />
+                </div>
+              );
+            })}
+          <Button
+            type='submit'
+            fullWidth
+            variant='contained'
+            sx={{ mt: 3, mb: 2 }}>
+            Submit
+          </Button>
+        </Box>
+      </FormControl>
+    </div>
+  );
+};
