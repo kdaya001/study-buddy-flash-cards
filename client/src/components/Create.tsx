@@ -2,8 +2,6 @@ import {
   Box,
   Button,
   Container,
-  MenuItem,
-  Select,
   Stack,
   TextField,
   Typography,
@@ -69,8 +67,8 @@ export const Create = () => {
       ],
     };
 
-    await axios.post(`/api/cards/private/update/cards`, body).then((res) => {
-      setError(`Successfully Created`);
+    await axios.post(`/api/cards/private/add/cards`, body).then((res) => {
+      setNotification(`Successfully Created`);
     });
     setSubmitStatus(true);
   };

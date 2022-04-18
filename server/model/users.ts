@@ -13,7 +13,6 @@ const Users = {
     return await dbConnect
       .collection('users')
       .findOne({email: email})
-      // .toArray()
   }
 };
 module.exports = Users;

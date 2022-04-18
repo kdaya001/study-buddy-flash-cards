@@ -13,6 +13,7 @@ import { getSession } from './helper/getSession';
 import { NotFound } from './components/NotFound';
 import { Home } from './components/Home';
 import { Nav } from './components/Nav';
+import { Update } from './components/Update';
 
 function App() {
   const [appState, appAction] = useReducer(
@@ -48,6 +49,7 @@ function App() {
           {appState.currentUser && (
             <Route path='/create' element={<Create />} />
           )}
+          <Route path='/update' element={<Update />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </BrowserRouter>

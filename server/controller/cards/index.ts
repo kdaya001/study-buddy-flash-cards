@@ -27,14 +27,13 @@ CardController.post('/private/create/tag', isLoggedIn, (req, res) => {
   })
 });
 
-CardController.post('/private/update/cards', isLoggedIn, (req, res) => {
+CardController.post('/private/add/cards', isLoggedIn, (req, res) => {
   const body = {
     ...req.body,
     owner: req.session.user_id
   }
 
-  console.log('new bod', body)
-  Cards.updatePrivateCard(body).then(response => {
+  Cards.addPrivateCard(body).then(response => {
     res.json({status: 'success'});
   })
 })
@@ -57,9 +56,20 @@ CardController.get('/private/:tag', isLoggedIn, (req, res) => {
 
 CardController.get('/get/:id',(req, res) => {
   Cards.getCard(req.params.id).then((response) => {
-    // console.log(response);
     res.json(response);
   })
 });
+
+CardController.post('/update/cards', isLoggedIn, (req, res) => {
+  const body = {
+    owner: req.session.user_id, 
+    tag: req.body.tag,
+    cards: req.body.cards
+  }
+
+  Cards.updatePrivateCards(body).then((response) => {
+    res.json({status: 'ok'})
+  })
+})
 
 module.exports = CardController;
