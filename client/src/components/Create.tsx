@@ -20,6 +20,13 @@ export const Create = () => {
   const [createTag, setCreateTag] = useState<boolean>(false);
   const [createCard, setCreateCard] = useState<boolean>(false);
   const [submitStatus, setSubmitStatus] = useState<boolean>(false);
+  const [notification, setNotification] = useState<string>('');
+  const [error, setError] = useState<string>('');
+
+  const clearNotifications = () => {
+    setError('');
+    setNotification('');
+  }
 
   useEffect(() => {
     axios.get(`/api/cards/private/get/tags`).then((res) => {
@@ -30,11 +37,8 @@ export const Create = () => {
     });
   }, [submitStatus]);
 
-  const handleChange = (event: any) => {
-    setTag(event.target.value);
-  };
-
   const handleSubmitTag = async (event: React.FormEvent<HTMLFormElement>) => {
+    clearNotifications();
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const body = {
@@ -43,15 +47,16 @@ export const Create = () => {
     const tagExists = await axios.get(`/api/cards/private/${body.tag}`);
     if (!!!tagExists?.data) {
       await axios.post(`/api/cards/private/create/tag`, body).then((res) => {
-        console.log('successfully created');
+        setNotification(`Successfully Created`);
       });
       setSubmitStatus(true);
     } else {
-      console.log('tag already exists');
+      setError(`Tag Already Exists`);
     }
   };
 
   const handleSubmitCard = async (event: React.FormEvent<HTMLFormElement>) => {
+    clearNotifications();
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const body = {
@@ -64,9 +69,8 @@ export const Create = () => {
       ],
     };
 
-    console.log(body);
     await axios.post(`/api/cards/private/update/cards`, body).then((res) => {
-      console.log('successfully created');
+      setError(`Successfully Created`);
     });
     setSubmitStatus(true);
   };
@@ -74,7 +78,23 @@ export const Create = () => {
   return (
     <div>
       <h1>Create</h1>
-
+      <Stack
+        className='create-option'
+        direction='row'
+        justifyContent='center'
+        alignItems='center'
+        spacing={3}>
+      {notification && (
+        <Typography variant='body2' className='notification'>
+          {notification}
+        </Typography>
+      )}
+      {error && (
+        <Typography variant='body2' className='error'>
+          {error}
+        </Typography>
+      )}
+      </Stack>
       <Stack
         className='create-option'
         direction='row'
@@ -127,7 +147,7 @@ export const Create = () => {
         justifyContent='center'
         alignItems='center'
         spacing={3}>
-        Create a card tag:{' '}
+        Create a card:{' '}
         <AiFillPlusCircle
           className='create-option-icon'
           onClick={() => {

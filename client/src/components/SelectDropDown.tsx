@@ -1,5 +1,5 @@
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
-import { useEffect } from 'react';
+import './selectdropdown.css';
 
 export const SelectDropDown = (props: any) => {
   /**
@@ -15,11 +15,9 @@ export const SelectDropDown = (props: any) => {
   };
 
   return (
-    <FormControl sx={{ m: 1, minWidth: 120 }}>
+    <FormControl className='selection' sx={{ m: 1, minWidth: 120 }}>
       <InputLabel>{props.label}</InputLabel>
-      <Select
-        label='selection'
-        defaultValue=''>
+      <Select label='selection' defaultValue=''>
         {props.options.map((item: any) => {
           return (
             <MenuItem
