@@ -2,8 +2,6 @@ import {
   Box,
   Button,
   Container,
-  MenuItem,
-  Select,
   Stack,
   TextField,
   Typography,
