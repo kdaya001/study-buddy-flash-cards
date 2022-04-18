@@ -1,4 +1,13 @@
-import { Box, Button, Container, CssBaseline, Grid, Link, TextField, Typography } from '@mui/material';
+import {
+  Box,
+  Button,
+  Container,
+  CssBaseline,
+  Grid,
+  Link,
+  TextField,
+  Typography,
+} from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
 import { useContext } from 'react';
@@ -14,27 +23,29 @@ export default function Signin() {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    
+
     const body = {
       email: data.get('email'),
       password: data.get('password'),
-    }
-    
+    };
+
     //TODO look at logic
-    const userExists = await axios.get(`/api/users/getByEmail/${data.get(('email'))}`);
-    if(userExists?.data) {
+    const userExists = await axios.get(
+      `/api/users/getByEmail/${data.get('email')}`
+    );
+    if (userExists?.data) {
       axios.post(`/api/sessions/`, body).then((res) => {
         appAction({
           type: ActionType.LOGIN,
           payload: {
             user: {
               email: res.data?.email,
-            }
-          }
-        })
-      })
+            },
+          },
+        });
+      });
     }
-  
+
     setTimeout(() => {
       navigate(`/`);
     }, 5000);
@@ -42,7 +53,7 @@ export default function Signin() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
+      <Container component='main' maxWidth='xs'>
         <CssBaseline />
         <Box
           sx={{
@@ -50,51 +61,48 @@ export default function Signin() {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-          }}
-        >
-          <Typography component="h1" variant="h5">
+          }}>
+          <Typography component='h1' variant='h5'>
             Sign in
           </Typography>
           {appState.currentUser && (
-            <p className="signin_logged-in">Successfully logged in</p>
+            <Typography variant='body2' className='notification'>Successfully logged in</Typography>
           )}
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box
+            component='form'
+            onSubmit={handleSubmit}
+            noValidate
+            sx={{ mt: 1 }}>
             <TextField
-              margin="normal"
+              margin='normal'
               required
               fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
+              id='email'
+              label='Email Address'
+              name='email'
+              autoComplete='email'
               autoFocus
             />
             <TextField
-              margin="normal"
+              margin='normal'
               required
               fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
+              name='password'
+              label='Password'
+              type='password'
+              id='password'
+              autoComplete='current-password'
             />
             <Button
-              type="submit"
+              type='submit'
               fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
+              variant='contained'
+              sx={{ mt: 3, mb: 2 }}>
               Sign In
             </Button>
             <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
               <Grid item>
-                <Link href="/signup" variant="body2">
+                <Link href='/signup' variant='body2'>
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
@@ -104,8 +112,4 @@ export default function Signin() {
       </Container>
     </ThemeProvider>
   );
-}
-
-function appAction(arg0: { type: ActionType; payload: { user: { email: any; }; }; }) {
-  throw new Error('Function not implemented.');
 }
