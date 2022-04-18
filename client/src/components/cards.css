@@ -9,4 +9,13 @@
   overflow: hidden;
   box-shadow: 5px 10px pink;
   border-radius: 10px;
+  width: 50%;
+}
+
+.card-heading {
+  text-align: center;
+}
+
+p {
+  font-size: 1.2rem;
 }

@@ -9,7 +9,7 @@ export const Create = () => {
   const [submitStatus, setSubmitStatus] = useState<boolean>(false);
   
   useEffect(() => {
-    axios.get(`/api/cards/private/get/tags`).then((res) => {
+    axios.get(`{/api/cards/private/get/tags`).then((res) => {
       if (res.data.length > 0) {
         setAllTags(res.data); 
       }
