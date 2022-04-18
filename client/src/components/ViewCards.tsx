@@ -58,12 +58,6 @@ export const ViewCards = ({ start, setStart }: any) => {
     setAllTags([...publicTags, ...privateTags]);
   }, [publicTags, privateTags]);
 
-  const handleStart = () => {
-    if (cardData.length > 0) {
-      setStart(!start);
-    }
-  };
-
   useEffect(() => {
     const options = [];
     if (cardData.length > 0 && cardData.length < 10) {
@@ -83,7 +77,7 @@ export const ViewCards = ({ start, setStart }: any) => {
       {!start && (
         <>
           <Stack spacing={2} justifyContent='center' alignItems='center'>
-            <h1>Choose your poison</h1>
+            <h1>Pick your poison</h1>
             <SelectDropDown options={allTags} tracker={setTag} label='Topic' />
             {cardData.length > 0 && (
               <SelectDropDown
@@ -93,7 +87,9 @@ export const ViewCards = ({ start, setStart }: any) => {
               />
             )}
             <Button
-              onClick={handleStart}
+              onClick={() => {
+                setStart(true);
+              }}
               type='submit'
               variant='contained'
               sx={{ mt: 3, mb: 2 }}>
@@ -112,7 +108,10 @@ export const ViewCards = ({ start, setStart }: any) => {
             alignItems='center'
             spacing={2}>
             <Button
-              onClick={handleStart}
+              onClick={() => {
+                setCardData([])
+                setStart(false);
+              }}
               type='submit'
               variant='contained'
               sx={{ mt: 3, mb: 2 }}>
