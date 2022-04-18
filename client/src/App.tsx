@@ -49,7 +49,7 @@ function App() {
           {appState.currentUser && (
             <Route path='/create' element={<Create />} />
           )}
-          <Route path='/test' element={<Update />} />
+          <Route path='/update' element={<Update />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </BrowserRouter>

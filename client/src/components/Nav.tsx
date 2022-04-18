@@ -62,6 +62,15 @@ export function Nav({ setStart }: any) {
             <Button
               color='inherit'
               onClick={() => {
+                navigate(`/update`);
+              }}>
+              Update Cards
+            </Button>
+          )}
+          {appState.currentUser && (
+            <Button
+              color='inherit'
+              onClick={() => {
                 handleLogout();
                 navigate(`/login`);
               }}>
