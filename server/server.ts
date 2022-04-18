@@ -11,6 +11,7 @@ const usersController = require('./controller/users/index');
 const sessionsController = require('./controller/sessions/index');
 
 const logger = require("./middleware/logger");
+const errorHandler = require('./middleware/errorHandler');
 
 const PORT =
   process.env.PORT || (process.env.NODE_ENV === 'production' && 3000) || 3001;
