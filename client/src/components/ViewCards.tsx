@@ -86,15 +86,17 @@ export const ViewCards = ({ start, setStart }: any) => {
                 label='Amount'
               />
             )}
-            <Button
-              onClick={() => {
-                setStart(true);
-              }}
-              type='submit'
-              variant='contained'
-              sx={{ mt: 3, mb: 2 }}>
-              Start
-            </Button>
+            {cardData && tag && !!viewCardAmount && (
+              <Button
+                onClick={() => {
+                  setStart(true);
+                }}
+                type='submit'
+                variant='contained'
+                sx={{ mt: 3, mb: 2 }}>
+                Start
+              </Button>
+            )}
           </Stack>
         </>
       )}
@@ -109,7 +111,9 @@ export const ViewCards = ({ start, setStart }: any) => {
             spacing={2}>
             <Button
               onClick={() => {
-                setCardData([])
+                setTag(null);
+                setViewCardAmount(0);
+                setCardData([]);
                 setStart(false);
               }}
               type='submit'
