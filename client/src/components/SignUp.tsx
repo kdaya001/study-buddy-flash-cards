@@ -10,12 +10,14 @@ export default function SignUp() {
   const [password, setPassword] = useState<null | string>(null);
   const [confirmPassword, setConfirmPassword] = useState<null | string>(null);
   const [validPassword, setValidPassword] = useState<null | boolean>(null);
+  const [error, setError] = useState<null | string>(null);
 
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setError(null);
 
-    if(validPassword) {
+    if(validPassword && email && password) {
       const body = {
         email: email,
         password: password,
@@ -23,11 +25,13 @@ export default function SignUp() {
       
       axios.post(`/api/users`, body).then((res) => {
         console.log(res);
-
-        
+      })
+      .catch((err) => {
+        console.log(err);
+        setError(err.response.data.message);
       });
     } else {
-      console.log('invalid');
+      setError('Invalid email or password');
     }
   };
 
@@ -51,6 +55,7 @@ export default function SignUp() {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
+          {error && <Typography variant="body2" color="error">{error}</Typography>}
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
