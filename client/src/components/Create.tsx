@@ -4,6 +4,7 @@ import {
   Container,
   MenuItem,
   Select,
+  Stack,
   TextField,
   Typography,
 } from '@mui/material';
@@ -11,6 +12,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { AiFillPlusCircle } from 'react-icons/ai';
 import { SelectDropDown } from './SelectDropDown';
+import './create.css';
 
 export const Create = () => {
   const [tag, setTag] = useState<any>([]);
@@ -72,18 +74,22 @@ export const Create = () => {
   return (
     <div>
       <h1>Create</h1>
-      Create a new tag:{' '}
-      <AiFillPlusCircle
-        onClick={() => {
-          setCreateTag(!createTag);
-        }}
-      />
-      Create a card tag:{' '}
-      <AiFillPlusCircle
-        onClick={() => {
-          setCreateCard(!createCard);
-        }}
-      />
+
+      <Stack
+        className='create-option'
+        direction='row'
+        justifyContent='center'
+        alignItems='center'
+        spacing={3}>
+        Create a new tag:{' '}
+        <AiFillPlusCircle
+          className='create-option-icon'
+          onClick={() => {
+            setCreateTag(!createTag);
+          }}
+        />
+      </Stack>
+
       {createTag && (
         <Container component='main' maxWidth='xs'>
           <Typography component='h1' variant='h5'>
@@ -114,12 +120,28 @@ export const Create = () => {
           </Box>
         </Container>
       )}
+
+      <Stack
+        className='create-option'
+        direction='row'
+        justifyContent='center'
+        alignItems='center'
+        spacing={3}>
+        Create a card tag:{' '}
+        <AiFillPlusCircle
+          className='create-option-icon'
+          onClick={() => {
+            setCreateCard(!createCard);
+          }}
+        />
+      </Stack>
+
       {createCard && (
         <Container component='main' maxWidth='xs'>
           <Typography component='h1' variant='h5'>
             Create new cards
           </Typography>
-          <SelectDropDown options={allTags} tracker={setTag} label="Tag" />
+          <SelectDropDown options={allTags} tracker={setTag} label='Tag' />
           <Box
             component='form'
             onSubmit={handleSubmitCard}

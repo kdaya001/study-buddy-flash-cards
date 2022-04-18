@@ -1,10 +1,11 @@
 import { Button, Stack } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './cards.css';
 
 export const Cards = ({ tag, data, rnd }: any) => {
   const [currentCard, setCurrentCard] = useState<number>(0);
   const [currentView, setCurrentView] = useState<boolean>(true);
+  const [keypressTrack, setKeypressTrack] = useState<boolean>(false);
 
   return (
     <div>
@@ -37,6 +38,7 @@ export const Cards = ({ tag, data, rnd }: any) => {
             <>
               <h2>Prompt</h2>
               <p>{data[rnd[currentCard]].prompt}</p>
+              {data[rnd[currentCard]]?.hint && <p>{data[rnd[currentCard]].response}</p>}
             </>
           )}
           {!currentView && (
