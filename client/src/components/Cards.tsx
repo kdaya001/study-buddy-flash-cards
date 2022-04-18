@@ -2,7 +2,7 @@ import { Button, Stack } from '@mui/material';
 import { useState } from 'react';
 import './cards.css';
 
-export const Cards = ({ tag, data }: any) => {
+export const Cards = ({ tag, data, rnd }: any) => {
   const [currentCard, setCurrentCard] = useState<number>(0);
   const [currentView, setCurrentView] = useState<boolean>(true);
 
@@ -36,13 +36,13 @@ export const Cards = ({ tag, data }: any) => {
           {currentView && (
             <>
               <h2>Prompt</h2>
-              <p>{data[currentCard].prompt}</p>
+              <p>{data[rnd[currentCard]].prompt}</p>
             </>
           )}
           {!currentView && (
             <>
               <h2>Response</h2>
-              <p>{data[currentCard].response}</p>
+              <p>{data[rnd[currentCard]].response}</p>
             </>
           )}
         </div>
