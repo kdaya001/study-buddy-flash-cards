@@ -70,7 +70,7 @@ export function Nav({ setStart }: any) {
               color='inherit'
               onClick={() => {
                 handleLogout();
-                navigate(`/`);
+                navigate(`/login`);
               }}>
               Logout
             </Button>

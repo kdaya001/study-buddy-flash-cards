@@ -19,6 +19,8 @@ export const ViewCards = ({ start, setStart }: any) => {
   const [viewCardAmount, setViewCardAmount] = useState<Number>(0);
   const [viewCardOptions, setViewCardOptions] = useState<any>([]);
 
+  const [viewCardArr, setViewCardArr] = useState<any>([]);
+
   //Get data when tags change
   useEffect((): any => {
     if (tag) {
@@ -30,6 +32,15 @@ export const ViewCards = ({ start, setStart }: any) => {
       });
     }
   }, [tag]);
+
+  useEffect(() => {
+    let rndArr = [];
+    for(let i = 0; i < cardData.length; i++) {
+      let rnd = Math.floor(Math.random() * cardData.length);
+      rndArr.push(rnd);
+    }
+    setViewCardArr(rndArr);
+  }, [cardData]);
 
   // Get public tags
   useEffect((): any => {
@@ -103,7 +114,7 @@ export const ViewCards = ({ start, setStart }: any) => {
 
       {start && (
         <>
-          <Cards data={cardData} tag={tag.tag} amount={viewCardAmount} />
+          <Cards data={cardData} tag={tag.tag} amount={viewCardAmount} rnd={viewCardArr} />
           <Stack
             direction='row'
             justifyContent='center'
