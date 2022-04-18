@@ -32,6 +32,8 @@ CardController.post('/private/update/cards', isLoggedIn, (req, res) => {
     ...req.body,
     owner: req.session.user_id
   }
+
+  console.log('new bod', body)
   Cards.updatePrivateCard(body).then(response => {
     res.json({status: 'success'});
   })
