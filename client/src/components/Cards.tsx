@@ -25,7 +25,7 @@ export const Cards = ({ tag, data, rnd }: any) => {
               setCurrentView(true);
             }
           }}>
-          Back
+          {`<`}
         </Button>
         {/* card itself allows front and back*/}
         <div
@@ -59,7 +59,7 @@ export const Cards = ({ tag, data, rnd }: any) => {
               setCurrentView(true);
             }
           }}>
-          Next
+          {`<`}
         </Button>
       </Stack>
       <Stack
