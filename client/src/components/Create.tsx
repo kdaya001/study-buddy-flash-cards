@@ -1,17 +1,15 @@
 import { Box, Button, Container, MenuItem, Select, TextField, Typography } from '@mui/material';
 import axios from 'axios';
-import { useContext, useEffect, useState } from 'react';
-import { ApplicationContext } from '../app-context';
+import { useEffect, useState } from 'react';
 
 export const Create = () => {
   const [tag, setTag] = useState<any>([]);
   const [allTags, setAllTags] = useState<any>(null);
 
   const [submitStatus, setSubmitStatus] = useState<boolean>(false);
-  const [appState, appAction] = useContext(ApplicationContext);
   
   useEffect(() => {
-    axios.get(`/api/cards/private/get/tags`).then((res) => {
+    axios.get(`{/api/cards/private/get/tags`).then((res) => {
       if (res.data.length > 0) {
         setAllTags(res.data); 
       }
@@ -63,7 +61,6 @@ export const Create = () => {
       <Select
         labelId='view-card-simple-select-label'
         id='view-card-simple-select'
-        value={tag}
         label='Tag'
         onChange={handleChange}>
         {allTags && allTags.map((tag: any) => {

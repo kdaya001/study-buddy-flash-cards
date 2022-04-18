@@ -1,9 +1,10 @@
-import { Button } from '@mui/material';
+import { Button, Stack } from '@mui/material';
 import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
 import { ApplicationContext } from '../app-context';
 import { Cards } from './Cards';
 import { SelectDropDown } from './SelectDropDown';
+import './signin.css';
 
 export const ViewCards = ({ start, setStart }: any) => {
   const [appState, appAction] = useContext(ApplicationContext);
@@ -57,19 +58,13 @@ export const ViewCards = ({ start, setStart }: any) => {
     setAllTags([...publicTags, ...privateTags]);
   }, [publicTags, privateTags]);
 
-  const handleStart = () => {
-    if (cardData.length > 0) {
-      setStart(!start);
-    }
-  };
-
   useEffect(() => {
     const options = [];
     if (cardData.length > 0 && cardData.length < 10) {
       options.push({ _id: 1, option: cardData.length });
-    } else if (cardData.length >=10) {
+    } else if (cardData.length >= 10) {
       let count = 0;
-      for(let i = 10; i <= cardData.length; i+= 10) {
+      for (let i = 10; i <= cardData.length; i += 10) {
         options.push({ _id: count, option: i });
         count++;
       }
@@ -81,37 +76,48 @@ export const ViewCards = ({ start, setStart }: any) => {
     <div>
       {!start && (
         <>
-          <h1>Choose your poison</h1>
-          <SelectDropDown options={allTags} tracker={setTag} label='Topic' />
-          {cardData.length > 0 && (
-            <SelectDropDown
-              tracker={setViewCardAmount}
-              options={viewCardOptions}
-              label='Amount'
-            />
-          )}
-          <Button
-            onClick={handleStart}
-            type='submit'
-            fullWidth
-            variant='contained'
-            sx={{ mt: 3, mb: 2 }}>
-            Start
-          </Button>
+          <Stack spacing={2} justifyContent='center' alignItems='center'>
+            <h1>Pick your poison</h1>
+            <SelectDropDown options={allTags} tracker={setTag} label='Topic' />
+            {cardData.length > 0 && (
+              <SelectDropDown
+                tracker={setViewCardAmount}
+                options={viewCardOptions}
+                label='Amount'
+              />
+            )}
+            <Button
+              onClick={() => {
+                setStart(true);
+              }}
+              type='submit'
+              variant='contained'
+              sx={{ mt: 3, mb: 2 }}>
+              Start
+            </Button>
+          </Stack>
         </>
       )}
 
       {start && (
         <>
-          <Cards data={cardData} tag={tag.tag} amount={viewCardAmount}/>
-          <Button
-            onClick={handleStart}
-            type='submit'
-            fullWidth
-            variant='contained'
-            sx={{ mt: 3, mb: 2 }}>
-            Back
-          </Button>
+          <Cards data={cardData} tag={tag.tag} amount={viewCardAmount} />
+          <Stack
+            direction='row'
+            justifyContent='center'
+            alignItems='center'
+            spacing={2}>
+            <Button
+              onClick={() => {
+                setCardData([])
+                setStart(false);
+              }}
+              type='submit'
+              variant='contained'
+              sx={{ mt: 3, mb: 2 }}>
+              Choose another topic
+            </Button>
+          </Stack>
         </>
       )}
     </div>

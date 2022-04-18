@@ -1,47 +1,64 @@
-import { Button } from '@mui/material';
+import { Button, Stack } from '@mui/material';
 import { useState } from 'react';
-import './cards.css'
+import './cards.css';
 
-export const Cards = (props: any) => {
+export const Cards = ({ tag, data }: any) => {
   const [currentCard, setCurrentCard] = useState<number>(0);
   const [currentView, setCurrentView] = useState<boolean>(true);
 
   return (
     <div>
       {/* Heading for topic */}
-      <h1>{props.tag}</h1>
-      {/* card itself allows front and back*/}
-      <div
-        className='card_card-container'
-        onClick={() => {
-          setCurrentView(!currentView);
-        }}>
-        {currentView
-          ? props.data[currentCard].prompt
-          : props.data[currentCard].response}
-      </div>
-      {/* back button */}
-      <Button
-        variant='contained'
-        onClick={() => {
-          if (currentCard > 0) {
-            setCurrentCard(currentCard - 1);
-            setCurrentView(true);
-          }
-        }}>
-        Back
-      </Button>
-      {/* back button */}
-      <Button
-        variant='contained'
-        onClick={() => {
-          if (currentCard < props.data.length - 1) {
-            setCurrentCard(currentCard + 1);
-            setCurrentView(true);
-          }
-        }}>
-        Next
-      </Button>
+      <h1 className='card-heading'>{tag}</h1>
+      <Stack
+        direction='row'
+        justifyContent='center'
+        alignItems='center'
+        spacing={2}>
+        {/* back button */}
+        <Button
+          className='card-next-button'
+          variant='contained'
+          onClick={() => {
+            if (currentCard > 0) {
+              setCurrentCard(currentCard - 1);
+              setCurrentView(true);
+            }
+          }}>
+          Back
+        </Button>
+        {/* card itself allows front and back*/}
+        <div
+          className='card_card-container'
+          onClick={() => {
+            setCurrentView(!currentView);
+          }}>
+          {currentView && (
+            <>
+              <h2>Prompt</h2>
+              <p>{data[currentCard].prompt}</p>
+            </>
+          )}
+          {!currentView && (
+            <>
+              <h2>Response</h2>
+              <p>{data[currentCard].response}</p>
+            </>
+          )}
+        </div>
+        {/* back button */}
+        <Button
+          className='card-back-button'
+          variant='contained'
+          onClick={() => {
+            if (currentCard < data.length - 1) {
+              setCurrentCard(currentCard + 1);
+              setCurrentView(true);
+            }
+          }}>
+          Next
+        </Button>
+      </Stack>
     </div>
   );
 };
