@@ -2,6 +2,7 @@ import { Box, Button, FormControl, TextField } from '@mui/material';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { SelectDropDown } from './SelectDropDown';
+import './update.css';
 
 export const Update = () => {
   const [data, setData] = useState<any>([]);
@@ -9,7 +10,6 @@ export const Update = () => {
   const [tag, setTag] = useState<any>(null);
 
   useEffect(() => {
-    console.log(tag);
     if (tag) {
       axios.get(`/api/cards/get/${tag?.id}`).then((res) => {
         setData(res.data[0]);
@@ -52,16 +52,21 @@ export const Update = () => {
 
   return (
     <div>
-      <FormControl className='selection' sx={{ m: 1, minWidth: 600 }}>
+      <h1>Update Your Cards</h1>
+      <FormControl className='update_form' sx={{ m: 1, minWidth: 600 }}>
         {allTags && (
-          <SelectDropDown options={allTags} tracker={setTag} label='Tag' />
+          <SelectDropDown classname='selection' options={allTags} tracker={setTag} label='Tag' />
         )}
-        <Box component='form' onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+        <Box
+          component='form'
+          onSubmit={handleSubmit}
+          noValidate
+          sx={{ mt: 1 }}>
           {data?.cards &&
             data?.cards.map((item: any, idx: number) => {
               return (
                 <div key={idx}>
-                  {idx + 1}
+                  <h5>Card #{idx + 1}</h5>
                   <TextField
                     label='prompt'
                     id={`${idx}-prompt`}
