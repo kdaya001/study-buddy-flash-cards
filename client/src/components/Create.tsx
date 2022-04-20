@@ -67,7 +67,7 @@ export const Create = () => {
       ],
     };
 
-    await axios.post(`/api/cards/private/add/cards`, body).then((res) => {
+    await axios.patch(`/api/cards/private/add/cards`, body).then((res) => {
       setNotification(`Successfully Created`);
     });
     setSubmitStatus(true);

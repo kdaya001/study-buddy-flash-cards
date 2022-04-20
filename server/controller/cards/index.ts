@@ -27,7 +27,7 @@ CardController.post('/private/create/tag', isLoggedIn, (req, res) => {
   })
 });
 
-CardController.post('/private/add/cards', isLoggedIn, (req, res) => {
+CardController.patch('/private/add/cards', isLoggedIn, (req, res) => {
   const body = {
     ...req.body,
     owner: req.session.user_id
@@ -60,7 +60,7 @@ CardController.get('/get/:id',(req, res) => {
   })
 });
 
-CardController.post('/update/cards', isLoggedIn, (req, res) => {
+CardController.put('/update/cards', isLoggedIn, (req, res) => {
   const body = {
     owner: req.session.user_id, 
     tag: req.body.tag,

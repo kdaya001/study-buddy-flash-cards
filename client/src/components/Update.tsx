@@ -44,7 +44,7 @@ export const Update = () => {
     }
 
     if (body?.cards.length > 0) {
-      axios.post('/api/cards/update/cards', body).then((response) => {
+      axios.put('/api/cards/update/cards', body).then((response) => {
         console.log('successfully updated');
       });
     }
@@ -55,13 +55,14 @@ export const Update = () => {
       <h1>Update Your Cards</h1>
       <FormControl className='update_form' sx={{ m: 1, minWidth: 600 }}>
         {allTags && (
-          <SelectDropDown classname='selection' options={allTags} tracker={setTag} label='Tag' />
+          <SelectDropDown
+            classname='selection'
+            options={allTags}
+            tracker={setTag}
+            label='Tag'
+          />
         )}
-        <Box
-          component='form'
-          onSubmit={handleSubmit}
-          noValidate
-          sx={{ mt: 1 }}>
+        <Box component='form' onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           {data?.cards &&
             data?.cards.map((item: any, idx: number) => {
               return (

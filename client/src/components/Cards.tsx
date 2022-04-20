@@ -5,6 +5,7 @@ import './cards.css';
 export const Cards = ({ tag, data, rnd }: any) => {
   const [currentCard, setCurrentCard] = useState<number>(0);
   const [currentView, setCurrentView] = useState<boolean>(true);
+  const [flip, setFlip] = useState<boolean>(false);
 
   return (
     <div>
@@ -29,24 +30,24 @@ export const Cards = ({ tag, data, rnd }: any) => {
         </Button>
         {/* card itself allows front and back*/}
         <div
-          className='card_card-container'
+          className={`card_card-container ${flip ? 'flip-vertical-right' : ''}`}
           onClick={() => {
             setCurrentView(!currentView);
           }}>
           {currentView && (
-            <>
+            <div className='faces'>
               <h2>Prompt</h2>
               <p>{data[rnd[currentCard]].prompt}</p>
               {data[rnd[currentCard]]?.hint && (
                 <p>{data[rnd[currentCard]].response}</p>
               )}
-            </>
+            </div>
           )}
           {!currentView && (
-            <>
+            <div className='faces'>
               <h2>Response</h2>
               <p>{data[rnd[currentCard]].response}</p>
-            </>
+            </div>
           )}
         </div>
         {/* back button */}
@@ -73,6 +74,10 @@ export const Cards = ({ tag, data, rnd }: any) => {
           variant='contained'
           onClick={() => {
             setCurrentView(!currentView);
+            setFlip(true);
+            setTimeout(() => {
+              setFlip(false);
+            }, 500);
           }}>
           Flip
         </Button>
