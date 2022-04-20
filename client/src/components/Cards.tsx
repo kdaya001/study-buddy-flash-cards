@@ -7,10 +7,6 @@ export const Cards = ({ tag, data, rnd }: any) => {
   const [currentView, setCurrentView] = useState<boolean>(true);
   const [flip, setFlip] = useState<boolean>(false);
 
-  const handleFilterClick = (event:any ) => {
-
-  }
-
   return (
     <div>
       {/* Heading for topic */}
@@ -28,7 +24,7 @@ export const Cards = ({ tag, data, rnd }: any) => {
             if (currentCard > 0) {
               setCurrentCard(currentCard - 1);
               setCurrentView(true);
-              setFlip(false)
+              setFlip(false);
             }
           }}>
           {`<`}
@@ -36,10 +32,9 @@ export const Cards = ({ tag, data, rnd }: any) => {
         {/* card itself allows front and back*/}
         <div
           className={`card_card-container card ${flip ? 'flip' : ''}`}
-          onClick={(event) => {
+          onClick={(e) => {
             setCurrentView(!currentView);
-            handleFilterClick(event)
-            setFlip(!flip)
+            setFlip(!flip);
           }}>
           {currentView && (
             <div className='front'>
@@ -52,7 +47,7 @@ export const Cards = ({ tag, data, rnd }: any) => {
           )}
           {!currentView && (
             <div className='back'>
-              <h2>Response</h2>
+              <h2>Answer</h2>
               <p>{data[rnd[currentCard]].response}</p>
             </div>
           )}
@@ -65,14 +60,14 @@ export const Cards = ({ tag, data, rnd }: any) => {
             if (currentCard < data.length - 1) {
               setCurrentCard(currentCard + 1);
               setCurrentView(true);
-              setFlip(false)
+              setFlip(false);
             }
           }}>
           {`>`}
         </Button>
       </Stack>
       <Stack
-        className="card_flip-container"
+        className='card_flip-container'
         direction='row'
         justifyContent='center'
         alignItems='center'
@@ -82,9 +77,9 @@ export const Cards = ({ tag, data, rnd }: any) => {
           variant='contained'
           onClick={() => {
             setCurrentView(!currentView);
-            setFlip(!flip)
+            setFlip(!flip);
           }}>
-          Flip
+          {!flip ? 'Show Answer' : 'Show Prompt'}
         </Button>
       </Stack>
     </div>

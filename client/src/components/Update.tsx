@@ -69,6 +69,7 @@ export const Update = () => {
                 <div key={idx}>
                   <h5>Card #{idx + 1}</h5>
                   <TextField
+                    className='update_input'
                     label='prompt'
                     id={`${idx}-prompt`}
                     name={`${idx}-prompt`}
@@ -76,6 +77,7 @@ export const Update = () => {
                     defaultValue={item.prompt}
                   />
                   <TextField
+                    className='update_input'
                     label='response'
                     id={`${idx}-response`}
                     name={`${idx}-response`}
