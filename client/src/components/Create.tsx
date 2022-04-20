@@ -20,6 +20,9 @@ export const Create = () => {
   const [submitStatus, setSubmitStatus] = useState<boolean>(false);
   const [notification, setNotification] = useState<string>('');
   const [error, setError] = useState<string>('');
+  const [inputTag, setInputTag] = useState<string>('');
+  const [inputPrompt, setInputPrompt] = useState<string>('');
+  const [inputResponse, setInputResponse] = useState<string>('');
 
   const clearNotifications = () => {
     setError('');
@@ -48,6 +51,7 @@ export const Create = () => {
         setNotification(`Successfully Created`);
       });
       setSubmitStatus(true);
+      setInputTag('');
     } else {
       setError(`Tag Already Exists`);
     }
@@ -69,9 +73,23 @@ export const Create = () => {
 
     await axios.patch(`/api/cards/private/add/cards`, body).then((res) => {
       setNotification(`Successfully Created`);
+      setInputPrompt('');
+      setInputResponse('');
     });
     setSubmitStatus(true);
   };
+
+  const handleTagInputChange = (event:any) => {
+    setInputTag(event.target.value);
+  }
+
+  const handleResponseInputChange = (event:any) => {
+    setInputResponse(event.target.value);
+  }
+
+  const handlePromptInputChange = (event:any) => {
+    setInputPrompt(event.target.value);
+  }
 
   return (
     <div>
@@ -127,6 +145,8 @@ export const Create = () => {
               name='tag'
               autoComplete='tag'
               autoFocus
+              value={inputTag}
+              onChange={handleTagInputChange}
             />
             <Button
               type='submit'
@@ -174,6 +194,8 @@ export const Create = () => {
               name='prompt'
               autoComplete='prompt'
               autoFocus
+              value={inputPrompt}
+              onChange={handlePromptInputChange}
             />
             <TextField
               margin='normal'
@@ -184,6 +206,8 @@ export const Create = () => {
               name='response'
               autoComplete='response'
               autoFocus
+              value={inputResponse}
+              onChange={handleResponseInputChange}
             />
             <Button
               type='submit'
