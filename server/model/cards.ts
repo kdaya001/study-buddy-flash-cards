@@ -29,17 +29,6 @@ const Cards = {
       .toArray();
   },
   addPrivateCard: async ({ owner, tag, cards }) => {
-    //expect body to be in the following format:
-    /**
-     * {owner:xyz
-     * tag: xyz
-     * cards: [ {
-     * prompt: xyz
-     * response: xyz}
-     * ]
-     * }
-     */
-
     const dbConnect = db.getDb();
     return await dbConnect
       .collection('global_cards')

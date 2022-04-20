@@ -33,11 +33,11 @@ p {
   transform-style: preserve-3d;
   transition: 150ms;
   cursor: pointer;
-  transform: perspective(1000px) rotateY(var(--rotate-y, 0deg)) translateY(var(--translate-y, 0));
+  transform: perspective(1000px) rotateX(var(--rotate-x, 0deg)) translateX(var(--translate-x, 0));
 }
 
 .card.flip {
-  --rotate-y: 180deg;
+  --rotate-x: 180deg;
 }
 
 .card .front,
@@ -47,5 +47,5 @@ p {
 }
 
 .card .back {
-  transform: rotateY(180deg);
+  transform: rotateX(180deg);
 }
