@@ -20,7 +20,13 @@ export function Nav({ setStart }: any) {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar className='nav_navbar' position='static'>
         <Toolbar>
-          <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
+          <Typography
+            onClick={() => {
+              navigate(`/`);
+            }}
+            variant='h6'
+            component='div'
+            sx={{ flexGrow: 1 }}>
             Study Buddy
           </Typography>
           <Button

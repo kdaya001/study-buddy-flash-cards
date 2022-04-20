@@ -1,5 +1,9 @@
 .update_form {
   width: 80%;
-  margin: 0 auto;
+  margin: 0 auto !important;
   display: block !important;
+}
+
+.update_input {
+  margin-bottom: 10px !important;
 }
