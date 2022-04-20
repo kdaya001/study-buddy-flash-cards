@@ -5,6 +5,11 @@ import './cards.css';
 export const Cards = ({ tag, data, rnd }: any) => {
   const [currentCard, setCurrentCard] = useState<number>(0);
   const [currentView, setCurrentView] = useState<boolean>(true);
+  const [flip, setFlip] = useState<boolean>(false);
+
+  const handleFilterClick = (event:any ) => {
+
+  }
 
   return (
     <div>
@@ -23,30 +28,33 @@ export const Cards = ({ tag, data, rnd }: any) => {
             if (currentCard > 0) {
               setCurrentCard(currentCard - 1);
               setCurrentView(true);
+              setFlip(false)
             }
           }}>
           {`<`}
         </Button>
         {/* card itself allows front and back*/}
         <div
-          className='card_card-container'
-          onClick={() => {
+          className={`card_card-container card ${flip ? 'flip' : ''}`}
+          onClick={(event) => {
             setCurrentView(!currentView);
+            handleFilterClick(event)
+            setFlip(!flip)
           }}>
           {currentView && (
-            <>
+            <div className='front'>
               <h2>Prompt</h2>
               <p>{data[rnd[currentCard]].prompt}</p>
               {data[rnd[currentCard]]?.hint && (
                 <p>{data[rnd[currentCard]].response}</p>
               )}
-            </>
+            </div>
           )}
           {!currentView && (
-            <>
+            <div className='back'>
               <h2>Response</h2>
               <p>{data[rnd[currentCard]].response}</p>
-            </>
+            </div>
           )}
         </div>
         {/* back button */}
@@ -57,6 +65,7 @@ export const Cards = ({ tag, data, rnd }: any) => {
             if (currentCard < data.length - 1) {
               setCurrentCard(currentCard + 1);
               setCurrentView(true);
+              setFlip(false)
             }
           }}>
           {`>`}
@@ -73,6 +82,7 @@ export const Cards = ({ tag, data, rnd }: any) => {
           variant='contained'
           onClick={() => {
             setCurrentView(!currentView);
+            setFlip(!flip)
           }}>
           Flip
         </Button>

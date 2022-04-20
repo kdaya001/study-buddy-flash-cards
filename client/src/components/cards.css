@@ -23,3 +23,29 @@ p {
 .card_flip-container {
   margin-top: 15px;
 }
+
+.card {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: 150ms;
+  cursor: pointer;
+  transform: perspective(1000px) rotateY(var(--rotate-y, 0deg)) translateY(var(--translate-y, 0));
+}
+
+.card.flip {
+  --rotate-y: 180deg;
+}
+
+.card .front,
+.card .back {
+  position: absolute;
+  padding: 1rem;
+}
+
+.card .back {
+  transform: rotateY(180deg);
+}
