@@ -53,7 +53,7 @@ export const Update = () => {
   return (
     <div>
       <h1>Update Your Cards</h1>
-      <FormControl className='update_form' sx={{ m: 1, minWidth: 600 }}>
+      <FormControl className='update_form' sx={{ m: 1 }}>
         {allTags && (
           <SelectDropDown
             classname='selection'
