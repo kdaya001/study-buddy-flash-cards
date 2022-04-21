@@ -15,6 +15,7 @@ import { Home } from './components/Home';
 import { Nav } from './components/Nav';
 import { Update } from './components/Update';
 
+
 function App() {
   const [appState, appAction] = useReducer(
     ApplicationContextReducer,

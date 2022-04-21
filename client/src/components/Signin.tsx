@@ -43,12 +43,13 @@ export default function Signin() {
             },
           },
         });
+        setTimeout(() => {
+          navigate(`/`);
+        }, 5000);
       });
+    } else {
+      console.log('invalid login');
     }
-
-    setTimeout(() => {
-      navigate(`/`);
-    }, 5000);
   };
 
   return (
@@ -66,7 +67,9 @@ export default function Signin() {
             Sign in
           </Typography>
           {appState.currentUser && (
-            <Typography variant='body2' className='notification'>Successfully logged in</Typography>
+            <Typography variant='body2' className='notification'>
+              Successfully logged in
+            </Typography>
           )}
           <Box
             component='form'
