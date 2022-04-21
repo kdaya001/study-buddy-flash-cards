@@ -87,13 +87,13 @@ export const Update = () => {
                 </div>
               );
             })}
-          <Button
+          {(allTags || data) && <Button
             type='submit'
             fullWidth
             variant='contained'
             sx={{ mt: 3, mb: 2 }}>
             Submit
-          </Button>
+          </Button>}
         </Box>
       </FormControl>
     </div>
