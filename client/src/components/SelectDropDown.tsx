@@ -1,14 +1,14 @@
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import './selectdropdown.css';
 
-export const SelectDropDown = (props: any) => {
+export const SelectDropDown = ({options, label, tracker}: any) => {
   /**
    * props:
    * [{id, option}]
    */
 
   const handleChange = (event: any) => {
-    props.tracker({
+    tracker({
       tag: event.target.dataset.value,
       id: event.target.dataset.id,
     });
@@ -16,9 +16,9 @@ export const SelectDropDown = (props: any) => {
 
   return (
     <FormControl className='selection' sx={{ m: 1, minWidth: 120 }}>
-      <InputLabel>{props.label}</InputLabel>
+      <InputLabel>{label}</InputLabel>
       <Select label='selection' defaultValue=''>
-        {props.options.map((item: any) => {
+        {options.map((item: any) => {
           return (
             <MenuItem
               onClick={handleChange}

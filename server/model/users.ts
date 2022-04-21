@@ -1,4 +1,3 @@
-import express from 'express';
 const db = require('../database/db');
 
 const Users = {

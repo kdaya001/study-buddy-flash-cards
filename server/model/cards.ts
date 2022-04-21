@@ -1,4 +1,3 @@
-import express from 'express';
 import { ObjectId } from 'mongodb';
 const db = require('../database/db');
 

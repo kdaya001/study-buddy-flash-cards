@@ -21,7 +21,7 @@ export const ViewCards = ({ start, setStart }: any) => {
   const [viewCardArr, setViewCardArr] = useState<any>([]);
 
   //Get data when tags change
-  useEffect((): any => {
+  useEffect(() => {
     if (tag) {
       axios.get(`/api/cards/get/${tag.id}`).then((res) => {
         if (res.data.length > 0) {
@@ -42,7 +42,7 @@ export const ViewCards = ({ start, setStart }: any) => {
   }, [cardData]);
 
   // Get public tags
-  useEffect((): any => {
+  useEffect(() => {
     axios.get(`/api/cards/public/get/tags`).then((res) => {
       if (res.data.length > 0) {
         setPublicTags(res.data);

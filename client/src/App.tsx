@@ -15,6 +15,9 @@ import { Home } from './components/Home';
 import { Nav } from './components/Nav';
 import { Update } from './components/Update';
 
+type UserProps = {
+  email: string;
+}
 
 function App() {
   const [appState, appAction] = useReducer(
@@ -24,7 +27,7 @@ function App() {
   const [start, setStart] = useState<boolean>(false);
 
   useEffect(() => {
-    getSession().then((user: any) => {
+    getSession().then((user: UserProps) => {
       if (user) {
         appAction({
           type: ActionType.LOGIN,
