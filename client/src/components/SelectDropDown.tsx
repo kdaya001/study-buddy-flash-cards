@@ -2,11 +2,6 @@ import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import './selectdropdown.css';
 
 export const SelectDropDown = ({options, label, tracker}: any) => {
-  /**
-   * props:
-   * [{id, option}]
-   */
-
   const handleChange = (event: any) => {
     tracker({
       tag: event.target.dataset.value,
