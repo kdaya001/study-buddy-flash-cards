@@ -1,5 +1,5 @@
 import { Button, Stack } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './cards.css';
 
 export const Cards = ({ tag, data, rnd }: any) => {
