@@ -47,6 +47,10 @@
   transform: rotateX(180deg);
 }
 
+.end {
+  color: red;
+}
+
 @media only screen and (min-width: 600px) {
   p {
     font-size: 2rem;
