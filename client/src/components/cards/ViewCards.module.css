@@ -1,0 +1,41 @@
+.styledTable {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  width: 80%;
+  min-width: 400px;
+  box-shadow: 0 0 20px #00000026;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+.trTHeadStyled {
+  background-color: #1976d2;
+  color: #ffffff;
+  text-align: left;
+}
+
+.trTHeadStyled th {
+  font-size: 1.25rem;
+}
+
+.trTHeadStyled th,
+.trTBodyStyled td {
+    padding: 12px 15px;
+}
+
+.trTBodyStyled {
+  border-bottom: 2px solid #1976d2;
+}
+
+.option {
+  min-width: 15ch;
+  max-width: 30ch;
+  border-radius: 0.25em;
+  padding: 0.25em 0.5em;
+  cursor: pointer;
+  line-height: 1.1;
+  background-color: #fff;
+  background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+}
