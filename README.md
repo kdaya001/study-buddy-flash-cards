@@ -115,14 +115,14 @@ The applications main features include:
 - [x] Users can cycle through a predetermined amount of cards for the specific tag (e.g. 10, 20, 30)
 
 Extension features may include:
-* Allowing quizzes
-  [] Gamification of the application (allow users to get scores and compare scores) - Dependent on implementation of authentication
+- [ ] Allowing quizzes
+  - [ ] Gamification of the application (allow users to get scores and compare scores) - Dependent on implementation of authentication
 - [x] Include authentication
-[] Allowing users to set cards as either private or public
-[] Including a flip animation for the cards
+- [ ] Allowing users to set cards as either private or public
+- [ ] Including a flip animation for the cards
 - [x] Allowing users to create their own tags
-[] Timer functionaltiy to flip over cards after the predetermined time
-[] Allow hints for cards (both quizzes and normal flash cards)
+- [ ] Timer functionaltiy to flip over cards after the predetermined time
+- [ ] Allow hints for cards (both quizzes and normal flash cards)
 
 ---
 ## User Stories
@@ -145,14 +145,14 @@ General User Flow:
 ---
 
 ## Necessary Deliverables
-[ ] A link to your hosted working app in the URL section of your GitHub repo
-[x] A git repository hosted on GitHub, with a link to your hosted project, and frequent commits dating back to the very beginning of the project
+- [ ] A link to your hosted working app in the URL section of your GitHub repo
+- [x] A git repository hosted on GitHub, with a link to your hosted project, and frequent commits dating back to the very beginning of the project
 A readme.md file with:
-  [ ] An embedded screenshot of the app
-  [x] Explanations of the technologies used
-  [x] A couple paragraphs about the general approach you took
-  [x] Installation instructions for any dependencies
-  [x] User stories – who are your users, what do they want, and why?
-  [x] Wireframes – sketches of major views / interfaces in your application
-  [x] Link to your pitch deck – documentation of your wireframes, user stories, and proposed architecture
-  [ ] Descriptions of any unsolved problems or major hurdles you had to overcome
+  - [ ] An embedded screenshot of the app
+  - [x] Explanations of the technologies used
+  - [x] A couple paragraphs about the general approach you took
+  - [x] Installation instructions for any dependencies
+  - [x] User stories – who are your users, what do they want, and why?
+  - [x] Wireframes – sketches of major views / interfaces in your application
+  - [x] Link to your pitch deck – documentation of your wireframes, user stories, and proposed architecture
+  - [ ] Descriptions of any unsolved problems or major hurdles you had to overcome
