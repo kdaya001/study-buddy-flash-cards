@@ -13,7 +13,7 @@ const Cards = {
     const dbConnect = db.getDb();
     return await dbConnect
       .collection('global_cards')
-      .find({ owner: 'public' }, { projection: { tag: 1, owner: 1 } })
+      .find({ owner: 'public' }, { projection: { tag: 1, owner: 1, cards: 1 } })
       .toArray();
   },
   postPrivateTag: async (body) => {
@@ -24,7 +24,7 @@ const Cards = {
     const dbConnect = db.getDb();
     return await dbConnect
       .collection('global_cards')
-      .find({ owner: user_id }, { projection: { tag: 1 } })
+      .find({ owner: user_id }, { projection: { tag: 1, cards: 1 } })
       .toArray();
   },
   addPrivateCard: async ({ owner, tag, cards }) => {

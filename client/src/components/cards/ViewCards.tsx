@@ -1,40 +1,38 @@
-import { Button, Stack } from '@mui/material';
+import { Button, FormControl, MenuItem, Select, Stack } from '@mui/material';
 import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
 import { ApplicationContext } from '../../app-context';
 import { Cards } from './Cards';
-import { SelectDropDown } from './SelectDropDown';
 
 export const ViewCards = ({ start, setStart }: any) => {
-  const [appState, appAction] = useContext(ApplicationContext);
-
   const [publicTags, setPublicTags] = useState<any>([]);
   const [privateTags, setPrivateTags] = useState<any>([]);
   const [allTags, setAllTags] = useState<any>([]);
-
-  const [tag, setTag] = useState<any>(null);
+  const [appState, appAction] = useContext(ApplicationContext);
+  const [rows, setRows] = useState<any>([]);
+  const [selection, setSelection] = useState<string | null>(null);
   const [cardData, setCardData] = useState<any>([]);
-
   const [viewCardAmount, setViewCardAmount] = useState<Number>(0);
-  const [viewCardOptions, setViewCardOptions] = useState<any>([]);
-
   const [viewCardArr, setViewCardArr] = useState<any>([]);
+  const [tag, setTag] = useState<string | null>(null);
 
-  //Get data when tags change
+  //Get data on start
   useEffect(() => {
-    if (tag) {
-      axios.get(`/api/cards/get/${tag.id}`).then((res) => {
+    if (selection) {
+      axios.get(`/api/cards/get/${selection}`).then((res) => {
         if (res.data.length > 0) {
           setCardData(res.data[0].cards);
+          setTag(res.data[0].tag);
           setViewCardAmount(cardData.length);
+          setStart(true);
         }
       });
     }
-  }, [tag]);
+  }, [selection]);
 
   useEffect(() => {
     let rndArr = [];
-    for(let i = 0; i < cardData.length; i++) {
+    for (let i = 0; i < cardData.length; i++) {
       let rnd = Math.floor(Math.random() * cardData.length);
       rndArr.push(rnd);
     }
@@ -69,51 +67,85 @@ export const ViewCards = ({ start, setStart }: any) => {
   }, [publicTags, privateTags]);
 
   useEffect(() => {
+    const rowData = allTags.map((tag: any) => {
+      const options = getOptions(tag.cards);
+      return {
+        id: tag._id,
+        tag: tag.tag,
+        total: tag.cards.length,
+        options: options,
+      };
+    });
+    setRows(rowData);
+  }, [allTags]);
+
+  const getOptions = (cards: any) => {
     const options = [];
-    if (cardData.length > 0 && cardData.length < 10) {
-      options.push({ _id: 1, option: cardData.length });
-    } else if (cardData.length >= 10) {
+    if (cards.length > 0 && cards.length < 10) {
+      options.push(cards.length);
+    } else if (cards.length >= 10) {
       let count = 0;
-      for (let i = 10; i <= cardData.length; i += 10) {
-        options.push({ _id: count, option: i });
+      for (let i = 10; i <= cards.length; i += 10) {
+        options.push(i);
         count++;
       }
     }
-    setViewCardOptions(options);
-  }, [cardData]);
+    return options;
+  };
 
   return (
     <div>
       {!start && (
-        <>
-          <Stack spacing={2} justifyContent='center' alignItems='center'>
-            <h1>Pick your poison</h1>
-            <SelectDropDown options={allTags} tracker={setTag} label='Topic' />
-            {cardData.length > 0 && (
-              <SelectDropDown
-                tracker={setViewCardAmount}
-                options={viewCardOptions}
-                label='Amount'
-              />
-            )}
-            {cardData && tag && !!viewCardAmount && (
-              <Button
-                onClick={() => {
-                  setStart(true);
-                }}
-                type='submit'
-                variant='contained'
-                sx={{ mt: 3, mb: 2 }}>
-                Start
-              </Button>
-            )}
-          </Stack>
-        </>
+        <table>
+          <thead>
+            <tr>
+              <th>Tag</th>
+              <th>Total</th>
+              <th>Options</th>
+              <th>Start</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((row: any) => {
+              return (
+                <tr key={row.id}>
+                  <td>{row.tag}</td>
+                  <td>{row.total}</td>
+                  <td>
+                    <select name='options' id='options'>
+                      {row.options.map((option: any) => {
+                        return (
+                          <option key={option} value={option}>
+                            {option}
+                          </option>
+                        );
+                      })}
+                    </select>
+                  </td>
+                  <td>
+                    <button
+                      id={row.id}
+                      onClick={(e: any) => {
+                        setSelection(e.target.id);
+                      }}>
+                      Start
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       )}
 
       {start && (
         <>
-          <Cards data={cardData} tag={tag.tag} amount={viewCardAmount} rnd={viewCardArr} />
+          <Cards
+            data={cardData}
+            tag={tag}
+            amount={viewCardAmount}
+            rnd={viewCardArr}
+          />
           <Stack
             direction='row'
             justifyContent='center'
@@ -121,7 +153,7 @@ export const ViewCards = ({ start, setStart }: any) => {
             spacing={2}>
             <Button
               onClick={() => {
-                setTag(null);
+                setStart(false);
                 setViewCardAmount(0);
                 setCardData([]);
                 setStart(false);
