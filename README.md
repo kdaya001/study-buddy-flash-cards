@@ -42,8 +42,9 @@ npm install
 cd /<project_name>/server
 npm install
 ```
-* Create MongoDB database using struture in `/server/database/schema.sql`
+* Create MongoDB database using struture in `/server/database/schema.md`
 
+* Create enviornment variables using `.env.example` in `/server/`
 
 * Build and run the project locally
 ```
@@ -51,11 +52,7 @@ cd <project_name>
 npm run dev
 Navigate to http://localhost:3000
 ```
-API Document endpoints
 
-swagger Spec Endpoint : http://localhost:8001/api-docs
-
-swagger-ui Endpoint : http://localhost:8001/docs
 
 
 
