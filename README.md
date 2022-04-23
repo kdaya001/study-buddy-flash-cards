@@ -26,7 +26,38 @@ Genearl Assembly Software Engineering - Project 4 - Live Version
 ---
 
 ## Getting Started
-TBC Instructions for setup
+* Clone the repository
+```
+git clone <project_name>
+```
+
+* Install dependencies
+```
+cd <project_name>
+npm install
+
+cd /<project_name>/client
+npm install
+
+cd /<project_name>/server
+npm install
+```
+* Create MongoDB database using struture in `/server/database/schema.sql`
+
+
+* Build and run the project locally
+```
+cd <project_name>
+npm run dev
+Navigate to http://localhost:3000
+```
+API Document endpoints
+
+swagger Spec Endpoint : http://localhost:8001/api-docs
+
+swagger-ui Endpoint : http://localhost:8001/docs
+
+
 
 ---
 
