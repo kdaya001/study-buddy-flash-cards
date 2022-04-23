@@ -1,4 +1,5 @@
 import { Button, Stack } from '@mui/material';
+import { style } from '@mui/system';
 import { useState } from 'react';
 import styles from './Cards.module.css';
 
@@ -11,6 +12,9 @@ export const Cards = ({ tag, data, rnd }: any) => {
     <div>
       {/* Heading for topic */}
       <h1 className={styles.cardHeading}>{tag}</h1>
+      {currentCard === data.length - 1 && (
+        <h1 className={styles.end}>You've reached the end, choose another topic</h1>
+      )}
       <Stack
         direction='row'
         justifyContent='center'
