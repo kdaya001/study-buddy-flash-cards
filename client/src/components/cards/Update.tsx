@@ -54,6 +54,7 @@ export const Update = () => {
     <div>
       <h1>Update Your Cards</h1>
       <FormControl className={styles.update_form} sx={{ m: 1 }}>
+        <h4>Select topic to update:</h4>
         {allTags && (
           <SelectDropDown
             classname='selection'
@@ -87,7 +88,7 @@ export const Update = () => {
                 </div>
               );
             })}
-          {(allTags || data) && <Button
+          {data?.cards  && <Button
             type='submit'
             fullWidth
             variant='contained'

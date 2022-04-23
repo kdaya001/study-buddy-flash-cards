@@ -1,8 +1,9 @@
-import { Button, FormControl, MenuItem, Select, Stack } from '@mui/material';
+import { Button, Stack } from '@mui/material';
 import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
 import { ApplicationContext } from '../../app-context';
 import { Cards } from './Cards';
+import styles from './ViewCards.module.css';
 
 export const ViewCards = ({ start, setStart }: any) => {
   const [publicTags, setPublicTags] = useState<any>([]);
@@ -96,46 +97,53 @@ export const ViewCards = ({ start, setStart }: any) => {
   return (
     <div>
       {!start && (
-        <table>
-          <thead>
-            <tr>
-              <th>Tag</th>
-              <th>Total</th>
-              <th>Options</th>
-              <th>Start</th>
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map((row: any) => {
-              return (
-                <tr key={row.id}>
-                  <td>{row.tag}</td>
-                  <td>{row.total}</td>
-                  <td>
-                    <select name='options' id='options'>
-                      {row.options.map((option: any) => {
-                        return (
-                          <option key={option} value={option}>
-                            {option}
-                          </option>
-                        );
-                      })}
-                    </select>
-                  </td>
-                  <td>
-                    <button
-                      id={row.id}
-                      onClick={(e: any) => {
-                        setSelection(e.target.id);
-                      }}>
-                      Start
-                    </button>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+        <>
+          <h1>Pick your poison</h1>
+          <table className={styles.styledTable}>
+            <thead>
+              <tr className={styles.trTHeadStyled}>
+                <th>Topic</th>
+                <th>Total Cards</th>
+                <th>Options</th>
+                <th>Start</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((row: any) => {
+                return (
+                  <tr className={styles.trTBodyStyled} key={row.id}>
+                    <td>{row.tag}</td>
+                    <td>{row.total}</td>
+                    <td>
+                      <select
+                        name='options'
+                        id='options'
+                        className={styles.option}>
+                        {row.options.map((option: any) => {
+                          return (
+                            <option key={option} value={option}>
+                              {option}
+                            </option>
+                          );
+                        })}
+                      </select>
+                    </td>
+                    <td>
+                      <Button
+                        id={row.id}
+                        variant='contained'
+                        onClick={(e: any) => {
+                          setSelection(e.target.id);
+                        }}>
+                        Start
+                      </Button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </>
       )}
 
       {start && (
