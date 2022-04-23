@@ -1,56 +1,53 @@
 const express = require('express');
-const UsersModel = require('../../model/users') 
+const UsersModel = require('../../model/users');
 const bcrypt = require('bcrypt');
 
 const router = express.Router();
 
 // Create Session (Login)
 router.post('/', (req, res) => {
-    const email = req.body.email;
-    const password = req.body.password;
+  const email = req.body.email;
+  const password = req.body.password;
 
-    // function incorrectResponse(res) {
-    //     res.status(400).json({
-    //         message: 'Incorrect email or password',
-    //     });
-    // }
-    UsersModel.getByEmail(email)
-        .then((user) => {
-            const valid = user && bcrypt.compareSync(password, user.password);
+  UsersModel.getByEmail(email)
+    .then((user) => {
+      const valid = user && bcrypt.compareSync(password, user.password);
 
-            if (valid) {
-                req.session.user_id = user._id;
-                req.session.email = user.email;
-                console.log('successful login')
-                res.json({
-                    user_id: user._id,
-                    email: email,
-                });
-            } else {
-                console.log('incorrect login')
-                return res.json({status: 'invalid'})
-            }
-        })
-        .catch((error) => {
-            console.log('incorrect login');
-            return res.json({status: 'invalid'})
+      if (valid) {
+        req.session.user_id = user._id;
+        req.session.email = user.email;
+        console.log('successful login');
+        res.json({
+          user_id: user._id,
+          email: email,
         });
+      } else {
+        return res.status(400).json({
+          message: 'Invalid username or password',
+        });
+      }
+    })
+    .catch((error) => {
+      return res.status(400).json({
+        message: 'Invalid username or password',
+      });
+    });
 });
 
 // Get Session (Login)
 router.get('/', (req, res) => {
-    if (req.session.email) {
-        res.json({
-            user_id: req.session._id,
-            email: req.session.email,
-        });
-    }
+  if (req.session.email) {
+    res.json({
+      user_id: req.session._id,
+      email: req.session.email,
+    });
+  }
 });
 
 //Delete Session (Logout)
 router.delete('/', (req, res) => {
-    req.session.destroy();
-    res.json({ message: 'Logged out' });
+  req.session.destroy();
+  res.json({ message: 'Logged out' });
 });
 
 module.exports = router;
