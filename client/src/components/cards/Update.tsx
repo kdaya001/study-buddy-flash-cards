@@ -2,7 +2,7 @@ import { Box, Button, FormControl, TextField } from '@mui/material';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { SelectDropDown } from './SelectDropDown';
-import './update.css';
+import styles from './Update.module.css';
 
 export const Update = () => {
   const [data, setData] = useState<any>([]);
@@ -53,7 +53,7 @@ export const Update = () => {
   return (
     <div>
       <h1>Update Your Cards</h1>
-      <FormControl className='update_form' sx={{ m: 1 }}>
+      <FormControl className={styles.update_form} sx={{ m: 1 }}>
         {allTags && (
           <SelectDropDown
             classname='selection'
@@ -69,7 +69,7 @@ export const Update = () => {
                 <div key={idx}>
                   <h5>Card #{idx + 1}</h5>
                   <TextField
-                    className='update_input'
+                    className={styles.update_input}
                     label='prompt'
                     id={`${idx}-prompt`}
                     name={`${idx}-prompt`}
@@ -77,7 +77,7 @@ export const Update = () => {
                     defaultValue={item.prompt}
                   />
                   <TextField
-                    className='update_input'
+                    className={styles.update_input}
                     label='response'
                     id={`${idx}-response`}
                     name={`${idx}-response`}

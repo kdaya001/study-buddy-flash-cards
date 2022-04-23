@@ -1,5 +1,5 @@
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
-import './selectdropdown.css';
+import styles from './SelectDropDown.module.css';
 
 export const SelectDropDown = ({options, label, tracker}: any) => {
   const handleChange = (event: any) => {
@@ -10,7 +10,7 @@ export const SelectDropDown = ({options, label, tracker}: any) => {
   };
 
   return (
-    <FormControl className='selection' sx={{ m: 1, minWidth: 120 }}>
+    <FormControl className={styles.selection} sx={{ m: 1, minWidth: 120 }}>
       <InputLabel>{label}</InputLabel>
       <Select label='selection' defaultValue=''>
         {options.map((item: any) => {

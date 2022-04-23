@@ -105,7 +105,7 @@ Global Cards:
 ---
 
 ## Roadmap
-The applications main features include:
+#### The applications main features include:
 - [x] Allow users to create new cards
 - [x] Allow users to create cards from predefined tag list
 - [x] Allow users to retrieve cards based on tags
@@ -114,7 +114,7 @@ The applications main features include:
   2. For the answer/description
 - [x] Users can cycle through a predetermined amount of cards for the specific tag (e.g. 10, 20, 30)
 
-Extension features may include:
+#### Extension features may include:
 - [ ] Allowing quizzes
   - [ ] Gamification of the application (allow users to get scores and compare scores) - Dependent on implementation of authentication
 - [x] Include authentication

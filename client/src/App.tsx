@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Create } from './components/Create';
-import Signin from './components/Signin';
-import SignUp from './components/SignUp';
+import { Create } from './components/cards/Create';
+import Signin from './components/profile/Signin';
+import SignUp from './components/profile/SignUp';
 import { useEffect, useReducer, useState } from 'react';
 import {
   ActionType,
@@ -13,7 +13,7 @@ import { getSession } from './helper/getSession';
 import { NotFound } from './components/NotFound';
 import { Home } from './components/Home';
 import { Nav } from './components/Nav';
-import { Update } from './components/Update';
+import { Update } from './components/cards/Update';
 
 type UserProps = {
   email: string;

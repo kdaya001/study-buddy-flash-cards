@@ -1,6 +1,6 @@
 import { Button, Stack } from '@mui/material';
 import { useState } from 'react';
-import './cards.css';
+import styles from './Cards.module.css';
 
 export const Cards = ({ tag, data, rnd }: any) => {
   const [currentCard, setCurrentCard] = useState<number>(0);
@@ -10,7 +10,7 @@ export const Cards = ({ tag, data, rnd }: any) => {
   return (
     <div>
       {/* Heading for topic */}
-      <h1 className='card-heading'>{tag}</h1>
+      <h1 className={styles.cardHeading}>{tag}</h1>
       <Stack
         direction='row'
         justifyContent='center'
@@ -18,7 +18,6 @@ export const Cards = ({ tag, data, rnd }: any) => {
         spacing={2}>
         {/* back button */}
         <Button
-          className='card-next-button'
           variant='contained'
           onClick={() => {
             if (currentCard > 0) {
@@ -31,13 +30,13 @@ export const Cards = ({ tag, data, rnd }: any) => {
         </Button>
         {/* card itself allows front and back*/}
         <div
-          className={`card_card-container card ${flip ? 'flip' : ''}`}
+          className={`${styles.cardContainer} ${styles.card} ${flip ? styles.flip : ''}`}
           onClick={(e) => {
             setCurrentView(!currentView);
             setFlip(!flip);
           }}>
           {currentView && (
-            <div className='front'>
+            <div className={styles.front}>
               <h2>Prompt</h2>
               <p>{data[rnd[currentCard]].prompt}</p>
               {data[rnd[currentCard]]?.hint && (
@@ -46,7 +45,7 @@ export const Cards = ({ tag, data, rnd }: any) => {
             </div>
           )}
           {!currentView && (
-            <div className='back'>
+            <div className={styles.back}>
               <h2>Answer</h2>
               <p>{data[rnd[currentCard]].response}</p>
             </div>
@@ -54,7 +53,6 @@ export const Cards = ({ tag, data, rnd }: any) => {
         </div>
         {/* back button */}
         <Button
-          className='card-back-button'
           variant='contained'
           onClick={() => {
             if (currentCard < data.length - 1) {
@@ -67,13 +65,12 @@ export const Cards = ({ tag, data, rnd }: any) => {
         </Button>
       </Stack>
       <Stack
-        className='card_flip-container'
+        className={styles.cardFlipContainer}
         direction='row'
         justifyContent='center'
         alignItems='center'
         spacing={2}>
         <Button
-          className='card-back-button'
           variant='contained'
           onClick={() => {
             setCurrentView(!currentView);
