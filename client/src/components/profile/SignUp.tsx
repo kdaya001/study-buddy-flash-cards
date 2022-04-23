@@ -32,6 +32,7 @@ export default function SignUp() {
       const body = {
         email: email,
         password: password,
+        confirmedPassword: confirmPassword,
       };
 
       axios

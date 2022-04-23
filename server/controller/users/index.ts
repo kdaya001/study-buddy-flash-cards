@@ -9,14 +9,21 @@ UsersController.post('/', validateCreateUser, async (req, res) => {
   const exists = await Users.getByEmail(req.body.email);
   if(!exists) {
     const user = req.body;
+    if(req.body.confirmedPassword === req.body.password) {
+      user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync());
 
-    user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync());
-
-    Users.createUser(user).then((response) => {
-      res.json({ status: 'ok' });
-    });
+      Users.createUser(user).then((response) => {
+        res.json({ status: 'ok' });
+      });
+    } else {
+      return res.status(400).json({
+        message: 'Passwords do not match',
+      });
+    }
   } else {
-    throw new Error('Account already exists');
+    return res.status(400).json({
+      message: 'Account already exists',
+    });
   }
 });
 

@@ -29,7 +29,6 @@ export const Update = () => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
 
-    // const body = [];
     const body: any = {
       tag: data?.tag,
       cards: [],
