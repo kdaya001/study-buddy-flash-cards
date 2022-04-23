@@ -12,6 +12,8 @@ Features include:
   2. For the answer/response
 * Users can cycle through a predetermined amount of cards for the specific tag (e.g. 10,20, 30)
 
+Genearl Assembly Software Engineering - Project 4 - Live Version
+
 ---
 
 ## Built With:
@@ -38,10 +40,6 @@ TBC Instructions for setup
 
 ![Create Card](/assets/wireframe_create-card.png)
 
----
-
-## User Stories
-
 
 ---
 ## Architecture
@@ -52,7 +50,7 @@ TODO
 
 ---
 
-## Database
+## Database Architecture
 Users:
 ```
 {
@@ -97,3 +95,36 @@ Extension features may include:
 - [x] Allowing users to create their own tags
 * Timer functionaltiy to flip over cards after the predetermined time
 * Allow hints for cards (both quizzes and normal flash cards)
+
+---
+## User Stories
+* As a student I want the ability to view fash cards so that I can reinforce my studies
+* As a student I want the ability to log into the service so that I can create my own cards
+* As a student I want the ability to create my own tags and cards for studying purposes
+
+---
+## General Approach
+This project was produced from the need to further my learning in my studies throughout the General Assembly Software Engineering Immersive bootcamp. Whilst studying, I found myself wanting to refinforce the knowledge I gained and found I wanted to make flash cards to help do that - that's where `Study Buddy` came in.
+
+To implement this project I wanted to use knowledge I had gained throughout the entire General Assembly course that I hadn't yet worked on from a project perspective. Because of this I decided to use `MongoDB`/Non Relational Databses, `React` and CSS frameworks (`Material UI`).
+
+General User Flow:
+![Genreal Flow](/assets/general-approach_basic-flow.png)
+![Update Flow](/assets/general-approach_update-flow.png)
+
+
+
+---
+
+## Necessary Deliverables
+[ ] A link to your hosted working app in the URL section of your GitHub repo
+[x] A git repository hosted on GitHub, with a link to your hosted project, and frequent commits dating back to the very beginning of the project
+A readme.md file with:
+  [ ] An embedded screenshot of the app
+  [x] Explanations of the technologies used
+  [x] A couple paragraphs about the general approach you took
+  [ ] Installation instructions for any dependencies
+  [x] User stories – who are your users, what do they want, and why?
+  [x] Wireframes – sketches of major views / interfaces in your application
+  [x] Link to your pitch deck – documentation of your wireframes, user stories, and proposed architecture
+  [ ] Descriptions of any unsolved problems or major hurdles you had to overcome
