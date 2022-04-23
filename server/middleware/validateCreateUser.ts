@@ -17,7 +17,7 @@ export const validateCreateUser = (req, res, next) => {
     });
   }
 
-  if (req.body.email.includes('@')) {
+  if (!req.body.email.includes('@')) {
     return res.status(400).json({
       message: 'Enter a valid email address.',
     });

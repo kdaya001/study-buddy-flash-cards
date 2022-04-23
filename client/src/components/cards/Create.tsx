@@ -10,7 +10,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { AiFillPlusCircle } from 'react-icons/ai';
 import { SelectDropDown } from './SelectDropDown';
-import './create.css';
+import styles from './Create.module.css';
 
 export const Create = () => {
   const [tag, setTag] = useState<any>([]);
@@ -95,31 +95,31 @@ export const Create = () => {
     <div>
       <h1>Create</h1>
       <Stack
-        className='create-option'
+        className={styles.createOption}
         direction='row'
         justifyContent='center'
         alignItems='center'
         spacing={3}>
       {notification && (
-        <Typography variant='body2' className='notification'>
+        <Typography variant='body2' className={styles.notification}>
           {notification}
         </Typography>
       )}
       {error && (
-        <Typography variant='body2' className='error'>
+        <Typography variant='body2' className={styles.error}>
           {error}
         </Typography>
       )}
       </Stack>
       <Stack
-        className='create-option'
+        className={styles.createOption}
         direction='row'
         justifyContent='center'
         alignItems='center'
         spacing={3}>
         Create a new tag:{' '}
         <AiFillPlusCircle
-          className='create-option-icon'
+          className={styles.createOptionIcon}
           onClick={() => {
             setCreateTag(!createTag);
           }}
@@ -160,14 +160,14 @@ export const Create = () => {
       )}
 
       <Stack
-        className='create-option'
+        className={styles.createOption}
         direction='row'
         justifyContent='center'
         alignItems='center'
         spacing={3}>
         Create a card:{' '}
         <AiFillPlusCircle
-          className='create-option-icon'
+          className={styles.createOptionIcon}
           onClick={() => {
             setCreateCard(!createCard);
           }}

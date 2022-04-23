@@ -4,14 +4,20 @@ const UsersController = express.Router();
 import bcrypt from 'bcrypt';
 import { validateCreateUser } from '../../middleware/validateCreateUser';
 
-UsersController.post('/', validateCreateUser, (req, res) => {
-  const user = req.body;
+UsersController.post('/', validateCreateUser, async (req, res) => {
 
-  user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync());
+  const exists = await Users.getByEmail(req.body.email);
+  if(!exists) {
+    const user = req.body;
 
-  Users.createUser(user).then((response) => {
-    res.json({ status: 'ok' });
-  });
+    user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync());
+
+    Users.createUser(user).then((response) => {
+      res.json({ status: 'ok' });
+    });
+  } else {
+    throw new Error('Account already exists');
+  }
 });
 
 UsersController.get(`/getByEmail/:email`, (req,res) => {

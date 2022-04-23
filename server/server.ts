@@ -10,7 +10,7 @@ const publicCardsController = require('./controller/cards/index');
 const usersController = require('./controller/users/index');
 const sessionsController = require('./controller/sessions/index');
 
-const logger = require("./middleware/logger");
+const logger = require('./middleware/logger');
 const errorHandler = require('./middleware/errorHandler');
 
 const PORT =
@@ -18,10 +18,10 @@ const PORT =
 const expressSession = require('express-session');
 const app = express();
 
-declare module "express-session" {
+declare module 'express-session' {
   interface SessionData {
-    email: string,
-    user_id: string,
+    email: string;
+    user_id: string;
   }
 }
 
@@ -59,6 +59,8 @@ db.connectToServer(function (err) {
     console.error(err);
     process.exit();
   }
+
+  app.use(errorHandler);
 
   app.listen(+PORT, () => {
     console.log(`Server listening on port ${PORT}`);

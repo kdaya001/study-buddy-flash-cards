@@ -1,4 +1,4 @@
-.card_card-container {
+.cardContainer {
   max-width: 520px;
   min-height: 350px;
   border: 1px solid black;
@@ -12,11 +12,11 @@
   width: 50%;
 }
 
-.card-heading {
+.cardHeading {
   text-align: center;
 }
 
-.card_flip-container {
+.cardFlipContainer {
   margin-top: 15px;
 }
 
@@ -29,7 +29,8 @@
   transform-style: preserve-3d;
   transition: 150ms;
   cursor: pointer;
-  transform: perspective(1000px) rotateX(var(--rotate-x, 0deg)) translateX(var(--translate-x, 0));
+  transform: perspective(1000px) rotateX(var(--rotate-x, 0deg))
+    translateX(var(--translate-x, 0));
 }
 
 .card.flip {
@@ -45,7 +46,6 @@
 .card .back {
   transform: rotateX(180deg);
 }
-
 
 @media only screen and (min-width: 600px) {
   p {

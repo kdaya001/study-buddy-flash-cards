@@ -10,18 +10,22 @@ import {
 } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
-import { useContext } from 'react';
-import { ActionType, ApplicationContext } from '../app-context';
+import { useContext, useState } from 'react';
+import { ActionType, ApplicationContext } from '../../app-context';
 import { useNavigate } from 'react-router-dom';
+import styles from './profile.module.css';
 
 const theme = createTheme();
 
 export default function Signin() {
   const [appState, appAction] = useContext(ApplicationContext);
+  const [error, setError] = useState<null | string>(null);
   let navigate = useNavigate();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setError(null);
+
     const data = new FormData(event.currentTarget);
 
     const body = {
@@ -34,21 +38,26 @@ export default function Signin() {
       `/api/users/getByEmail/${data.get('email')}`
     );
     if (userExists?.data) {
-      axios.post(`/api/sessions/`, body).then((res) => {
-        appAction({
-          type: ActionType.LOGIN,
-          payload: {
-            user: {
-              email: res.data?.email,
+      axios
+        .post(`/api/sessions/`, body)
+        .then((res) => {
+          appAction({
+            type: ActionType.LOGIN,
+            payload: {
+              user: {
+                email: res.data?.email,
+              },
             },
-          },
+          });
+          setTimeout(() => {
+            navigate(`/`);
+          }, 5000);
+        })
+        .catch((err) => {
+          setError(err.response.data.message);
         });
-        setTimeout(() => {
-          navigate(`/`);
-        }, 5000);
-      });
     } else {
-      console.log('invalid login');
+      setError('Invalid email or password');
     }
   };
 
@@ -66,8 +75,9 @@ export default function Signin() {
           <Typography component='h1' variant='h5'>
             Sign in
           </Typography>
+          {error && <Typography variant="body2" color="error" className={styles.error}>{error}</Typography>}
           {appState.currentUser && (
-            <Typography variant='body2' className='notification'>
+            <Typography variant='body2' className={styles.successful}>
               Successfully logged in
             </Typography>
           )}
