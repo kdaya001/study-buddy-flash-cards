@@ -41,6 +41,7 @@ export function Nav({ setStart }: any) {
             <Button
               color='inherit'
               onClick={() => {
+                setStart(false);
                 navigate(`/signup`);
               }}>
               SignUp
@@ -50,6 +51,7 @@ export function Nav({ setStart }: any) {
             <Button
               color='inherit'
               onClick={() => {
+                setStart(false);
                 navigate(`/login`);
               }}>
               Login
@@ -59,6 +61,7 @@ export function Nav({ setStart }: any) {
             <Button
               color='inherit'
               onClick={() => {
+                setStart(false);
                 navigate(`/create`);
               }}>
               Create
@@ -68,6 +71,7 @@ export function Nav({ setStart }: any) {
             <Button
               color='inherit'
               onClick={() => {
+                setStart(false);
                 navigate(`/update`);
               }}>
               Update Cards
@@ -78,6 +82,7 @@ export function Nav({ setStart }: any) {
               color='inherit'
               onClick={() => {
                 handleLogout();
+                setStart(false);
                 navigate(`/login`);
               }}>
               Logout
