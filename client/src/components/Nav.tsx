@@ -16,7 +16,7 @@ import styles from './Nav.module.css';
 
 export function Nav({ setStart }: any) {
   const [appState, appAction] = useContext(ApplicationContext);
-  const [checked, setChecked] = useState(true);
+  const [checked, setChecked] = useState(false);
   let navigate = useNavigate();
 
   const handleLogout = () => {

@@ -18,7 +18,7 @@ export interface ApplicationState {
 
 export const DefaultApplicationState: ApplicationState = {
     currentUser: null,
-    theme: "dark",
+    theme: "light",
 };
 
 export type ApplicationAction = LoginAction | LogoutAction | LightModeAction | DarkModeAction;
