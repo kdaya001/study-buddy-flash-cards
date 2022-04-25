@@ -55,7 +55,9 @@ function App() {
             {appState.currentUser && (
               <Route path='/create' element={<Create />} />
             )}
-            <Route path='/update' element={<Update />} />
+            {appState.currentUser && (
+              <Route path='/update' element={<Update />} />
+            )}
             <Route path='*' element={<NotFound />} />
           </Routes>
         </div>
