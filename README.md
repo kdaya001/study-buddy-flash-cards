@@ -128,7 +128,7 @@ Global Cards:
   - [ ] Gamification of the application (allow users to get scores and compare scores) - Dependent on implementation of authentication
 - [x] Include authentication
 - [ ] Allowing users to set cards as either private or public
-- [ ] Including a flip animation for the cards
+- [x] Including a flip animation for the cards
 - [x] Allowing users to create their own tags
 - [ ] Timer functionaltiy to flip over cards after the predetermined time
 - [ ] Allow hints for cards (both quizzes and normal flash cards)
