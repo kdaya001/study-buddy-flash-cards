@@ -3,3 +3,9 @@
 .navDark {
   background-color: var(--dark-nav) !important;
 }
+
+@media only screen and (max-width: 600px) {
+  .homeButton {
+    display:  none !important;
+  }
+}

@@ -12,7 +12,8 @@
 .dark {
   background-color:  var(--dark-background);
   color: var(--dark-secondary);
-  height: 100vh;
+  height: 100% !important;
+  min-height: 100vh;
 }
 
 @media (prefers-reduced-motion: no-preference) {

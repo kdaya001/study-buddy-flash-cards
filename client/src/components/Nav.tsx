@@ -108,6 +108,7 @@ export function Nav({ setStart }: any) {
             label=''
           />
           <Button
+            className={styles.homeButton}
             color='inherit'
             onClick={() => {
               setStart(false);
