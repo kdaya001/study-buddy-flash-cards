@@ -12,6 +12,11 @@
   width: 50%;
 }
 
+.cardDark {
+  background-color: white;
+  color: black;
+}
+
 .cardHeading {
   text-align: center;
 }
