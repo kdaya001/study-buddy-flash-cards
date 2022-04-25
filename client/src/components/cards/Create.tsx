@@ -16,7 +16,7 @@ export const Create = () => {
   const [tag, setTag] = useState<any>([]);
   const [allTags, setAllTags] = useState<any>(null);
   const [createTag, setCreateTag] = useState<boolean>(false);
-  const [createCard, setCreateCard] = useState<boolean>(false);
+  const [createCard, setCreateCard] = useState<boolean>(true);
   const [submitStatus, setSubmitStatus] = useState<boolean>(false);
   const [notification, setNotification] = useState<string>('');
   const [error, setError] = useState<string>('');
@@ -129,7 +129,7 @@ export const Create = () => {
       {createTag && (
         <Container component='main' maxWidth='xs'>
           <Typography component='h1' variant='h5'>
-            Create new tag
+            Add new tag
           </Typography>
           <Box
             component='form'
@@ -179,7 +179,7 @@ export const Create = () => {
           <Typography component='h1' variant='h5'>
             Create new cards
           </Typography>
-          <SelectDropDown options={allTags} tracker={setTag} label='Tag' />
+          {allTags && <SelectDropDown options={allTags} tracker={setTag} label='Tag' />}
           <Box
             component='form'
             onSubmit={handleSubmitCard}
