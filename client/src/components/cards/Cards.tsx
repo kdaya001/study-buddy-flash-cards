@@ -49,14 +49,14 @@ export const Cards = ({ tag, data, rnd }: any) => {
           }}>
           {currentView && (
             <div className={styles.front}>
-              <h2>Prompt</h2>
+              <h2 className={styles.prompt}>Prompt</h2>
               <p>{data[rnd[currentCard]].prompt}</p>
               <h5 className={styles.cardNumber}>{count} </h5>
             </div>
           )}
           {!currentView && (
             <div className={styles.back}>
-              <h2>Answer</h2>
+              <h2 className={styles.answer}>Answer</h2>
               <p>{data[rnd[currentCard]].response}</p>
             </div>
           )}

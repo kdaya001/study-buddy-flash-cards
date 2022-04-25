@@ -61,8 +61,20 @@
   background-color: var(--dark-secondary-variant) !important;
 }
 
+.prompt {
+  color: var(--red);
+}
+
+.answer {
+  color: var(--green);
+}
+
 @media only screen and (min-width: 600px) {
   p {
+    font-size: 1.8rem;
+  }
+
+  h2 {
     font-size: 2rem;
   }
 }
