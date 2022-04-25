@@ -1,5 +1,10 @@
 import React, { Reducer } from "react";
 
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)')
+.matches;
+
+const currentTheme = prefersDark ? 'dark' : 'light';
+
 export interface User {
     email: string;
 }
@@ -18,7 +23,7 @@ export interface ApplicationState {
 
 export const DefaultApplicationState: ApplicationState = {
     currentUser: null,
-    theme: "light",
+    theme: currentTheme,
 };
 
 export type ApplicationAction = LoginAction | LogoutAction | LightModeAction | DarkModeAction;
