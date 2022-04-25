@@ -14,10 +14,11 @@ import { NotFound } from './components/NotFound';
 import { Home } from './components/Home';
 import { Nav } from './components/Nav';
 import { Update } from './components/cards/Update';
+import styles from './App.module.css';
 
 type UserProps = {
   email: string;
-}
+};
 
 function App() {
   const [appState, appAction] = useReducer(
@@ -42,20 +43,20 @@ function App() {
   return (
     <ApplicationContext.Provider value={[appState, appAction]}>
       <BrowserRouter>
-        <Nav setStart={setStart} />
-        <Routes>
-          <Route path='/login' element={<Signin />} />
-          <Route path='/signup' element={<SignUp />} />
-          <Route
-            path='/'
-            element={<Home start={start} setStart={setStart} />}
-          />
-          {appState.currentUser && (
-            <Route path='/create' element={<Create />} />
-          )}
-          <Route path='/update' element={<Update />} />
-          <Route path='*' element={<NotFound />} />
-        </Routes>
+          <Nav setStart={setStart} />
+          <Routes>
+            <Route path='/login' element={<Signin />} />
+            <Route path='/signup' element={<SignUp />} />
+            <Route
+              path='/'
+              element={<Home start={start} setStart={setStart} />}
+            />
+            {appState.currentUser && (
+              <Route path='/create' element={<Create />} />
+            )}
+            <Route path='/update' element={<Update />} />
+            <Route path='*' element={<NotFound />} />
+          </Routes>
       </BrowserRouter>
     </ApplicationContext.Provider>
   );
