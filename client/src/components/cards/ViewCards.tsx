@@ -26,20 +26,23 @@ export const ViewCards = ({ start, setStart }: any) => {
           setCardData(res.data[0].cards);
           setTag(res.data[0].tag);
           setViewCardAmount(cardData.length);
+          setRnd(res.data[0]?.cards.length);
           setStart(true);
         }
       });
     }
   }, [selection]);
 
-  useEffect(() => {
+  const setRnd = (len: number) => {
+    console.log(len);
     let rndArr = [];
-    for (let i = 0; i < cardData.length; i++) {
-      let rnd = Math.floor(Math.random() * cardData.length);
+    for (let i = 0; i < len; i++) {
+      let rnd = Math.floor(Math.random() * len);
       rndArr.push(rnd);
     }
+    console.log(rndArr);
     setViewCardArr(rndArr);
-  }, [cardData]);
+  }
 
   // Get public tags
   useEffect(() => {
@@ -169,7 +172,6 @@ export const ViewCards = ({ start, setStart }: any) => {
                 setStart(false);
                 setViewCardAmount(0);
                 setCardData([]);
-                setStart(false);
               }}
               type='submit'
               variant='contained'
