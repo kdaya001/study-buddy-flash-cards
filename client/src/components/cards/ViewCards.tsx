@@ -35,12 +35,13 @@ export const ViewCards = ({ start, setStart }: any) => {
 
   const setRnd = (len: number) => {
     console.log(len);
-    let rndArr = [];
-    for (let i = 0; i < len; i++) {
+    let rndArr:number[] = [];
+    while(rndArr.length < len) {
       let rnd = Math.floor(Math.random() * len);
-      rndArr.push(rnd);
+      if (!rndArr.includes(rnd)) {
+        rndArr.push(rnd);
+      }
     }
-    console.log(rndArr);
     setViewCardArr(rndArr);
   }
 
