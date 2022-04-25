@@ -77,6 +77,9 @@ Navigate to http://localhost:3000
 
 ![Create Dark](/assets/app_create-dark.png)
 
+![Card](/assets/app_card.png)
+
+![Card Dark](/assets/app_card-dark.png)
 ---
 ## Architecture
 * Front end: React, CSS, MaterialUI
