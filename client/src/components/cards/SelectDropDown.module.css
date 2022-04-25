@@ -1,8 +1,10 @@
+@import '../../styles/theme/colors.css';
+
 .selection {
   margin-left: 0 !important;
 }
 
 .selectionDark {
-  background-color: white;
+  background-color: var(--dark-input);
   margin-left: 0 !important;
 }

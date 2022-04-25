@@ -1,20 +1,22 @@
+@import '../../styles/theme/colors.css';
+
 .cardContainer {
   max-width: 520px;
   min-height: 350px;
-  border: 1px solid black;
+  border: 1px solid var(--black);
   margin: 0 auto;
   text-align: center;
   position: relative;
   margin: auto;
   overflow: hidden;
-  box-shadow: 5px 10px pink;
+  box-shadow: 5px 10px var(--card-secondary);
   border-radius: 10px;
   width: 50%;
 }
 
 .cardDark {
-  background-color: white;
-  color: black;
+  background-color:  var(--dark-input);
+  color: var(--dark-primary);
 }
 
 .cardHeading {
@@ -53,7 +55,7 @@
 }
 
 .end {
-  color: red;
+  color: var(--red);
 }
 
 @media only screen and (min-width: 600px) {

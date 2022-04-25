@@ -1,3 +1,5 @@
+@import '../../styles/theme/colors.css';
+
 .styledTable {
   border-collapse: collapse;
   margin: 25px 0;
@@ -5,14 +7,14 @@
   font-family: sans-serif;
   width: 80%;
   min-width: 400px;
-  box-shadow: 0 0 20px #00000026;
+  box-shadow: 0 0 20px var(--black);
   margin: 0 auto;
   margin-top: 30px;
 }
 
 .trTHeadStyled {
-  background-color: #1976d2;
-  color: #ffffff;
+  background-color: var(--light-secondary-variant);
+  color: var(--white);
   text-align: left;
 }
 
@@ -22,7 +24,7 @@
 }
 
 .tableHeadDark {
-  background-color: #3700b3;
+  background-color: var(--dark-secondary-variant);
   text-align: left;
 }
 
@@ -43,8 +45,7 @@
   padding: 0.25em 0.5em;
   cursor: pointer;
   line-height: 1.1;
-  background-color: #fff;
-  background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+  background-color: var(--white);
 }
 
 .loading {
