@@ -43,6 +43,7 @@ function App() {
   return (
     <ApplicationContext.Provider value={[appState, appAction]}>
       <BrowserRouter>
+        <div className={appState.theme === 'dark' ? styles.dark : ''}>
           <Nav setStart={setStart} />
           <Routes>
             <Route path='/login' element={<Signin />} />
@@ -57,6 +58,7 @@ function App() {
             <Route path='/update' element={<Update />} />
             <Route path='*' element={<NotFound />} />
           </Routes>
+        </div>
       </BrowserRouter>
     </ApplicationContext.Provider>
   );
