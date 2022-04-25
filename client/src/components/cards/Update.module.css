@@ -7,3 +7,8 @@
 .update_input {
   margin-bottom: 10px !important;
 }
+
+.inputDark {
+  background-color: white;
+  margin-bottom: 10px !important;
+}

@@ -1,7 +1,10 @@
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import { useContext } from 'react';
+import { ApplicationContext } from '../../app-context';
 import styles from './SelectDropDown.module.css';
 
-export const SelectDropDown = ({options, label, tracker}: any) => {
+export const SelectDropDown = ({ options, label, tracker }: any) => {
+  const [appState, appAction] = useContext(ApplicationContext);
   const handleChange = (event: any) => {
     tracker({
       tag: event.target.dataset.value,
@@ -10,7 +13,11 @@ export const SelectDropDown = ({options, label, tracker}: any) => {
   };
 
   return (
-    <FormControl className={styles.selection} sx={{ m: 1, minWidth: 120 }}>
+    <FormControl
+      className={
+        appState.theme === 'dark' ? styles.selectionDark : styles.selection
+      }
+      sx={{ m: 1, minWidth: 120 }}>
       <InputLabel>{label}</InputLabel>
       <Select label='selection' defaultValue=''>
         {options.map((item: any) => {

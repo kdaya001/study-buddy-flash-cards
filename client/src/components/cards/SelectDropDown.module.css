@@ -1,3 +1,8 @@
 .selection {
   margin-left: 0 !important;
 }
+
+.selectionDark {
+  background-color: white;
+  margin-left: 0 !important;
+}

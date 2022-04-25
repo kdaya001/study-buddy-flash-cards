@@ -1,6 +1,7 @@
 import { Box, Button, FormControl, TextField } from '@mui/material';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { ApplicationContext } from '../../app-context';
 import { SelectDropDown } from './SelectDropDown';
 import styles from './Update.module.css';
 
@@ -8,6 +9,7 @@ export const Update = () => {
   const [data, setData] = useState<any>([]);
   const [allTags, setAllTags] = useState<any>(null);
   const [tag, setTag] = useState<any>(null);
+  const [appState, appAction] = useContext(ApplicationContext);
 
   useEffect(() => {
     if (tag) {
@@ -56,7 +58,6 @@ export const Update = () => {
         <h4>Select topic to update:</h4>
         {allTags && (
           <SelectDropDown
-            classname='selection'
             options={allTags}
             tracker={setTag}
             label='Tag'
@@ -69,7 +70,11 @@ export const Update = () => {
                 <div key={idx}>
                   <h5>Card #{idx + 1}</h5>
                   <TextField
-                    className={styles.update_input}
+                    className={
+                      appState.theme === 'dark'
+                        ? styles.inputDark
+                        : styles.update_input
+                    }
                     label='prompt'
                     id={`${idx}-prompt`}
                     name={`${idx}-prompt`}
@@ -77,7 +82,11 @@ export const Update = () => {
                     defaultValue={item.prompt}
                   />
                   <TextField
-                    className={styles.update_input}
+                    className={
+                      appState.theme === 'dark'
+                        ? styles.inputDark
+                        : styles.update_input
+                    }
                     label='response'
                     id={`${idx}-response`}
                     name={`${idx}-response`}
@@ -87,13 +96,15 @@ export const Update = () => {
                 </div>
               );
             })}
-          {data?.cards  && <Button
-            type='submit'
-            fullWidth
-            variant='contained'
-            sx={{ mt: 3, mb: 2 }}>
-            Submit
-          </Button>}
+          {data?.cards && (
+            <Button
+              type='submit'
+              fullWidth
+              variant='contained'
+              sx={{ mt: 3, mb: 2 }}>
+              Submit
+            </Button>
+          )}
         </Box>
       </FormControl>
     </div>

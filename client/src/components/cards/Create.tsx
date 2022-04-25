@@ -7,10 +7,11 @@ import {
   Typography,
 } from '@mui/material';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AiFillPlusCircle } from 'react-icons/ai';
 import { SelectDropDown } from './SelectDropDown';
 import styles from './Create.module.css';
+import { ApplicationContext } from '../../app-context';
 
 export const Create = () => {
   const [tag, setTag] = useState<any>([]);
@@ -23,11 +24,12 @@ export const Create = () => {
   const [inputTag, setInputTag] = useState<string>('');
   const [inputPrompt, setInputPrompt] = useState<string>('');
   const [inputResponse, setInputResponse] = useState<string>('');
+  const [appState, appAction] = useContext(ApplicationContext);
 
   const clearNotifications = () => {
     setError('');
     setNotification('');
-  }
+  };
 
   useEffect(() => {
     axios.get(`/api/cards/private/get/tags`).then((res) => {
@@ -79,17 +81,17 @@ export const Create = () => {
     setSubmitStatus(true);
   };
 
-  const handleTagInputChange = (event:any) => {
+  const handleTagInputChange = (event: any) => {
     setInputTag(event.target.value);
-  }
+  };
 
-  const handleResponseInputChange = (event:any) => {
+  const handleResponseInputChange = (event: any) => {
     setInputResponse(event.target.value);
-  }
+  };
 
-  const handlePromptInputChange = (event:any) => {
+  const handlePromptInputChange = (event: any) => {
     setInputPrompt(event.target.value);
-  }
+  };
 
   return (
     <div>
@@ -100,16 +102,16 @@ export const Create = () => {
         justifyContent='center'
         alignItems='center'
         spacing={3}>
-      {notification && (
-        <Typography variant='body2' className={styles.notification}>
-          {notification}
-        </Typography>
-      )}
-      {error && (
-        <Typography variant='body2' className={styles.error}>
-          {error}
-        </Typography>
-      )}
+        {notification && (
+          <Typography variant='body2' className={styles.notification}>
+            {notification}
+          </Typography>
+        )}
+        {error && (
+          <Typography variant='body2' className={styles.error}>
+            {error}
+          </Typography>
+        )}
       </Stack>
       <Stack
         className={styles.createOption}
@@ -137,6 +139,7 @@ export const Create = () => {
             noValidate
             sx={{ mt: 1 }}>
             <TextField
+              className={appState.theme === 'dark' ? styles.inputDark : ''}
               margin='normal'
               required
               fullWidth
@@ -179,13 +182,16 @@ export const Create = () => {
           <Typography component='h1' variant='h5'>
             Create new cards
           </Typography>
-          {allTags && <SelectDropDown options={allTags} tracker={setTag} label='Tag' />}
+          {allTags && (
+            <SelectDropDown options={allTags} tracker={setTag} label='Tag' />
+          )}
           <Box
             component='form'
             onSubmit={handleSubmitCard}
             noValidate
             sx={{ mt: 1 }}>
             <TextField
+              className={appState.theme === 'dark' ? styles.inputDark : ''}
               margin='normal'
               required
               fullWidth
@@ -198,6 +204,7 @@ export const Create = () => {
               onChange={handlePromptInputChange}
             />
             <TextField
+              className={appState.theme === 'dark' ? styles.inputDark : ''}
               margin='normal'
               required
               fullWidth
