@@ -43,7 +43,7 @@ function App() {
   return (
     <ApplicationContext.Provider value={[appState, appAction]}>
       <BrowserRouter>
-        <div className={appState.theme === 'dark' ? styles.dark : ''}>
+        <div className={appState.theme === 'dark' ? styles.dark : styles.light}>
           <Nav setStart={setStart} />
           <Routes>
             <Route path='/login' element={<Signin />} />
