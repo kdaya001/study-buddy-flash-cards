@@ -17,3 +17,7 @@
 .inputDark {
   background-color:  var(--dark-input);
 }
+
+.darkbutton {
+  background-color: var(--dark-secondary-variant) !important;
+}

@@ -152,6 +152,7 @@ export const Create = () => {
               onChange={handleTagInputChange}
             />
             <Button
+              className={appState.theme === 'dark' ? styles.darkbutton : ''}
               type='submit'
               fullWidth
               variant='contained'
@@ -217,6 +218,7 @@ export const Create = () => {
               onChange={handleResponseInputChange}
             />
             <Button
+              className={appState.theme === 'dark' ? styles.darkbutton : ''}
               type='submit'
               fullWidth
               variant='contained'

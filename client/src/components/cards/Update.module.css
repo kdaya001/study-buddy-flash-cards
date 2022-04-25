@@ -14,3 +14,7 @@
   background-color: var(--dark-input);
   margin-bottom: 10px !important;
 }
+
+.darkbutton {
+  background-color: var(--dark-secondary-variant) !important;
+}

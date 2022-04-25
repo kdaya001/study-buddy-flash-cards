@@ -14,7 +14,9 @@ export const Cards = ({ tag, data, rnd }: any) => {
       {/* Heading for topic */}
       <h1 className={styles.cardHeading}>{tag}</h1>
       {currentCard === data.length - 1 && (
-        <h1 className={styles.end}>You've reached the end, choose another topic</h1>
+        <h1 className={styles.end}>
+          You've reached the end, choose another topic
+        </h1>
       )}
       <Stack
         direction='row'
@@ -23,6 +25,7 @@ export const Cards = ({ tag, data, rnd }: any) => {
         spacing={2}>
         {/* back button */}
         <Button
+          className={appState.theme === 'dark' ? styles.darkbutton : ''}
           variant='contained'
           onClick={() => {
             if (currentCard > 0) {
@@ -35,7 +38,9 @@ export const Cards = ({ tag, data, rnd }: any) => {
         </Button>
         {/* card itself allows front and back*/}
         <div
-          className={`${styles.cardContainer} ${styles.card} ${flip ? styles.flip : ''} ${appState.theme === 'dark' ? styles.cardDark : ''}`}
+          className={`${styles.cardContainer} ${styles.card} ${
+            flip ? styles.flip : ''
+          } ${appState.theme === 'dark' ? styles.cardDark : ''}`}
           onClick={(e) => {
             setCurrentView(!currentView);
             setFlip(!flip);
@@ -58,6 +63,7 @@ export const Cards = ({ tag, data, rnd }: any) => {
         </div>
         {/* back button */}
         <Button
+          className={appState.theme === 'dark' ? styles.darkbutton : ''}
           variant='contained'
           onClick={() => {
             if (currentCard < data.length - 1) {
@@ -76,6 +82,7 @@ export const Cards = ({ tag, data, rnd }: any) => {
         alignItems='center'
         spacing={2}>
         <Button
+          className={appState.theme === 'dark' ? styles.darkbutton : ''}
           variant='contained'
           onClick={() => {
             setCurrentView(!currentView);

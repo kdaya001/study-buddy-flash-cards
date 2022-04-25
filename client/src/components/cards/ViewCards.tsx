@@ -35,15 +35,15 @@ export const ViewCards = ({ start, setStart }: any) => {
 
   const setRnd = (len: number) => {
     console.log(len);
-    let rndArr:number[] = [];
-    while(rndArr.length < len) {
+    let rndArr: number[] = [];
+    while (rndArr.length < len) {
       let rnd = Math.floor(Math.random() * len);
       if (!rndArr.includes(rnd)) {
         rndArr.push(rnd);
       }
     }
     setViewCardArr(rndArr);
-  }
+  };
 
   // Get public tags
   useEffect(() => {
@@ -107,7 +107,12 @@ export const ViewCards = ({ start, setStart }: any) => {
           <h1>Pick your poison</h1>
           <table className={styles.styledTable}>
             <thead>
-              <tr className={appState.theme === 'dark' ? styles.tableHeadDark : styles.trTHeadStyled}>
+              <tr
+                className={
+                  appState.theme === 'dark'
+                    ? styles.tableHeadDark
+                    : styles.trTHeadStyled
+                }>
                 <th>Topic</th>
                 <th>Total Cards</th>
                 <th>Options</th>
@@ -136,6 +141,9 @@ export const ViewCards = ({ start, setStart }: any) => {
                     </td>
                     <td>
                       <Button
+                        className={
+                          appState.theme === 'dark' ? styles.darkbutton : ''
+                        }
                         id={row.id}
                         variant='contained'
                         onClick={(e: any) => {
@@ -149,9 +157,15 @@ export const ViewCards = ({ start, setStart }: any) => {
               })}
             </tbody>
           </table>
-          {loading && <Stack sx={{ color: 'grey.500' }} className={styles.loading} spacing={2} direction='row'>
-            <CircularProgress color='secondary' />
-          </Stack>}
+          {loading && (
+            <Stack
+              sx={{ color: 'grey.500' }}
+              className={styles.loading}
+              spacing={2}
+              direction='row'>
+              <CircularProgress color='secondary' />
+            </Stack>
+          )}
         </>
       )}
 
@@ -169,6 +183,7 @@ export const ViewCards = ({ start, setStart }: any) => {
             alignItems='center'
             spacing={2}>
             <Button
+              className={appState.theme === 'dark' ? styles.darkbutton : ''}
               onClick={() => {
                 setStart(false);
                 setViewCardAmount(0);

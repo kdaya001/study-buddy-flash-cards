@@ -57,11 +57,7 @@ export const Update = () => {
       <FormControl className={styles.update_form} sx={{ m: 1 }}>
         <h4>Select topic to update:</h4>
         {allTags && (
-          <SelectDropDown
-            options={allTags}
-            tracker={setTag}
-            label='Tag'
-          />
+          <SelectDropDown options={allTags} tracker={setTag} label='Tag' />
         )}
         <Box component='form' onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           {data?.cards &&
@@ -98,6 +94,7 @@ export const Update = () => {
             })}
           {data?.cards && (
             <Button
+              className={appState.theme === 'dark' ? styles.darkbutton : ''}
               type='submit'
               fullWidth
               variant='contained'

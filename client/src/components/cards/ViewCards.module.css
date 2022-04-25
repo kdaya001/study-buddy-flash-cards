@@ -51,3 +51,7 @@
 .loading {
   justify-content: center;
 }
+
+.darkbutton {
+  background-color: var(--dark-secondary-variant) !important;
+}
