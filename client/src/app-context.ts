@@ -7,6 +7,8 @@ export interface User {
 export enum ActionType {
     LOGIN = "login",
     LOGOUT = "logout",
+    LIGHTMODE = 'toggleLight',
+    DARKMODE = 'toggleDark',
 }
 
 export interface ApplicationState {
@@ -16,10 +18,10 @@ export interface ApplicationState {
 
 export const DefaultApplicationState: ApplicationState = {
     currentUser: null,
-    theme: "light",
+    theme: "dark",
 };
 
-export type ApplicationAction = LoginAction | LogoutAction;
+export type ApplicationAction = LoginAction | LogoutAction | LightModeAction | DarkModeAction;
 
 export interface LoginAction {
     type: ActionType.LOGIN;
@@ -32,6 +34,14 @@ export interface LogoutAction {
     type: ActionType.LOGOUT;
 }
 
+export interface LightModeAction {
+    type: ActionType.LIGHTMODE;
+}
+
+export interface DarkModeAction {
+    type: ActionType.DARKMODE;
+}
+
 export const ApplicationContextReducer: Reducer<
     ApplicationState,
     ApplicationAction
@@ -41,14 +51,22 @@ export const ApplicationContextReducer: Reducer<
             return {
                 ...state,
                 currentUser: action.payload.user,
-                // theme: "dark",
             };
         case ActionType.LOGOUT:
             return {
                 ...state,
                 currentUser: null,
-                // theme: "light",
             };
+        case ActionType.LIGHTMODE:
+            return {
+                ...state,
+                theme: 'light'
+            };
+        case ActionType.DARKMODE:
+            return {
+                ...state,
+                theme: 'dark'
+            }
     }
 };
 

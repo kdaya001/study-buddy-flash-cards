@@ -75,7 +75,11 @@ export default function Signin() {
           <Typography component='h1' variant='h5'>
             Sign in
           </Typography>
-          {error && <Typography variant="body2" color="error" className={styles.error}>{error}</Typography>}
+          {error && (
+            <Typography variant='body2' color='error' className={styles.error}>
+              {error}
+            </Typography>
+          )}
           {appState.currentUser && (
             <Typography variant='body2' className={styles.successful}>
               Successfully logged in
@@ -87,6 +91,7 @@ export default function Signin() {
             noValidate
             sx={{ mt: 1 }}>
             <TextField
+              className={appState.theme === 'dark' ? styles.inputDark : ''}
               margin='normal'
               required
               fullWidth
@@ -97,6 +102,7 @@ export default function Signin() {
               autoFocus
             />
             <TextField
+              className={appState.theme === 'dark' ? styles.inputDark : ''}
               margin='normal'
               required
               fullWidth

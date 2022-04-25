@@ -1,12 +1,13 @@
 import { Button, Stack } from '@mui/material';
-import { style } from '@mui/system';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { ApplicationContext } from '../../app-context';
 import styles from './Cards.module.css';
 
 export const Cards = ({ tag, data, rnd }: any) => {
   const [currentCard, setCurrentCard] = useState<number>(0);
   const [currentView, setCurrentView] = useState<boolean>(true);
   const [flip, setFlip] = useState<boolean>(false);
+  const [appState, appAction] = useContext(ApplicationContext);
 
   return (
     <div>
@@ -34,7 +35,7 @@ export const Cards = ({ tag, data, rnd }: any) => {
         </Button>
         {/* card itself allows front and back*/}
         <div
-          className={`${styles.cardContainer} ${styles.card} ${flip ? styles.flip : ''}`}
+          className={`${styles.cardContainer} ${styles.card} ${flip ? styles.flip : ''} ${appState.theme === 'dark' ? styles.cardDark : ''}`}
           onClick={(e) => {
             setCurrentView(!currentView);
             setFlip(!flip);

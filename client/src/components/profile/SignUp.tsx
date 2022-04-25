@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
 import {
@@ -13,6 +13,7 @@ import {
 } from '@mui/material';
 import styles from './profile.module.css';
 import { useNavigate } from 'react-router-dom';
+import { ApplicationContext } from '../../app-context';
 
 const theme = createTheme();
 
@@ -23,9 +24,11 @@ export default function SignUp() {
   const [validPassword, setValidPassword] = useState<null | boolean>(null);
   const [error, setError] = useState<null | string>(null);
   let navigate = useNavigate();
+  const [appState, appAction] = useContext(ApplicationContext);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setValidPassword(password === confirmPassword);
     setError(null);
 
     if (validPassword && email && password) {
@@ -47,10 +50,6 @@ export default function SignUp() {
       setError('Invalid email or password');
     }
   };
-
-  useEffect(() => {
-    setValidPassword(password === confirmPassword);
-  }, [password, confirmPassword]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -79,6 +78,7 @@ export default function SignUp() {
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField
+                  className={appState.theme === 'dark' ? styles.inputDark : ''}
                   required
                   fullWidth
                   id='email'
@@ -92,6 +92,7 @@ export default function SignUp() {
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                  className={appState.theme === 'dark' ? styles.inputDark : ''}
                   required
                   fullWidth
                   name='password'
@@ -106,6 +107,7 @@ export default function SignUp() {
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                  className={appState.theme === 'dark' ? styles.inputDark : ''}
                   required
                   fullWidth
                   name='password'
