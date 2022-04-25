@@ -1,3 +1,5 @@
+@import '../../styles/theme/colors.css';
+
 .update_form {
   width: 80%;
   margin: 0 auto !important;
@@ -9,6 +11,6 @@
 }
 
 .inputDark {
-  background-color: white;
+  background-color: var(--dark-input);
   margin-bottom: 10px !important;
 }

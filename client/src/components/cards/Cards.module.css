@@ -1,3 +1,5 @@
+@import '../../styles/theme/colors.css';
+
 .cardContainer {
   max-width: 520px;
   min-height: 350px;
@@ -13,8 +15,8 @@
 }
 
 .cardDark {
-  background-color: white;
-  color: black;
+  background-color:  var(--dark-input);
+  color: var(--dark-primary);
 }
 
 .cardHeading {

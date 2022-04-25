@@ -1,3 +1,5 @@
+@import '../styles/theme/colors.css';
+
 .navDark {
-  background-color: #1F1B24;
+  background-color: var(--dark-nav) !important;
 }
