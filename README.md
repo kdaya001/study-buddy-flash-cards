@@ -54,8 +54,6 @@ Navigate to http://localhost:3000
 ```
 
 
-
-
 ---
 
 ## Wireframes
@@ -70,11 +68,19 @@ Navigate to http://localhost:3000
 
 
 ---
+## App Screenshots
+![Home](/assets/app_home.png)
+
+![Home Dark](/assets//app_home-dark.png)
+
+![Create](/assets/app_create.png)
+
+![Create Dark](/assets/app_create-dark.png)
+
+---
 ## Architecture
 * Front end: React, CSS, MaterialUI
 * Back end: MongoDB, Express
-
-TODO
 
 ---
 
@@ -141,14 +147,13 @@ General User Flow:
 ![Update Flow](/assets/general-approach_update-flow.png)
 
 
-
 ---
 
 ## Necessary Deliverables
 - [ ] A link to your hosted working app in the URL section of your GitHub repo
 - [x] A git repository hosted on GitHub, with a link to your hosted project, and frequent commits dating back to the very beginning of the project
 A readme.md file with:
-  - [ ] An embedded screenshot of the app
+  - [x] An embedded screenshot of the app
   - [x] Explanations of the technologies used
   - [x] A couple paragraphs about the general approach you took
   - [x] Installation instructions for any dependencies
