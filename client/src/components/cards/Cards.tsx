@@ -8,6 +8,7 @@ export const Cards = ({ tag, data, rnd }: any) => {
   const [currentView, setCurrentView] = useState<boolean>(true);
   const [flip, setFlip] = useState<boolean>(false);
   const [appState, appAction] = useContext(ApplicationContext);
+  const [count, setCount] = useState<number>(1);
 
   return (
     <div>
@@ -32,6 +33,7 @@ export const Cards = ({ tag, data, rnd }: any) => {
               setCurrentCard(currentCard - 1);
               setCurrentView(true);
               setFlip(false);
+              setCount(count - 1);
             }
           }}>
           {`<`}
@@ -49,9 +51,7 @@ export const Cards = ({ tag, data, rnd }: any) => {
             <div className={styles.front}>
               <h2>Prompt</h2>
               <p>{data[rnd[currentCard]].prompt}</p>
-              {data[rnd[currentCard]]?.hint && (
-                <p>{data[rnd[currentCard]].response}</p>
-              )}
+              <h5 className={styles.cardNumber}>{count} </h5>
             </div>
           )}
           {!currentView && (
@@ -70,6 +70,7 @@ export const Cards = ({ tag, data, rnd }: any) => {
               setCurrentCard(currentCard + 1);
               setCurrentView(true);
               setFlip(false);
+              setCount(count + 1);
             }
           }}>
           {`>`}

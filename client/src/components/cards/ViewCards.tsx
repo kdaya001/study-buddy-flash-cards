@@ -115,7 +115,7 @@ export const ViewCards = ({ start, setStart }: any) => {
                 }>
                 <th>Topic</th>
                 <th>Total Cards</th>
-                <th>Options</th>
+                <th></th>
                 <th>Start</th>
               </tr>
             </thead>

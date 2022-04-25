@@ -9,7 +9,6 @@
   position: relative;
   margin: auto;
   overflow: hidden;
-  box-shadow: 5px 10px var(--card-secondary);
   border-radius: 10px;
   width: 50%;
 }
