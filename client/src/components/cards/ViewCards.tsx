@@ -106,7 +106,7 @@ export const ViewCards = ({ start, setStart }: any) => {
           <h1>Pick your poison</h1>
           <table className={styles.styledTable}>
             <thead>
-              <tr className={styles.trTHeadStyled}>
+              <tr className={appState.theme === 'dark' ? styles.tableHeadDark : styles.trTHeadStyled}>
                 <th>Topic</th>
                 <th>Total Cards</th>
                 <th>Options</th>

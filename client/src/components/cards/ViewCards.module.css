@@ -16,13 +16,20 @@
   text-align: left;
 }
 
-.trTHeadStyled th {
+.trTHeadStyled th,
+.tableHeadDark th {
   font-size: 1.25rem;
 }
 
+.tableHeadDark {
+  background-color: #3700b3;
+  text-align: left;
+}
+
 .trTHeadStyled th,
+.tableHeadDark th,
 .trTBodyStyled td {
-    padding: 12px 15px;
+  padding: 12px 15px;
 }
 
 .trTBodyStyled {

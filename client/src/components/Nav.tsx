@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useContext, useState } from 'react';
 import { ActionType, ApplicationContext } from '../app-context';
+import styles from './Nav.module.css';
 
 export function Nav({ setStart }: any) {
   const [appState, appAction] = useContext(ApplicationContext);
@@ -85,7 +86,7 @@ export function Nav({ setStart }: any) {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar className='nav_navbar' position='static'>
+      <AppBar className={appState.theme === 'dark' ? styles.navDark : ''} position='static'>
         <Toolbar>
           <Typography
             onClick={() => {
