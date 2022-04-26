@@ -22,10 +22,9 @@ export const ViewCards = ({ start, setStart }: any) => {
   useEffect(() => {
     if (selection) {
       axios.get(`/api/cards/get/${selection}`).then((res) => {
-        if (res.data.length > 0) {
+        if (res.data.length > 0 && viewCardAmount > 0) {
           setCardData(res.data[0].cards);
           setTag(res.data[0].tag);
-          setViewCardAmount(cardData.length);
           setRnd(res.data[0]?.cards.length);
           setStart(true);
         }
@@ -34,9 +33,8 @@ export const ViewCards = ({ start, setStart }: any) => {
   }, [selection]);
 
   const setRnd = (len: number) => {
-    console.log(len);
     let rndArr: number[] = [];
-    while (rndArr.length < len) {
+    while (rndArr.length < viewCardAmount) {
       let rnd = Math.floor(Math.random() * len);
       if (!rndArr.includes(rnd)) {
         rndArr.push(rnd);
@@ -115,7 +113,7 @@ export const ViewCards = ({ start, setStart }: any) => {
                 }>
                 <th>Topic</th>
                 <th>Total Cards</th>
-                <th>Difficulty</th>
+                <th></th>
                 <th>Start</th>
               </tr>
             </thead>
@@ -129,10 +127,17 @@ export const ViewCards = ({ start, setStart }: any) => {
                       <select
                         name='options'
                         id='options'
-                        className={styles.option}>
+                        defaultValue={'choose'}
+                        className={styles.option}
+                        onChange={(event) =>
+                          setViewCardAmount(parseInt(event?.target.value))
+                        }>
+                        <option value='choose' disabled>
+                          Choose
+                        </option>
                         {row.options.map((option: any) => {
                           return (
-                            <option key={option} value={option}>
+                            <option id={row.tag} key={option} value={option}>
                               {option}
                             </option>
                           );

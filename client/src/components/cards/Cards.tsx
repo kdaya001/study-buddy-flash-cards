@@ -9,12 +9,11 @@ export const Cards = ({ tag, data, rnd }: any) => {
   const [flip, setFlip] = useState<boolean>(false);
   const [appState, appAction] = useContext(ApplicationContext);
   const [count, setCount] = useState<number>(1);
-
   return (
     <div>
       {/* Heading for topic */}
       <h1 className={styles.cardHeading}>{tag}</h1>
-      {currentCard === data.length - 1 && (
+      {currentCard === rnd.length - 1 && (
         <h1 className={styles.end}>
           You've reached the end, choose another topic
         </h1>
@@ -66,7 +65,7 @@ export const Cards = ({ tag, data, rnd }: any) => {
           className={appState.theme === 'dark' ? styles.darkbutton : ''}
           variant='contained'
           onClick={() => {
-            if (currentCard < data.length - 1) {
+            if (currentCard < rnd.length - 1) {
               setCurrentCard(currentCard + 1);
               setCurrentView(true);
               setFlip(false);
