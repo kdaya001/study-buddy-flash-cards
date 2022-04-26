@@ -16,7 +16,7 @@ export const ViewCards = ({ start, setStart }: any) => {
   const [viewCardAmount, setViewCardAmount] = useState<Number>(0);
   const [viewCardArr, setViewCardArr] = useState<any>([]);
   const [tag, setTag] = useState<string | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
 
   //Get data on start
   useEffect(() => {
@@ -82,13 +82,8 @@ export const ViewCards = ({ start, setStart }: any) => {
       };
     });
     setRows(rowData);
+    setLoading(false);
   }, [allTags]);
-
-  useEffect(() => {
-    if(!start) {
-    setViewCardAmount(0);
-    }
-  }, [start])
 
   const getOptions = (cards: any) => {
     const options = [];
@@ -104,22 +99,11 @@ export const ViewCards = ({ start, setStart }: any) => {
     return options;
   };
 
-  console.log(viewCardAmount)
-
   return (
     <div>
       {!start && (
         <>
           <h1>Pick your poison</h1>
-          {(rows.length === 0 || (loading && viewCardAmount !== 0)) && (
-            <Stack
-              sx={{ color: 'grey.500' }}
-              className={styles.loading}
-              spacing={2}
-              direction='row'>
-              <CircularProgress color='secondary' />
-            </Stack>
-          )}
           <table className={styles.styledTable}>
             <thead>
               <tr
@@ -179,6 +163,15 @@ export const ViewCards = ({ start, setStart }: any) => {
               })}
             </tbody>
           </table>
+          {loading && (
+            <Stack
+              sx={{ color: 'grey.500' }}
+              className={styles.loading}
+              spacing={2}
+              direction='row'>
+              <CircularProgress color='secondary' />
+            </Stack>
+          )}
         </>
       )}
 
