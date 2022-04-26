@@ -34,7 +34,9 @@ export const ViewCards = ({ start, setStart }: any) => {
   }, [selection]);
 
   useEffect(() => {
-    setLoading(false);
+    if(!start) {
+      setLoading(false);
+    }
   }, [start])
 
   const setRnd = (len: number) => {
