@@ -23,6 +23,7 @@ export const ViewCards = ({ start, setStart }: any) => {
     if (selection) {
       axios.get(`/api/cards/get/${selection}`).then((res) => {
         if (res.data.length > 0 && viewCardAmount > 0) {
+          setLoading(true);
           setCardData(res.data[0].cards);
           setTag(res.data[0].tag);
           setRnd(res.data[0]?.cards.length);
@@ -31,6 +32,10 @@ export const ViewCards = ({ start, setStart }: any) => {
       });
     }
   }, [selection]);
+
+  useEffect(() => {
+    setLoading(false);
+  }, [start])
 
   const setRnd = (len: number) => {
     let rndArr: number[] = [];
@@ -103,6 +108,15 @@ export const ViewCards = ({ start, setStart }: any) => {
       {!start && (
         <>
           <h1>Pick your poison</h1>
+          {loading && (
+            <Stack
+              sx={{ color: 'grey.500' }}
+              className={styles.loading}
+              spacing={2}
+              direction='row'>
+              <CircularProgress color='secondary' />
+            </Stack>
+          )}
           <table className={styles.styledTable}>
             <thead>
               <tr
@@ -162,15 +176,6 @@ export const ViewCards = ({ start, setStart }: any) => {
               })}
             </tbody>
           </table>
-          {loading && (
-            <Stack
-              sx={{ color: 'grey.500' }}
-              className={styles.loading}
-              spacing={2}
-              direction='row'>
-              <CircularProgress color='secondary' />
-            </Stack>
-          )}
         </>
       )}
 
