@@ -23,7 +23,6 @@ export const ViewCards = ({ start, setStart }: any) => {
     if (selection) {
       axios.get(`/api/cards/get/${selection}`).then((res) => {
         if (res.data.length > 0 && viewCardAmount > 0) {
-          setLoading(true);
           setCardData(res.data[0].cards);
           setTag(res.data[0].tag);
           setRnd(res.data[0]?.cards.length);
