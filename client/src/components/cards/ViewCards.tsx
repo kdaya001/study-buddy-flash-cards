@@ -27,6 +27,7 @@ export const ViewCards = ({ start, setStart }: any) => {
           setTag(res.data[0].tag);
           setRnd(res.data[0]?.cards.length);
           setStart(true);
+          setLoading(false);
         }
       });
     }
@@ -87,7 +88,7 @@ export const ViewCards = ({ start, setStart }: any) => {
       {!start && (
         <>
           <h1>Pick your poison</h1>
-          {!rows && <LinearProgress />}
+          {rows.length <= 0 && <LinearProgress />}
           <table className={styles.styledTable}>
             <thead>
               <tr
@@ -141,7 +142,6 @@ export const ViewCards = ({ start, setStart }: any) => {
       {start && (
         <>
           <Cards
-            setLoading={setLoading}
             data={cardData}
             tag={tag}
             amount={viewCardAmount}
