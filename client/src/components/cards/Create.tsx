@@ -12,6 +12,7 @@ import { AiFillPlusCircle } from 'react-icons/ai';
 import { SelectDropDown } from './SelectDropDown';
 import styles from './Create.module.css';
 import { ApplicationContext } from '../../app-context';
+import { light } from '@mui/material/styles/createPalette';
 
 export const Create = () => {
   const [tag, setTag] = useState<any>([]);
@@ -192,7 +193,7 @@ export const Create = () => {
             noValidate
             sx={{ mt: 1 }}>
             <TextField
-              className={appState.theme === 'dark' ? styles.inputDark : ''}
+              className={appState.theme === 'dark' ? styles.inputDark : styles.inputLight}
               margin='normal'
               required
               fullWidth
@@ -218,7 +219,7 @@ export const Create = () => {
               onChange={handleResponseInputChange}
             />
             <Button
-              className={appState.theme === 'dark' ? styles.darkbutton : styles.inputLight}
+              className={appState.theme === 'dark' ? styles.darkbutton : styles.lightbutton}
               type='submit'
               fullWidth
               variant='contained'
