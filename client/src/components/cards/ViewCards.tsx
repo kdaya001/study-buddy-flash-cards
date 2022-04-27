@@ -107,8 +107,6 @@ export const ViewCards = ({ start, setStart }: any) => {
                     <td>{row.tag}</td>
                     <td>{row.total}</td>
                     <td>
-                    </td>
-                    <td>
                       <Button
                         className={
                           appState.theme === 'dark' ? styles.darkbutton : ''

@@ -38,16 +38,6 @@
   border-bottom: 2px solid #1976d2;
 }
 
-.option {
-  min-width: 15ch;
-  max-width: 30ch;
-  border-radius: 0.25em;
-  padding: 0.25em 0.5em;
-  cursor: pointer;
-  line-height: 1.1;
-  background-color: var(--white);
-}
-
 .loading {
   justify-content: center;
 }

@@ -10,7 +10,7 @@ export const Cards = ({ tag, data, rnd }: any) => {
   const [appState, appAction] = useContext(ApplicationContext);
   const [count, setCount] = useState<number>(1);
   const [viewCardAmount, setViewCardAmount] = useState<number>(0);
-  const [changeViewStatus, setChangeViewStatus] = useState<boolean>(true);
+  const [changeViewStatus, setChangeViewStatus] = useState<boolean>(false);
 
   const getOptions = (cards: any) => {
     const options = [];
@@ -33,10 +33,10 @@ export const Cards = ({ tag, data, rnd }: any) => {
   }, []);
 
   useEffect(() => {
-    if(count === 2) {
-      setChangeViewStatus(false);
+    if (count === 2) {
+      setChangeViewStatus(true);
     }
-  }, [count])
+  }, [count]);
 
   return (
     <div>
@@ -47,28 +47,31 @@ export const Cards = ({ tag, data, rnd }: any) => {
           You've reached the end, choose another topic
         </h1>
       )}
-      {changeViewStatus && (
-        <select
-          name='options'
-          id='options'
-          defaultValue={'choose'}
-          className={styles.option}
-          onChange={(event) => {
-            setViewCardAmount(parseInt(event?.target.value));
-            setChangeViewStatus(false);
-          }}>
-          <option value='choose' disabled>
-            Choose
-          </option>
-          {options.map((option: any) => {
-            return (
-              <option id={tag} key={option} value={option}>
-                {option}
-              </option>
-            );
-          })}
-        </select>
-      )}
+      <div>
+        <div className={styles.input}>
+          <select
+            name='options'
+            id='options'
+            defaultValue={'choose'}
+            className={styles.option}
+            onChange={(event) => {
+              setViewCardAmount(parseInt(event?.target.value));
+              setChangeViewStatus(true);
+            }}
+            disabled={changeViewStatus}>
+            <option value='choose' disabled>
+              Choose
+            </option>
+            {options.map((option: any) => {
+              return (
+                <option id={tag} key={option} value={option}>
+                  {option}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+      </div>
       <Stack
         direction='row'
         justifyContent='center'

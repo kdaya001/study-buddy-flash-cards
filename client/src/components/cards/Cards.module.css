@@ -14,7 +14,7 @@
 }
 
 .cardDark {
-  background-color:  var(--dark-input);
+  background-color: var(--dark-input);
   color: var(--dark-primary);
 }
 
@@ -67,6 +67,22 @@
 
 .answer {
   color: var(--green);
+}
+
+.option {
+  min-width: 15ch;
+  max-width: 30ch;
+  border-radius: 0.25em;
+  padding: 0.25em 0.5em;
+  cursor: pointer;
+  line-height: 1.1;
+  background-color: var(--white);
+}
+
+.input {
+  display: flex;
+  justify-content: flex-end;
+  margin: 30px;
 }
 
 @media only screen and (min-width: 600px) {
