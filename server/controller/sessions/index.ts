@@ -41,6 +41,10 @@ router.get('/', (req, res) => {
       user_id: req.session._id,
       email: req.session.email,
     });
+  } else {
+    res.json({
+      status: 'not logged in',
+    })
   }
 });
 
