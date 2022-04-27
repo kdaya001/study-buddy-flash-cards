@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from 'react';
 import { ApplicationContext } from '../../app-context';
 import styles from './Cards.module.css';
 
-export const Cards = ({ tag, data, rnd }: any) => {
+export const Cards = ({ tag, data, rnd, setLoading }: any) => {
   const [currentCard, setCurrentCard] = useState<number>(0);
   const [currentView, setCurrentView] = useState<boolean>(true);
   const [flip, setFlip] = useState<boolean>(false);
@@ -23,6 +23,8 @@ export const Cards = ({ tag, data, rnd }: any) => {
     }
     return options;
   };
+
+  setLoading(false);
 
   const options = getOptions(data);
 

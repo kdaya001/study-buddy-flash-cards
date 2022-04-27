@@ -141,6 +141,7 @@ export const ViewCards = ({ start, setStart }: any) => {
       {start && (
         <>
           <Cards
+            setLoading={setLoading}
             data={cardData}
             tag={tag}
             amount={viewCardAmount}
