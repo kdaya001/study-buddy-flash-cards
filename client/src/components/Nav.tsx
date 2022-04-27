@@ -90,7 +90,7 @@ export function Nav({ setStart }: any) {
         <Toolbar>
           <Typography
             onClick={() => {
-              navigate(`/`);
+              navigate(`/app`);
             }}
             variant='h6'
             component='div'
@@ -112,7 +112,7 @@ export function Nav({ setStart }: any) {
             color='inherit'
             onClick={() => {
               setStart(false);
-              navigate(`/`);
+              navigate(`/app`);
             }}>
             Home
           </Button>

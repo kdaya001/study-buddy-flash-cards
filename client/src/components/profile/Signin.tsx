@@ -20,7 +20,7 @@ const theme = createTheme();
 export default function Signin() {
   const [appState, appAction] = useContext(ApplicationContext);
   const [error, setError] = useState<null | string>(null);
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -50,7 +50,7 @@ export default function Signin() {
             },
           });
           setTimeout(() => {
-            navigate(`/`);
+            navigate(`/app`);
           }, 1000);
         })
         .catch((err) => {

@@ -15,6 +15,7 @@ import { Home } from './components/Home';
 import { Nav } from './components/Nav';
 import { Update } from './components/cards/Update';
 import styles from './App.module.css';
+import LoggedOutHome from './components/LoggedOutHome';
 
 type UserProps = {
   email: string;
@@ -49,9 +50,10 @@ function App() {
             <Route path='/login' element={<Signin />} />
             <Route path='/signup' element={<SignUp />} />
             <Route
-              path='/'
+              path='/app'
               element={<Home start={start} setStart={setStart} />}
             />
+            <Route path='/' element={<LoggedOutHome />} />
             {appState.currentUser && (
               <Route path='/create' element={<Create />} />
             )}

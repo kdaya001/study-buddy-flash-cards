@@ -1,0 +1,10 @@
+@import '../styles/theme/colors.css';
+
+.dark {
+  background-color: var(--dark-background) !important;
+  color: var(--white) !important;
+}
+
+.light {
+  background-color: var(--light-background) !important;
+}
