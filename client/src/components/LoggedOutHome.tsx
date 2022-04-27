@@ -9,7 +9,7 @@ import styles from './LoggedOutHome.module.css';
 import { useContext } from 'react';
 import { ApplicationContext } from '../app-context';
 import { useNavigate } from 'react-router-dom';
-import { Button } from '@mui/material';
+import { Button, ButtonBase } from '@mui/material';
 
 const theme = createTheme();
 
@@ -17,10 +17,7 @@ export default function LoggedOutHome() {
   const [appState, appAction] = useContext(ApplicationContext);
 
   const navigate = useNavigate();
-  if(appState.currentUser) {
-    navigate('/app');
-  }
-
+  
   return (
     <ThemeProvider theme={theme}>
       <Grid container component='main' sx={{ height: '100vh' }}>
@@ -66,7 +63,16 @@ export default function LoggedOutHome() {
                 to learn!
               </h4>
             </div>
-            <Signin />
+            {!appState.currentUser && <Signin />}
+            {appState.currentUser && (
+              <div>
+                <Button
+                onClick={() => {
+                  navigate('/app')
+                }}
+                className={appState.theme === 'dark' ? styles.darkButton : styles.lightButton}>Look at cards</Button>
+              </div>
+            )}
 
           </Box>
         </Grid>

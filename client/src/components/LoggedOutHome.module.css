@@ -8,3 +8,13 @@
 .light {
   background-color: var(--light-background) !important;
 }
+
+.darkButton {
+  background-color: var(--dark-secondary-variant) !important;
+  color: var(--white) !important;
+}
+
+.lightButton {
+  background-color: var(--light-secondary-variant) !important;
+  color: var(--black) !important;
+}
