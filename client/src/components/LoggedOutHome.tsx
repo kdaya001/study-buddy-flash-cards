@@ -17,6 +17,9 @@ export default function LoggedOutHome() {
   const [appState, appAction] = useContext(ApplicationContext);
 
   const navigate = useNavigate();
+  if(appState.currentUser) {
+    navigate('/app');
+  }
 
   return (
     <ThemeProvider theme={theme}>
