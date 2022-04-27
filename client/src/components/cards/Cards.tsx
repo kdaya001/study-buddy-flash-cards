@@ -47,7 +47,7 @@ export const Cards = ({ tag, data, rnd }: any) => {
       )}
       <div>
         <div className={styles.input}>
-          <select
+          {!changeViewStatus && <select
             name='options'
             id='options'
             defaultValue={'choose'}
@@ -67,7 +67,7 @@ export const Cards = ({ tag, data, rnd }: any) => {
                 </option>
               );
             })}
-          </select>
+          </select>}
         </div>
       </div>
       <Stack
