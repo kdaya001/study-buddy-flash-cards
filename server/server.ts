@@ -30,6 +30,13 @@ app.use(logger);
 app.use(express.json()); // support json encoded bodies
 app.use(cors());
 const db = require('./database/db');
+const helmet = require('helmet')
+
+
+app.use(
+  helmet()
+);
+
 
 app.use(
   expressSession({
@@ -38,6 +45,8 @@ app.use(
       mongoUrl: process.env.DATABASE_URL,
       ttl: 1 * 24 * 60 * 60,
     }),
+    resave: true,
+    saveUninitialized: true,
   })
 );
 

@@ -28,6 +28,9 @@ export const ViewCards = ({ start, setStart }: any) => {
           setRnd(res.data[0]?.cards.length);
           setStart(true);
           setLoading(false);
+          setTag(null);
+          setSelection(null);
+
         }
       });
     }

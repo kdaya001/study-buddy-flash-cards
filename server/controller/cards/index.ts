@@ -55,7 +55,9 @@ CardController.get('/private/:tag', isLoggedIn, (req, res) => {
 });
 
 CardController.get('/get/:id',(req, res) => {
+  console.time('getCard');
   Cards.getCard(req.params.id).then((response) => {
+    console.timeEnd('getCard')
     res.json(response);
   })
 });
