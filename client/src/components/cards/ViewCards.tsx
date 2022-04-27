@@ -22,7 +22,7 @@ export const ViewCards = ({ start, setStart }: any) => {
   useEffect(() => {
     if (selection) {
       axios.get(`/api/cards/get/${selection}`).then((res) => {
-        if (res.data.length > 0 && viewCardAmount > 0) {
+        if (res.data.length > 0) {
           setCardData(res.data[0].cards);
           setTag(res.data[0].tag);
           setRnd(res.data[0]?.cards.length);
@@ -34,7 +34,7 @@ export const ViewCards = ({ start, setStart }: any) => {
 
   const setRnd = (len: number) => {
     let rndArr: number[] = [];
-    while (rndArr.length < viewCardAmount) {
+    while (rndArr.length < len) {
       let rnd = Math.floor(Math.random() * len);
       if (!rndArr.includes(rnd)) {
         rndArr.push(rnd);
@@ -72,31 +72,15 @@ export const ViewCards = ({ start, setStart }: any) => {
 
   useEffect(() => {
     const rowData = allTags.map((tag: any) => {
-      const options = getOptions(tag.cards);
       return {
         id: tag._id,
         tag: tag.tag,
         total: tag.cards.length,
-        options: options,
       };
     });
     setRows(rowData);
     setLoading(false);
   }, [allTags]);
-
-  const getOptions = (cards: any) => {
-    const options = [];
-    if (cards.length > 0 && cards.length < 10) {
-      options.push(cards.length);
-    } else if (cards.length >= 10) {
-      let count = 0;
-      for (let i = 10; i <= cards.length; i += 10) {
-        options.push(i);
-        count++;
-      }
-    }
-    return options;
-  };
 
   return (
     <div>
@@ -113,7 +97,6 @@ export const ViewCards = ({ start, setStart }: any) => {
                 }>
                 <th>Topic</th>
                 <th>Total Cards</th>
-                <th></th>
                 <th>Start</th>
               </tr>
             </thead>
@@ -124,25 +107,6 @@ export const ViewCards = ({ start, setStart }: any) => {
                     <td>{row.tag}</td>
                     <td>{row.total}</td>
                     <td>
-                      <select
-                        name='options'
-                        id='options'
-                        defaultValue={'choose'}
-                        className={styles.option}
-                        onChange={(event) =>
-                          setViewCardAmount(parseInt(event?.target.value))
-                        }>
-                        <option value='choose' disabled>
-                          Choose
-                        </option>
-                        {row.options.map((option: any) => {
-                          return (
-                            <option id={row.tag} key={option} value={option}>
-                              {option}
-                            </option>
-                          );
-                        })}
-                      </select>
                     </td>
                     <td>
                       <Button

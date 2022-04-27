@@ -1,5 +1,5 @@
 import { Button, Stack } from '@mui/material';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ApplicationContext } from '../../app-context';
 import styles from './Cards.module.css';
 
@@ -9,15 +9,54 @@ export const Cards = ({ tag, data, rnd }: any) => {
   const [flip, setFlip] = useState<boolean>(false);
   const [appState, appAction] = useContext(ApplicationContext);
   const [count, setCount] = useState<number>(1);
+  const [viewCardAmount, setViewCardAmount] = useState<number>(0);
+
+  const getOptions = (cards: any) => {
+    const options = [];
+    if (cards.length > 0 && cards.length < 10) {
+      options.push(cards.length);
+    } else if (cards.length >= 10) {
+      let count = 0;
+      for (let i = 10; i <= cards.length; i += 10) {
+        options.push(i);
+        count++;
+      }
+    }
+    return options;
+  };
+
+  useEffect(() => {
+
+  }, [viewCardAmount]);
+
+  const options = getOptions(data);
+
   return (
     <div>
       {/* Heading for topic */}
       <h1 className={styles.cardHeading}>{tag}</h1>
-      {currentCard === rnd.length - 1 && (
+      {currentCard === viewCardAmount - 1 && (
         <h1 className={styles.end}>
           You've reached the end, choose another topic
         </h1>
       )}
+      <select
+        name='options'
+        id='options'
+        defaultValue={'choose'}
+        className={styles.option}
+        onChange={(event) => setViewCardAmount(parseInt(event?.target.value))}>
+        <option value='choose' disabled>
+          Choose
+        </option>
+        {options.map((option: any) => {
+          return (
+            <option id={tag} key={option} value={option}>
+              {option}
+            </option>
+          );
+        })}
+      </select>
       <Stack
         direction='row'
         justifyContent='center'
@@ -65,7 +104,7 @@ export const Cards = ({ tag, data, rnd }: any) => {
           className={appState.theme === 'dark' ? styles.darkbutton : ''}
           variant='contained'
           onClick={() => {
-            if (currentCard < rnd.length - 1) {
+            if (currentCard < viewCardAmount - 1) {
               setCurrentCard(currentCard + 1);
               setCurrentView(true);
               setFlip(false);
