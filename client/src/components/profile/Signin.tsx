@@ -51,7 +51,7 @@ export default function Signin() {
           });
           setTimeout(() => {
             navigate(`/`);
-          }, 5000);
+          }, 1000);
         })
         .catch((err) => {
           setError(err.response.data.message);
