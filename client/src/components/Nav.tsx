@@ -17,7 +17,7 @@ import styles from './Nav.module.css';
 export function Nav({ setStart }: any) {
   const [appState, appAction] = useContext(ApplicationContext);
   const [checked, setChecked] = useState(appState.theme === 'dark');
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     axios.delete('/api/sessions/').then(() => {

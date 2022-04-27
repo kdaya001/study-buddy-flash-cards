@@ -1,4 +1,4 @@
-import { Button, CircularProgress, Stack } from '@mui/material';
+import { Button, CircularProgress, LinearProgress, Stack } from '@mui/material';
 import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
 import { ApplicationContext } from '../../app-context';
@@ -87,6 +87,7 @@ export const ViewCards = ({ start, setStart }: any) => {
       {!start && (
         <>
           <h1>Pick your poison</h1>
+          {!rows && <LinearProgress />}
           <table className={styles.styledTable}>
             <thead>
               <tr
@@ -101,7 +102,7 @@ export const ViewCards = ({ start, setStart }: any) => {
               </tr>
             </thead>
             <tbody>
-              {rows.map((row: any) => {
+              {rows && rows.map((row: any) => {
                 return (
                   <tr className={styles.trTBodyStyled} key={row.id}>
                     <td>{row.tag}</td>

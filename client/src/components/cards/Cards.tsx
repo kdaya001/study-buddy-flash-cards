@@ -17,10 +17,8 @@ export const Cards = ({ tag, data, rnd }: any) => {
     if (cards.length > 0 && cards.length < 10) {
       options.push(cards.length);
     } else if (cards.length >= 10) {
-      let count = 0;
       for (let i = 10; i <= cards.length; i += 10) {
         options.push(i);
-        count++;
       }
     }
     return options;
