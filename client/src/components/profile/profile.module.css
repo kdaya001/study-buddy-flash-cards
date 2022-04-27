@@ -1,3 +1,5 @@
+@import '../../styles/theme/colors.css';
+
 .successful {
   color: green;
   font-weight: bold;
@@ -10,4 +12,12 @@
 
 .inputDark {
   background-color: white;
+}
+
+.buttonDark {
+  background-color: var(--dark-secondary-variant) !important;
+}
+
+.buttonLight {
+  background-color: var(--light-secondary-variant) !important;
 }

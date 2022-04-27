@@ -4,6 +4,10 @@
   background-color: var(--dark-nav) !important;
 }
 
+.navLight {
+  background-color: var(--light-nav) !important;
+}
+
 @media only screen and (max-width: 600px) {
   .homeButton {
     display:  none !important;

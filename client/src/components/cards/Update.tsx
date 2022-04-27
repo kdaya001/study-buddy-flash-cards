@@ -94,7 +94,7 @@ export const Update = () => {
             })}
           {data?.cards && (
             <Button
-              className={appState.theme === 'dark' ? styles.darkbutton : ''}
+              className={appState.theme === 'dark' ? styles.darkbutton : styles.lightbutton}
               type='submit'
               fullWidth
               variant='contained'

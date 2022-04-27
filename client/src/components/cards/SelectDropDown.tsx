@@ -15,7 +15,7 @@ export const SelectDropDown = ({ options, label, tracker }: any) => {
   return (
     <FormControl
       className={
-        appState.theme === 'dark' ? styles.selectionDark : styles.selection
+        appState.theme === 'dark' ? styles.selectionDark : styles.selectionLight
       }
       sx={{ m: 1, minWidth: 120 }}>
       <InputLabel>{label}</InputLabel>

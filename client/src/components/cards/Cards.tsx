@@ -77,7 +77,7 @@ export const Cards = ({ tag, data, rnd }: any) => {
         spacing={2}>
         {/* back button */}
         <Button
-          className={appState.theme === 'dark' ? styles.darkbutton : ''}
+          className={appState.theme === 'dark' ? styles.darkbutton : styles.lightbutton}
           variant='contained'
           onClick={() => {
             if (currentCard > 0) {
@@ -93,7 +93,7 @@ export const Cards = ({ tag, data, rnd }: any) => {
         <div
           className={`${styles.cardContainer} ${styles.card} ${
             flip ? styles.flip : ''
-          } ${appState.theme === 'dark' ? styles.cardDark : ''}`}
+          } ${appState.theme === 'dark' ? styles.cardDark : styles.cardLight}`}
           onClick={(e) => {
             setCurrentView(!currentView);
             setFlip(!flip);
@@ -114,7 +114,7 @@ export const Cards = ({ tag, data, rnd }: any) => {
         </div>
         {/* back button */}
         <Button
-          className={appState.theme === 'dark' ? styles.darkbutton : ''}
+          className={appState.theme === 'dark' ? styles.darkbutton : styles.lightbutton}
           variant='contained'
           onClick={() => {
             if (currentCard < viewCardAmount - 1) {
@@ -134,7 +134,7 @@ export const Cards = ({ tag, data, rnd }: any) => {
         alignItems='center'
         spacing={2}>
         <Button
-          className={appState.theme === 'dark' ? styles.darkbutton : ''}
+          className={appState.theme === 'dark' ? styles.darkbutton : styles.lightbutton}
           variant='contained'
           onClick={() => {
             setCurrentView(!currentView);

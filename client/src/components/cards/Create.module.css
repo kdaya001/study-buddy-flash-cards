@@ -11,13 +11,21 @@
 }
 
 .error {
-  color: red;
+  color: var(--red);
 }
 
 .inputDark {
   background-color:  var(--dark-input);
 }
 
+.inputLight {
+  background-color:  var(--light-input);
+}
+
 .darkbutton {
   background-color: var(--dark-secondary-variant) !important;
+}
+
+.lightbutton {
+  background-color: var(--light-secondary-variant) !important;
 }

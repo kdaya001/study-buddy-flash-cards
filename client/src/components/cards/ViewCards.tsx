@@ -28,7 +28,6 @@ export const ViewCards = ({ start, setStart }: any) => {
           setRnd(res.data[0]?.cards.length);
           setStart(true);
           setLoading(false);
-          setTag(null);
           setSelection(null);
 
         }
@@ -114,7 +113,7 @@ export const ViewCards = ({ start, setStart }: any) => {
                     <td>
                       <Button
                         className={
-                          appState.theme === 'dark' ? styles.darkbutton : ''
+                          appState.theme === 'dark' ? styles.darkbutton : styles.lightbutton
                         }
                         id={row.id}
                         variant='contained'
@@ -156,7 +155,7 @@ export const ViewCards = ({ start, setStart }: any) => {
             alignItems='center'
             spacing={2}>
             <Button
-              className={appState.theme === 'dark' ? styles.darkbutton : ''}
+              className={appState.theme === 'dark' ? styles.darkbutton : styles.lightbutton}
               onClick={() => {
                 setStart(false);
                 setViewCardAmount(0);

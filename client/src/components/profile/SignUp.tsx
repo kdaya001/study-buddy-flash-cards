@@ -122,6 +122,11 @@ export default function SignUp() {
               </Grid>
             </Grid>
             <Button
+              className={
+                appState.theme === 'dark'
+                  ? styles.buttonDark
+                  : styles.buttonLight
+              }
               type='submit'
               fullWidth
               variant='contained'

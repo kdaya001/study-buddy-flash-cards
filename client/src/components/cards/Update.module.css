@@ -18,3 +18,7 @@
 .darkbutton {
   background-color: var(--dark-secondary-variant) !important;
 }
+
+.lightbutton {
+  background-color: var(--light-secondary-variant) !important;
+}

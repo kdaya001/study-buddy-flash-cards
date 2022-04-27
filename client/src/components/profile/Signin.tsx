@@ -113,6 +113,7 @@ export default function Signin() {
               autoComplete='current-password'
             />
             <Button
+              className={appState.theme === 'dark' ? styles.buttonDark : styles.buttonLight}
               type='submit'
               fullWidth
               variant='contained'

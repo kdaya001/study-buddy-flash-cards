@@ -86,7 +86,7 @@ export function Nav({ setStart }: any) {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar className={appState.theme === 'dark' ? styles.navDark : ''} position='static'>
+      <AppBar className={appState.theme === 'dark' ? styles.navDark : styles.navLight} position='static'>
         <Toolbar>
           <Typography
             onClick={() => {

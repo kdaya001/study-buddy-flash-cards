@@ -15,7 +15,12 @@
 
 .cardDark {
   background-color: var(--dark-input);
-  color: var(--dark-primary);
+  color: var(--light-primary);
+}
+
+.cardLight {
+  background-color: var(--light-input);
+  color: var(--light-primary);
 }
 
 .cardHeading {
@@ -60,6 +65,11 @@
 .darkbutton {
   background-color: var(--dark-secondary-variant) !important;
 }
+
+.lightbutton {
+  background-color: var(--light-secondary-variant) !important;
+}
+
 
 .prompt {
   color: var(--red);

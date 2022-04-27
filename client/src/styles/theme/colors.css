@@ -7,11 +7,16 @@
   --dark-input: #ffffff;
   
   --card-secondary: pink;
+
+  --light-background: #ffffff;
+  --light-primary: #121212;
+  --light-secondary: #121212;
+  --light-secondary-variant: #1976d2;
+  --light-nav: #1976d2;
+  --light-input: #ffffff;
   
   --black: #000000;
   --white: #ffffff;
   --red: red;
   --green: green;
-
-  --light-secondary-variant: #1976d2;
 }

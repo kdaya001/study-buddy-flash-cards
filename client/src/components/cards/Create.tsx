@@ -139,7 +139,7 @@ export const Create = () => {
             noValidate
             sx={{ mt: 1 }}>
             <TextField
-              className={appState.theme === 'dark' ? styles.inputDark : ''}
+              className={appState.theme === 'dark' ? styles.inputDark : styles.inputLight}
               margin='normal'
               required
               fullWidth
@@ -152,7 +152,7 @@ export const Create = () => {
               onChange={handleTagInputChange}
             />
             <Button
-              className={appState.theme === 'dark' ? styles.darkbutton : ''}
+              className={appState.theme === 'dark' ? styles.darkbutton : styles.lightbutton}
               type='submit'
               fullWidth
               variant='contained'
@@ -205,7 +205,7 @@ export const Create = () => {
               onChange={handlePromptInputChange}
             />
             <TextField
-              className={appState.theme === 'dark' ? styles.inputDark : ''}
+              className={appState.theme === 'dark' ? styles.inputDark : styles.inputLight}
               margin='normal'
               required
               fullWidth
@@ -218,7 +218,7 @@ export const Create = () => {
               onChange={handleResponseInputChange}
             />
             <Button
-              className={appState.theme === 'dark' ? styles.darkbutton : ''}
+              className={appState.theme === 'dark' ? styles.darkbutton : styles.inputLight}
               type='submit'
               fullWidth
               variant='contained'
