@@ -46,7 +46,7 @@ app.use(
       ttl: 1 * 24 * 60 * 60,
     }),
     resave: true,
-    saveUninitialized: true,
+    saveUninitialized: false,
   })
 );
 
