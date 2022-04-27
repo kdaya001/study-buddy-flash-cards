@@ -12,7 +12,7 @@ Features include:
   2. For the answer/response
 * Users can cycle through a predetermined amount of cards for the specific tag (e.g. 10,20, 30)
 
-Genearl Assembly Software Engineering - Project 4 - Live Version
+Genearl Assembly Software Engineering - Project 4 - [Live Version](https://mysterious-anchorage-83933.herokuapp.com/)
 
 ---
 
@@ -153,7 +153,7 @@ General User Flow:
 ---
 
 ## Necessary Deliverables
-- [ ] A link to your hosted working app in the URL section of your GitHub repo
+- [x] A link to your hosted working app in the URL section of your GitHub repo
 - [x] A git repository hosted on GitHub, with a link to your hosted project, and frequent commits dating back to the very beginning of the project
 A readme.md file with:
   - [x] An embedded screenshot of the app
@@ -163,4 +163,11 @@ A readme.md file with:
   - [x] User stories – who are your users, what do they want, and why?
   - [x] Wireframes – sketches of major views / interfaces in your application
   - [x] Link to your pitch deck – documentation of your wireframes, user stories, and proposed architecture
-  - [ ] Descriptions of any unsolved problems or major hurdles you had to overcome
+  - [x] Descriptions of any unsolved problems or major hurdles you had to overcome
+
+
+---
+
+## Unsolved Problems/Major Hurdles:
+* Originally users were supposed to have the ability to select how many cards they wanted to view on the home page. Due to multiple bugs, a workaround was implemented so that users can select how many cards they want to view on load of that specific tag
+* Because of the use of free services (Heroku for hosting and Mongo Atlas for the database) the website loads a bit slow. This could be resolved by using different/paid services
