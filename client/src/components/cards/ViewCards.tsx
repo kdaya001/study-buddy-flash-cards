@@ -102,7 +102,7 @@ export const ViewCards = ({ start, setStart }: any) => {
               </tr>
             </thead>
             <tbody>
-              {rows && rows.map((row: any) => {
+              {rows.map((row: any) => {
                 return (
                   <tr className={styles.trTBodyStyled} key={row.id}>
                     <td>{row.tag}</td>
@@ -115,6 +115,7 @@ export const ViewCards = ({ start, setStart }: any) => {
                         id={row.id}
                         variant='contained'
                         onClick={(e: any) => {
+                          setLoading(true);
                           setSelection(e.target.id);
                         }}>
                         Start
