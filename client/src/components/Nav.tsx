@@ -24,6 +24,9 @@ export function Nav({ setStart }: any) {
       appAction({
         type: ActionType.LOGOUT,
       });
+    })
+    .catch(error => {
+      console.log(error)
     });
   };
 
