@@ -47,10 +47,13 @@ export const Create = () => {
     const body = {
       tag: data?.get('tag'),
     };
-    const tagExists = await axios.get(`/api/cards/private/${body.tag}`);
+    const tagExists = await axios.get(`/api/cards/private/${body.tag}`)
+      .catch(error => {
+        setError(`Tag Already Exists`);
+      });
     if (!!!tagExists?.data) {
       await axios.post(`/api/cards/private/create/tag`, body).then((res) => {
-        setNotification(`Successfully Created`);
+        setNotification(`Successfully Created Tag`);
       });
       setSubmitStatus(true);
       setInputTag('');
@@ -74,7 +77,7 @@ export const Create = () => {
     };
 
     await axios.patch(`/api/cards/private/add/cards`, body).then((res) => {
-      setNotification(`Successfully Created`);
+      setNotification(`Successfully Created Card`);
       setInputPrompt('');
       setInputResponse('');
     });
