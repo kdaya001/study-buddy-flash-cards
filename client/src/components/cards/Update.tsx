@@ -1,4 +1,4 @@
-import { Box, Button, FormControl, TextField } from '@mui/material';
+import { Box, Button, FormControl, TextField, Typography } from '@mui/material';
 import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
 import { ApplicationContext } from '../../app-context';
@@ -10,6 +10,7 @@ export const Update = () => {
   const [allTags, setAllTags] = useState<any>(null);
   const [tag, setTag] = useState<any>(null);
   const [appState, appAction] = useContext(ApplicationContext);
+  const [notification, setNotification] = useState('');
 
   useEffect(() => {
     if (tag) {
@@ -46,7 +47,7 @@ export const Update = () => {
 
     if (body?.cards.length > 0) {
       axios.put('/api/cards/update/cards', body).then((response) => {
-        console.log('successfully updated');
+        setNotification('Successfully updated');
       });
     }
   };
@@ -55,6 +56,11 @@ export const Update = () => {
     <div>
       <h1>Update Your Cards</h1>
       <FormControl className={styles.update_form} sx={{ m: 1 }}>
+        {notification && (
+          <Typography variant='body2' className={styles.notification}>
+            {notification}
+          </Typography>
+        )}
         <h4>Select topic to update:</h4>
         {allTags && (
           <SelectDropDown options={allTags} tracker={setTag} label='Tag' />
@@ -94,7 +100,11 @@ export const Update = () => {
             })}
           {data?.cards && (
             <Button
-              className={appState.theme === 'dark' ? styles.darkbutton : styles.lightbutton}
+              className={
+                appState.theme === 'dark'
+                  ? styles.darkbutton
+                  : styles.lightbutton
+              }
               type='submit'
               fullWidth
               variant='contained'

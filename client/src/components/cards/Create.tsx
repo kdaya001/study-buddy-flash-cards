@@ -12,7 +12,6 @@ import { AiFillPlusCircle } from 'react-icons/ai';
 import { SelectDropDown } from './SelectDropDown';
 import styles from './Create.module.css';
 import { ApplicationContext } from '../../app-context';
-import { light } from '@mui/material/styles/createPalette';
 
 export const Create = () => {
   const [tag, setTag] = useState<any>(null);

@@ -22,3 +22,7 @@
 .lightbutton {
   background-color: var(--light-secondary-variant) !important;
 }
+
+.notification {
+  text-align: center;
+}
