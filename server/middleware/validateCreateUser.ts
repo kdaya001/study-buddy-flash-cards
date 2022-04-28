@@ -7,7 +7,7 @@ export const validateCreateUser = (req, res, next) => {
 
   if (req.body.email.length < 2) {
     return res.status(400).json({
-      message: 'Name must be more than 2 characters',
+      message: 'Email must be more than 2 characters',
     });
   }
 

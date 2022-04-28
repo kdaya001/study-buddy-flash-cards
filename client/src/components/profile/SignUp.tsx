@@ -21,15 +21,34 @@ export default function SignUp() {
   const [email, setEmail] = useState<null | string>(null);
   const [password, setPassword] = useState<null | string>(null);
   const [confirmPassword, setConfirmPassword] = useState<null | string>(null);
-  const [validPassword, setValidPassword] = useState<null | boolean>(null);
   const [error, setError] = useState<null | string>(null);
   let navigate = useNavigate();
   const [appState, appAction] = useContext(ApplicationContext);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setValidPassword(password === confirmPassword);
+
+    let validPassword =
+      password === confirmPassword &&
+      password &&
+      confirmPassword &&
+      password.length > 0 &&
+      confirmPassword.length > 0;
+
     setError(null);
+
+    if(!email?.includes('@')) {
+      setError('Enter a valid email');
+    } else if (!password || !confirmPassword) {
+      validPassword = false;
+      setError('Enter a valid password');
+    } else if (password && password.length < 8) {
+      validPassword = false;
+      setError('Password too short');
+    } else if (!validPassword) {
+      validPassword = false;
+      setError('Passwords do not match');
+    } 
 
     if (validPassword && email && password) {
       const body = {
@@ -37,7 +56,6 @@ export default function SignUp() {
         password: password,
         confirmedPassword: confirmPassword,
       };
-
       axios
         .post(`/api/users`, body)
         .then((res) => {
@@ -46,8 +64,6 @@ export default function SignUp() {
         .catch((err) => {
           setError(err.response.data.message);
         });
-    } else {
-      setError('Invalid email or password');
     }
   };
 
