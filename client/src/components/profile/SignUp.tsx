@@ -7,7 +7,6 @@ import {
   Container,
   CssBaseline,
   Grid,
-  Link,
   TextField,
   Typography,
 } from '@mui/material';
@@ -80,11 +79,11 @@ export default function SignUp() {
             alignItems: 'center',
           }}>
           <MdOutlineLock size={25} />
-          <Typography component='h1' variant='h5'>
+          <h1>
             Sign up
-          </Typography>
+          </h1>
           {error && (
-            <Typography variant='body2' color='error' className={styles.error}>
+            <Typography variant='body2' color='red' className={styles.error}>
               {error}
             </Typography>
           )}

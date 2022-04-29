@@ -74,16 +74,16 @@ export default function Signin() {
             alignItems: 'center',
           }}>
           <MdOutlineLock size={25} />
-          <Typography component='h1' variant='h5'>
+          <h1>
             Sign in
-          </Typography>
+          </h1>
           {error && (
-            <Typography variant='body2' color='error' className={styles.error}>
+            <Typography variant='body2' color='red' className={styles.error}>
               {error}
             </Typography>
           )}
           {appState.currentUser && (
-            <Typography variant='body2' className={styles.successful}>
+            <Typography variant='body2' color='green' className={styles.successful}>
               Successfully logged in
             </Typography>
           )}

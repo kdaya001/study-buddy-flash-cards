@@ -29,7 +29,7 @@ export function Nav({ setStart }: any) {
         navigate(`/login`);
       })
       .catch((error) => {
-        console.log(error);
+        return;
       });
   };
 

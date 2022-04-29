@@ -13,7 +13,7 @@ import { Button } from '@mui/material';
 const theme = createTheme();
 
 export default function LoggedOutHome() {
-  const [appState, appAction] = useContext(ApplicationContext);
+  const [appState] = useContext(ApplicationContext);
 
   const navigate = useNavigate();
 

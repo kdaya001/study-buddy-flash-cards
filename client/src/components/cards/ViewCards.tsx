@@ -86,7 +86,7 @@ export const ViewCards = ({ start, setStart }: any) => {
   }, [allTags]);
 
   return (
-    <div>
+    <div className={styles.head}>
       {!start && (
         <>
           <h1>Pick your poison</h1>

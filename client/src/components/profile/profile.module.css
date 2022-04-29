@@ -1,15 +1,5 @@
 @import '../../styles/theme/colors.css';
 
-.successful {
-  color: green;
-  font-weight: bold;
-}
-
-.error {
-  color: red;
-  font-weight: bold;
-}
-
 .input {
   background-color: white;
 }
@@ -30,4 +20,9 @@
 
 .link {
   cursor: pointer;
+}
+
+h1 {
+  padding: 0px;
+  margin: 0px;
 }

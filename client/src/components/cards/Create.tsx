@@ -24,7 +24,7 @@ export const Create = () => {
   const [inputTag, setInputTag] = useState<string>('');
   const [inputPrompt, setInputPrompt] = useState<string>('');
   const [inputResponse, setInputResponse] = useState<string>('');
-  const [appState, appAction] = useContext(ApplicationContext);
+  const [appState] = useContext(ApplicationContext);
 
   const clearNotifications = () => {
     setError('');
@@ -98,7 +98,7 @@ export const Create = () => {
   };
 
   return (
-    <div>
+    <div className={styles.head}>
       <h1>Create</h1>
       <Stack
         className={styles.createOption}
@@ -107,12 +107,12 @@ export const Create = () => {
         alignItems='center'
         spacing={3}>
         {notification && (
-          <Typography variant='body2' className={styles.notification}>
+          <Typography variant='body2' color='green' className={styles.notification}>
             {notification}
           </Typography>
         )}
         {error && (
-          <Typography variant='body2' className={styles.error}>
+          <Typography variant='body2' color='red' className={styles.error}>
             {error}
           </Typography>
         )}

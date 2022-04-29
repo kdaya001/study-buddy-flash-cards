@@ -1,6 +1,6 @@
 @import '../../styles/theme/colors.css';
 
-.update_form {
+.updateForm {
   width: 80%;
   margin: 0 auto !important;
   display: block !important;
@@ -35,4 +35,5 @@
 
 .outerContainer {
   padding-bottom: 30px;
+  margin-top: 30px;
 }

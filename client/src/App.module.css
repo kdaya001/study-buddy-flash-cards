@@ -13,3 +13,13 @@
   min-height: 100vh;
   font-family: 'Outfit', sans-serif;
 }
+
+.successful {
+  color: green;
+  font-weight: bold;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+}

@@ -35,3 +35,7 @@
   background-color: var(--secondary-background);
   padding: 30px;
 }
+
+.head {
+  margin-top: 30px;
+}

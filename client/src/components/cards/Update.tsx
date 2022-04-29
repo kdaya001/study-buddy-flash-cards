@@ -48,6 +48,7 @@ export const Update = () => {
     if (body?.cards.length > 0) {
       axios.put('/api/cards/update/cards', body).then((response) => {
         setNotification('Successfully updated');
+        window.scrollTo(0, 0);
       });
     }
   };
@@ -55,9 +56,12 @@ export const Update = () => {
   return (
     <div className={styles.outerContainer}>
       <h1>Update Your Cards</h1>
-      <FormControl className={styles.update_form} sx={{ m: 1 }}>
+      <FormControl className={styles.updateForm} sx={{ m: 1 }}>
         {notification && (
-          <Typography variant='body2' className={styles.notification}>
+          <Typography
+            variant='body2'
+            color='green'
+            className={styles.notification}>
             {notification}
           </Typography>
         )}

@@ -16,7 +16,6 @@ router.post('/', (req, res) => {
       if (valid) {
         req.session.user_id = user._id;
         req.session.email = user.email;
-        console.log('successful login');
         res.json({
           user_id: user._id,
           email: email,
@@ -50,7 +49,6 @@ router.get('/', (req, res) => {
 
 //Delete Session (Logout)
 router.delete('/', (req, res) => {
-  (console.log(req.session))
   req.session.destroy();
   res.json({ message: 'Logged out' });
 });
