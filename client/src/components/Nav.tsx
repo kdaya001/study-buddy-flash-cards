@@ -20,15 +20,17 @@ export function Nav({ setStart }: any) {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    axios.delete('/api/sessions/').then(() => {
-      appAction({
-        type: ActionType.LOGOUT,
+    axios
+      .delete('/api/sessions/')
+      .then(() => {
+        appAction({
+          type: ActionType.LOGOUT,
+        });
+        navigate(`/login`);
+      })
+      .catch((error) => {
+        console.log(error);
       });
-      navigate(`/login`);
-    })
-    .catch(error => {
-      console.log(error)
-    });
   };
 
   const MaterialUISwitch = styled(Switch)(({ theme }) => ({
@@ -81,16 +83,20 @@ export function Nav({ setStart }: any) {
 
   const handleModeChange = (event: any) => {
     setChecked(!checked);
-    if(event.target.checked) {
-      appAction({ type: ActionType.DARKMODE })
+    if (event.target.checked) {
+      appAction({ type: ActionType.DARKMODE });
+      localStorage.setItem('theme', 'dark');
     } else {
       appAction({ type: ActionType.LIGHTMODE });
+      localStorage.setItem('theme', 'light');
     }
   };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar className={appState.theme === 'dark' ? styles.navDark : styles.navLight} position='static'>
+      <AppBar
+        className={appState.theme === 'dark' ? styles.navDark : styles.navLight}
+        position='static'>
         <Toolbar>
           <Typography
             className={styles.logo}

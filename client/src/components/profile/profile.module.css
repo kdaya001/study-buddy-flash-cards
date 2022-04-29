@@ -10,7 +10,7 @@
   font-weight: bold;
 }
 
-.inputDark {
+.input {
   background-color: white;
 }
 
@@ -20,4 +20,14 @@
 
 .buttonLight {
   background-color: var(--light-secondary-variant) !important;
+}
+
+.container {
+  margin-top: 10px;
+  background-color: var(--secondary-background);
+  padding: 30px;
+}
+
+.link {
+  cursor: pointer;
 }

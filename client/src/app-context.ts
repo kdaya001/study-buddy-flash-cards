@@ -3,7 +3,13 @@ import React, { Reducer } from "react";
 const prefersDark = window.matchMedia('(prefers-color-scheme: dark)')
 .matches;
 
-const currentTheme = prefersDark ? 'dark' : 'light';
+let currentTheme = prefersDark ? 'dark' : 'light';
+
+let localTheme = localStorage.getItem('theme');
+
+if(localTheme) {
+    currentTheme = localTheme;
+}
 
 export interface User {
     email: string;
@@ -18,7 +24,7 @@ export enum ActionType {
 
 export interface ApplicationState {
     currentUser: null | User;
-    theme: "light" | "dark";
+    theme: string;
 }
 
 export const DefaultApplicationState: ApplicationState = {

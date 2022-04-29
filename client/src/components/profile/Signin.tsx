@@ -87,53 +87,59 @@ export default function Signin() {
               Successfully logged in
             </Typography>
           )}
-          <Box
-            component='form'
-            onSubmit={handleSubmit}
-            noValidate
-            sx={{ mt: 1 }}>
-            <TextField
-              className={appState.theme === 'dark' ? styles.inputDark : ''}
-              margin='normal'
-              required
-              fullWidth
-              id='email'
-              placeholder='Email Address'
-              name='email'
-              autoComplete='email'
-              autoFocus
-            />
-            <TextField
-              className={appState.theme === 'dark' ? styles.inputDark : ''}
-              margin='normal'
-              required
-              fullWidth
-              name='password'
-              placeholder='Password'
-              type='password'
-              id='password'
-              autoComplete='current-password'
-            />
-            <Button
-              className={
-                appState.theme === 'dark'
-                  ? styles.buttonDark
-                  : styles.buttonLight
-              }
-              type='submit'
-              fullWidth
-              variant='contained'
-              sx={{ mt: 3, mb: 2 }}>
-              Sign In
-            </Button>
-            <Grid container>
-              <Grid item>
-                <Link href='/signup' variant='body2'>
-                  {"Don't have an account? Sign Up"}
-                </Link>
+          <div className={styles.container}>
+            <Box
+              component='form'
+              onSubmit={handleSubmit}
+              noValidate
+              sx={{ mt: 1 }}>
+              <TextField
+                className={styles.input}
+                margin='normal'
+                required
+                fullWidth
+                id='email'
+                placeholder='Email Address'
+                name='email'
+                autoComplete='email'
+                autoFocus
+              />
+              <TextField
+                className={styles.input}
+                margin='normal'
+                required
+                fullWidth
+                name='password'
+                placeholder='Password'
+                type='password'
+                id='password'
+                autoComplete='current-password'
+              />
+              <Button
+                className={
+                  appState.theme === 'dark'
+                    ? styles.buttonDark
+                    : styles.buttonLight
+                }
+                type='submit'
+                fullWidth
+                variant='contained'
+                sx={{ mt: 3, mb: 2 }}>
+                Sign In
+              </Button>
+              <Grid container justifyContent='flex-end'>
+                <Grid item>
+                  <h4
+                    className={styles.link}
+                    onClick={() => {
+                      navigate('/signup');
+                    }}>
+                    Don't have an account? Sign Up
+                  </h4>
+                </Grid>
               </Grid>
-            </Grid>
-          </Box>
+            </Box>
+          </div>
         </Box>
       </Container>
     </ThemeProvider>

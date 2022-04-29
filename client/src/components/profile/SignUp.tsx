@@ -14,6 +14,7 @@ import {
 import styles from './profile.module.css';
 import { useNavigate } from 'react-router-dom';
 import { ApplicationContext } from '../../app-context';
+import { MdOutlineLock } from 'react-icons/md';
 
 const theme = createTheme();
 
@@ -37,7 +38,7 @@ export default function SignUp() {
 
     setError(null);
 
-    if(!email?.includes('@')) {
+    if (!email?.includes('@')) {
       setError('Enter a valid email');
     } else if (!password || !confirmPassword) {
       validPassword = false;
@@ -48,7 +49,7 @@ export default function SignUp() {
     } else if (!validPassword) {
       validPassword = false;
       setError('Passwords do not match');
-    } 
+    }
 
     if (validPassword && email && password) {
       const body = {
@@ -78,6 +79,7 @@ export default function SignUp() {
             flexDirection: 'column',
             alignItems: 'center',
           }}>
+          <MdOutlineLock size={25} />
           <Typography component='h1' variant='h5'>
             Sign up
           </Typography>
@@ -86,77 +88,79 @@ export default function SignUp() {
               {error}
             </Typography>
           )}
-          <Box
-            component='form'
-            noValidate
-            onSubmit={handleSubmit}
-            sx={{ mt: 3 }}>
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <TextField
-                  className={appState.theme === 'dark' ? styles.inputDark : ''}
-                  required
-                  fullWidth
-                  id='email'
-                  placeholder='Email Address'
-                  name='email'
-                  autoComplete='email'
-                  onChange={(event) => {
-                    setEmail(event.target.value);
-                  }}
-                />
+          <div className={styles.container}>
+            <Box
+              component='form'
+              noValidate
+              onSubmit={handleSubmit}
+              sx={{ mt: 3 }}>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <TextField
+                    className={styles.input}
+                    required
+                    fullWidth
+                    id='email'
+                    placeholder='Email Address'
+                    name='email'
+                    autoComplete='email'
+                    onChange={(event) => {
+                      setEmail(event.target.value);
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    className={styles.input}
+                    required
+                    fullWidth
+                    name='password'
+                    placeholder='Password'
+                    type='password'
+                    id='password'
+                    autoComplete='new-password'
+                    onChange={(event) => {
+                      setPassword(event.target.value);
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    className={styles.input}
+                    required
+                    fullWidth
+                    name='password'
+                    placeholder='Password'
+                    type='password'
+                    id='password-confirmation'
+                    autoComplete='new-password'
+                    onChange={(event) => {
+                      setConfirmPassword(event.target.value);
+                    }}
+                  />
+                </Grid>
               </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  className={appState.theme === 'dark' ? styles.inputDark : ''}
-                  required
-                  fullWidth
-                  name='password'
-                  placeholder='Password'
-                  type='password'
-                  id='password'
-                  autoComplete='new-password'
-                  onChange={(event) => {
-                    setPassword(event.target.value);
-                  }}
-                />
+              <Button
+                className={
+                  appState.theme === 'dark'
+                    ? styles.buttonDark
+                    : styles.buttonLight
+                }
+                type='submit'
+                fullWidth
+                variant='contained'
+                sx={{ mt: 3, mb: 2 }}>
+                Sign Up
+              </Button>
+              <Grid container justifyContent='flex-end'>
+                <Grid item>
+                    <h4 className={styles.link} onClick={() => {
+                      navigate('/login');
+                    }}>Already have an account? Sign in</h4>
+                </Grid>
               </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  className={appState.theme === 'dark' ? styles.inputDark : ''}
-                  required
-                  fullWidth
-                  name='password'
-                  placeholder='Password'
-                  type='password'
-                  id='password-confirmation'
-                  autoComplete='new-password'
-                  onChange={(event) => {
-                    setConfirmPassword(event.target.value);
-                  }}
-                />
-              </Grid>
-            </Grid>
-            <Button
-              className={
-                appState.theme === 'dark'
-                  ? styles.buttonDark
-                  : styles.buttonLight
-              }
-              type='submit'
-              fullWidth
-              variant='contained'
-              sx={{ mt: 3, mb: 2 }}>
-              Sign Up
-            </Button>
-            <Grid container justifyContent='flex-end'>
-              <Grid item>
-                <Link href='' variant='body2'>
-                  Already have an account? Sign in
-                </Link>
-              </Grid>
-            </Grid>
-          </Box>
+            </Box>
+          </div>
         </Box>
       </Container>
     </ThemeProvider>
