@@ -13,12 +13,16 @@ export const Update = () => {
   const [notification, setNotification] = useState('');
 
   useEffect(() => {
+    setData([])
+  }, [tag]);
+
+  useEffect(() => {
     if (tag) {
       axios.get(`/api/cards/get/${tag?.id}`).then((res) => {
         setData(res.data[0]);
       });
     }
-  }, [tag]);
+  }, [tag])
 
   useEffect(() => {
     axios.get(`/api/cards/private/get/tags`).then((res) => {
