@@ -14,6 +14,7 @@ import { useContext, useState } from 'react';
 import { ActionType, ApplicationContext } from '../../app-context';
 import { useNavigate } from 'react-router-dom';
 import styles from './profile.module.css';
+import { MdOutlineLock } from 'react-icons/md';
 
 const theme = createTheme();
 
@@ -72,6 +73,7 @@ export default function Signin() {
             flexDirection: 'column',
             alignItems: 'center',
           }}>
+          <MdOutlineLock size={25} />
           <Typography component='h1' variant='h5'>
             Sign in
           </Typography>
@@ -96,7 +98,7 @@ export default function Signin() {
               required
               fullWidth
               id='email'
-              label='Email Address'
+              placeholder='Email Address'
               name='email'
               autoComplete='email'
               autoFocus
@@ -107,13 +109,17 @@ export default function Signin() {
               required
               fullWidth
               name='password'
-              label='Password'
+              placeholder='Password'
               type='password'
               id='password'
               autoComplete='current-password'
             />
             <Button
-              className={appState.theme === 'dark' ? styles.buttonDark : styles.buttonLight}
+              className={
+                appState.theme === 'dark'
+                  ? styles.buttonDark
+                  : styles.buttonLight
+              }
               type='submit'
               fullWidth
               variant='contained'

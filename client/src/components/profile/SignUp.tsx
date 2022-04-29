@@ -98,7 +98,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   id='email'
-                  label='Email Address'
+                  placeholder='Email Address'
                   name='email'
                   autoComplete='email'
                   onChange={(event) => {
@@ -112,7 +112,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   name='password'
-                  label='Password'
+                  placeholder='Password'
                   type='password'
                   id='password'
                   autoComplete='new-password'
@@ -127,7 +127,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   name='password'
-                  label='Password'
+                  placeholder='Password'
                   type='password'
                   id='password-confirmation'
                   autoComplete='new-password'

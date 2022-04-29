@@ -93,6 +93,7 @@ export function Nav({ setStart }: any) {
       <AppBar className={appState.theme === 'dark' ? styles.navDark : styles.navLight} position='static'>
         <Toolbar>
           <Typography
+            className={styles.logo}
             onClick={() => {
               navigate(`/app`);
             }}

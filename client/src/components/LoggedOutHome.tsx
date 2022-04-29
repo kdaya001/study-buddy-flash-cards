@@ -1,5 +1,4 @@
 import CssBaseline from '@mui/material/CssBaseline';
-import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -9,7 +8,7 @@ import styles from './LoggedOutHome.module.css';
 import { useContext } from 'react';
 import { ApplicationContext } from '../app-context';
 import { useNavigate } from 'react-router-dom';
-import { Button, ButtonBase } from '@mui/material';
+import { Button } from '@mui/material';
 
 const theme = createTheme();
 
