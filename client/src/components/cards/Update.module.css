@@ -6,12 +6,13 @@
   display: block !important;
 }
 
-.update_input {
+.inputDark {
+  background-color: var(--dark-input);
   margin-bottom: 10px !important;
 }
 
-.inputDark {
-  background-color: var(--dark-input);
+.inputLight {
+  background-color: var(--light-input);
   margin-bottom: 10px !important;
 }
 
@@ -25,4 +26,13 @@
 
 .notification {
   text-align: center;
+}
+
+.updateContainer {
+  background-color: var(--secondary-background);
+  padding: 30px;
+}
+
+.outerContainer {
+  padding-bottom: 30px;
 }

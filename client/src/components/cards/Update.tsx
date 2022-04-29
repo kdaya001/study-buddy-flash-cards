@@ -9,7 +9,7 @@ export const Update = () => {
   const [data, setData] = useState<any>([]);
   const [allTags, setAllTags] = useState<any>(null);
   const [tag, setTag] = useState<any>(null);
-  const [appState, appAction] = useContext(ApplicationContext);
+  const [appState] = useContext(ApplicationContext);
   const [notification, setNotification] = useState('');
 
   useEffect(() => {
@@ -53,7 +53,7 @@ export const Update = () => {
   };
 
   return (
-    <div>
+    <div className={styles.outerContainer}>
       <h1>Update Your Cards</h1>
       <FormControl className={styles.update_form} sx={{ m: 1 }}>
         {notification && (
@@ -62,57 +62,63 @@ export const Update = () => {
           </Typography>
         )}
         <h4>Select topic to update:</h4>
-        {allTags && (
-          <SelectDropDown options={allTags} tracker={setTag} label='Tag' />
-        )}
-        <Box component='form' onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-          {data?.cards &&
-            data?.cards.map((item: any, idx: number) => {
-              return (
-                <div key={idx}>
-                  <h5>Card #{idx + 1}</h5>
-                  <TextField
-                    className={
-                      appState.theme === 'dark'
-                        ? styles.inputDark
-                        : styles.update_input
-                    }
-                    label='prompt'
-                    id={`${idx}-prompt`}
-                    name={`${idx}-prompt`}
-                    fullWidth
-                    defaultValue={item.prompt}
-                  />
-                  <TextField
-                    className={
-                      appState.theme === 'dark'
-                        ? styles.inputDark
-                        : styles.update_input
-                    }
-                    label='response'
-                    id={`${idx}-response`}
-                    name={`${idx}-response`}
-                    fullWidth
-                    defaultValue={item.response}
-                  />
-                </div>
-              );
-            })}
-          {data?.cards && (
-            <Button
-              className={
-                appState.theme === 'dark'
-                  ? styles.darkbutton
-                  : styles.lightbutton
-              }
-              type='submit'
-              fullWidth
-              variant='contained'
-              sx={{ mt: 3, mb: 2 }}>
-              Submit
-            </Button>
+        <div className={styles.updateContainer}>
+          {allTags && (
+            <SelectDropDown options={allTags} tracker={setTag} label='Tag' />
           )}
-        </Box>
+          <Box
+            component='form'
+            onSubmit={handleSubmit}
+            noValidate
+            sx={{ mt: 1 }}>
+            {data?.cards &&
+              data?.cards.map((item: any, idx: number) => {
+                return (
+                  <div key={idx}>
+                    <h5>Card #{idx + 1}</h5>
+                    <TextField
+                      className={
+                        appState.theme === 'dark'
+                          ? styles.inputDark
+                          : styles.inputLight
+                      }
+                      label='prompt'
+                      id={`${idx}-prompt`}
+                      name={`${idx}-prompt`}
+                      fullWidth
+                      defaultValue={item.prompt}
+                    />
+                    <TextField
+                      className={
+                        appState.theme === 'dark'
+                          ? styles.inputDark
+                          : styles.inputLight
+                      }
+                      label='response'
+                      id={`${idx}-response`}
+                      name={`${idx}-response`}
+                      fullWidth
+                      defaultValue={item.response}
+                    />
+                  </div>
+                );
+              })}
+            {data?.cards && (
+              <Button
+                className={
+                  appState.theme === 'dark'
+                    ? styles.darkbutton
+                    : styles.lightbutton
+                }
+                type='submit'
+                fullWidth
+                variant='contained'
+                sx={{ mt: 3, mb: 2 }}>
+                Submit
+              </Button>
+            )}
+          </Box>
+        </div>
       </FormControl>
     </div>
   );

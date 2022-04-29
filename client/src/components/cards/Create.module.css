@@ -28,4 +28,10 @@
 
 .lightbutton {
   background-color: var(--light-secondary-variant) !important;
+  color: white;
+}
+
+.container {
+  background-color: var(--secondary-background);
+  padding: 30px;
 }

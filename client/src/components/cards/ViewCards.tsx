@@ -9,7 +9,7 @@ export const ViewCards = ({ start, setStart }: any) => {
   const [publicTags, setPublicTags] = useState<any>([]);
   const [privateTags, setPrivateTags] = useState<any>([]);
   const [allTags, setAllTags] = useState<any>([]);
-  const [appState, appAction] = useContext(ApplicationContext);
+  const [appState] = useContext(ApplicationContext);
   const [rows, setRows] = useState<any>([]);
   const [selection, setSelection] = useState<string | null>(null);
   const [cardData, setCardData] = useState<any>([]);
