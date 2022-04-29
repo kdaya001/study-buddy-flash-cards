@@ -18,3 +18,7 @@
   background-color: var(--light-secondary-variant) !important;
   color: var(--black) !important;
 }
+
+.signInColor {
+  color: var(--light-secondary-variant) !important;
+}

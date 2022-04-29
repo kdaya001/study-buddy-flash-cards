@@ -16,7 +16,7 @@ export default function LoggedOutHome() {
   const [appState, appAction] = useContext(ApplicationContext);
 
   const navigate = useNavigate();
-  
+
   return (
     <ThemeProvider theme={theme}>
       <Grid container component='main' sx={{ height: '100vh' }}>
@@ -62,17 +62,24 @@ export default function LoggedOutHome() {
                 to learn!
               </h4>
             </div>
-            {!appState.currentUser && <Signin />}
+            <div className={styles.signInColor}>
+              {!appState.currentUser && <Signin />}
+            </div>
             {appState.currentUser && (
               <div>
                 <Button
-                onClick={() => {
-                  navigate('/app')
-                }}
-                className={appState.theme === 'dark' ? styles.darkButton : styles.lightButton}>Look at cards</Button>
+                  onClick={() => {
+                    navigate('/app');
+                  }}
+                  className={
+                    appState.theme === 'dark'
+                      ? styles.darkButton
+                      : styles.lightButton
+                  }>
+                  Look at cards
+                </Button>
               </div>
             )}
-
           </Box>
         </Grid>
       </Grid>
