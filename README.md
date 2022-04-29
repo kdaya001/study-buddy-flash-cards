@@ -123,7 +123,7 @@ Global Cards:
   2. For the answer/description
 - [x] Users can cycle through a predetermined amount of cards for the specific tag (e.g. 10, 20, 30)
 
-#### Extension features may include:
+#### Future features may include:
 - [ ] Allowing quizzes
   - [ ] Gamification of the application (allow users to get scores and compare scores) - Dependent on implementation of authentication
 - [x] Include authentication
