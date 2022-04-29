@@ -24,6 +24,7 @@ export function Nav({ setStart }: any) {
       appAction({
         type: ActionType.LOGOUT,
       });
+      navigate(`/login`);
     })
     .catch(error => {
       console.log(error)
@@ -165,7 +166,6 @@ export function Nav({ setStart }: any) {
               onClick={() => {
                 handleLogout();
                 setStart(false);
-                navigate(`/login`);
               }}>
               Logout
             </Button>
