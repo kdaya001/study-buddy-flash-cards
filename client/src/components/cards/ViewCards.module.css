@@ -3,13 +3,12 @@
 .styledTable {
   border-collapse: collapse;
   margin: 25px 0;
-  font-size: 0.9em;
-  font-family: sans-serif;
   width: 80%;
   min-width: 400px;
-  box-shadow: 0 0 20px var(--black);
+  /* box-shadow: 0 0 20px var(--black); */
   margin: 0 auto;
   margin-top: 30px;
+  background-color: var(--secondary-background);
 }
 
 .trTHeadStyled {
